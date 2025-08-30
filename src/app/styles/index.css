@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+
+@import './color.css';
+@import './font.css';
+@import './flex.css';
+@import './button.css';
