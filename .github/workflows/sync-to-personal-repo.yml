@@ -1,0 +1,40 @@
+name: Sync to personal repo
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  sync:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          filter: ''
+          persist-credentials: false
+
+      - name: Clear default auth header (safety)
+        run: git config --global --unset-all http.https://github.com/.extraheader || true
+
+      - name: Set git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Add remote for personal repo (use PAT secret)
+        run: |
+          git remote add personal https://x-access-token:${{ secrets.SYNC_TO_FONTORY_PERSONAL_REPO }}@github.com/KimDongGyun23/Fontory.git
+
+      - name: Create export branch without workflows
+        run: |
+          git checkout -B export-for-personal origin/main
+          git rm -r --cached .github || true
+          git commit -m "chore: exclude .github for personal mirror" || true
+
+      - name: Push to personal main
+        run: |
+          git push personal export-for-personal:main --force
