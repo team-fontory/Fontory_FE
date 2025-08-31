@@ -2,20 +2,41 @@ import { useState } from 'react'
 
 import { Footer } from '@/shared/components/Footer'
 import { Gnb } from '@/shared/components/Gnb'
+import { Pagination } from '@/shared/components/Pagination'
 
 import { FONT_FILTER_OPTIONS } from '../constants/fontFilterOptions'
 import { FontExploreList } from '../containers/FontExploreList'
 import { FontFilter } from '../containers/FontFilter'
 import { FontSearchBar } from '../containers/FontSearchBar'
 import { PopularFontSection } from '../containers/PopularFontSection'
+import { useExploreFontList } from '../services/useFontQuery'
 import type { FontFilterType } from '../types/font.type'
+import { getFilterSortBy } from '../utils/getFilterSortBy'
 
 const FontExplorePage = () => {
   const [activeFilter, setActiveFilter] = useState<FontFilterType>(FONT_FILTER_OPTIONS[0].key)
   const [searchQuery, setSearchQuery] = useState('')
+  const [currentPage, setCurrentPage] = useState(1)
+
+  const { data: fontList } = useExploreFontList({
+    page: currentPage,
+    sortBy: getFilterSortBy(activeFilter),
+    keyword: searchQuery.trim() || null,
+  })
 
   const handleClickFilter = (key: FontFilterType) => {
     setActiveFilter(key)
+    setCurrentPage(1)
+  }
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const handleSearchChange = (query: string) => {
+    setSearchQuery(query)
+    setCurrentPage(1)
   }
 
   return (
@@ -33,10 +54,21 @@ const FontExplorePage = () => {
           <FontFilter activeFilter={activeFilter} onClickFilter={handleClickFilter} />
 
           <div className='mx-4 mt-6'>
-            <FontSearchBar searchQuery={searchQuery} onSearch={setSearchQuery} />
+            <FontSearchBar searchQuery={searchQuery} onSearch={handleSearchChange} />
           </div>
 
-          <FontExploreList activeFilter={activeFilter} />
+          <FontExploreList fontList={fontList} />
+
+          {!fontList.isEmpty && (
+            <div className='pb-8'>
+              <Pagination
+                currentPage={fontList.currentPage}
+                totalPages={fontList.totalPages}
+                onPageChange={handlePageChange}
+                className='mt-8'
+              />
+            </div>
+          )}
         </section>
       </main>
       <Footer />
