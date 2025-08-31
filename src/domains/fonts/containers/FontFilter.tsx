@@ -1,8 +1,8 @@
-import type { FilterType } from '../types/font.type'
+import type { FontFilterType } from '../types/font.type'
 
 type Props = {
-  activeFilter: FilterType
-  onClickFilter: (key: FilterType) => void
+  activeFilter: FontFilterType
+  onClickFilter: (key: FontFilterType) => void
 }
 
 const FILTER_OPTIONS = [
