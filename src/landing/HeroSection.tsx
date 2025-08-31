@@ -22,7 +22,7 @@ export const HeroSection = () => {
 
   return (
     <section
-      className='flex-column shadow-hero relative mt-16 min-h-[520px] items-center justify-center gap-6 px-4 text-white'
+      className='flex-column shadow-hero relative min-h-[520px] items-center justify-center gap-6 px-4 text-white'
       aria-labelledby='hero-title'
     >
       <div className='absolute inset-0 -z-20 overflow-hidden rounded-xl'>

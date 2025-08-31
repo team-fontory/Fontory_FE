@@ -1,3 +1,4 @@
+import { FinalCTASection } from './FinalCTASection'
 import { Gnb } from './Gnb'
 import { HeroSection } from './HeroSection'
 import { ServiceValueSection } from './ServiceValueSection'
@@ -7,10 +8,11 @@ const LandingPage = () => {
   return (
     <>
       <Gnb />
-      <main className='mx-auto max-w-[960px]'>
+      <main className='mx-auto max-w-[960px] py-16'>
         <HeroSection />
         <ServiceValueSection />
         <TestimonialsSection />
+        <FinalCTASection />
       </main>
     </>
   )
