@@ -1,8 +1,10 @@
-/** 폰트 필터링 옵션 */
-export type FontFilterType = 'all' | 'most-downloaded' | 'most-bookmarked'
+import type { FONT_FILTER_OPTIONS } from '../constants/fontFilterOptions'
 
-/** 폰트 정렬 기준 */
-export type FontSortBy = 'createdAt' | 'downloadCount' | 'bookmarkCount'
+/** 클라이언트에서 사용되는 폰트 필터 "all" | "most-bookmarked" | "most-downloaded" */
+export type FontFilterType = (typeof FONT_FILTER_OPTIONS)[number]['key']
+
+/** 서버에서 사용되는 폰트 필터 "createdAt" | "bookmarkCount" | "downloadCount" */
+export type FontSortBy = (typeof FONT_FILTER_OPTIONS)[number]['sortBy']
 
 /** 기본 폰트 정보 */
 export type FontInfo = {

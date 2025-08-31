@@ -4,9 +4,9 @@ import { createRoute } from '@/app/router/routes.constant'
 
 import { BookmarkButton } from '../containers/BookmarkButton'
 import { DownloadButton } from '../containers/DownloadButton'
-import type { FontDetails } from '../types/font.type'
+import type { FontDetail } from '../types/font.type'
 
-type Props = FontDetails
+type Props = FontDetail
 
 /** 폰트 미리보기 아이템 컴포넌트 */
 export const FontPreviewItem = ({
