@@ -1,3 +1,5 @@
+import { Footer } from '@/shared/components/Footer'
+
 import { FinalCTASection } from './FinalCTASection'
 import { Gnb } from './Gnb'
 import { HeroSection } from './HeroSection'
@@ -14,6 +16,7 @@ const LandingPage = () => {
         <TestimonialsSection />
         <FinalCTASection />
       </main>
+      <Footer />
     </>
   )
 }
