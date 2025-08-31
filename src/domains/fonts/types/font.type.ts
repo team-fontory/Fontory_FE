@@ -57,3 +57,8 @@ export type FontExploreResponse = {
   number: number
   totalPages: number
 }
+
+/** 폰트 다운로드 API 응답 */
+export type FontDownloadResponse = Pick<FontInfo, 'id' | 'name'> & {
+  ttf: string
+}

@@ -1,6 +1,11 @@
 import { apiClient } from '@/shared/api/apiClient'
 
-import type { FontExploreFilter, FontExploreResponse, FontListItem } from '../types/font.type'
+import type {
+  FontDownloadResponse,
+  FontExploreFilter,
+  FontExploreResponse,
+  FontListItem,
+} from '../types/font.type'
 
 class FontService {
   /** 둘러보기 폰트 목록 */
@@ -18,6 +23,11 @@ class FontService {
   /** 인기 폰트 목록 */
   getPopular(): Promise<FontListItem[]> {
     return apiClient.get<FontListItem[]>('/fonts/popular')
+  }
+
+  /** 폰트 다운로드 URL 조회 */
+  getDownloadUrl(fontId: number) {
+    return apiClient.get<FontDownloadResponse>(`/fonts/${fontId}/download`)
   }
 }
 

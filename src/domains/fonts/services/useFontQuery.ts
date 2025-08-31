@@ -1,4 +1,4 @@
-import { useSuspenseQuery } from '@tanstack/react-query'
+import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 
 import { FontListViewModel } from '../models/fontListViewModel'
 import type { FontExploreFilter } from '../types/font.type'
@@ -30,5 +30,14 @@ export const usePopularFontList = () => {
       }),
     staleTime: 30 * 60 * 1000,
     gcTime: 60 * 60 * 1000,
+  })
+}
+
+/** 폰트 다운로드 URL 조회 쿼리 */
+export const useFontDownloadQuery = (fontId: number) => {
+  return useQuery({
+    queryKey: fontQueryKeys.download(fontId),
+    queryFn: () => fontService.getDownloadUrl(fontId),
+    enabled: false,
   })
 }

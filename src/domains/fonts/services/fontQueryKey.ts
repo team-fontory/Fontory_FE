@@ -6,10 +6,14 @@ import type { FontExploreFilter } from '../types/font.type'
 export const fontQueryKeys = {
   all: () => [...MAIN_QUERY_KEY, 'font'] as const,
 
+  // 둘러보기
   explores: () => [...fontQueryKeys.all(), 'explore'] as const,
   explore: (filter: FontExploreFilter) =>
     [...fontQueryKeys.explores(), filter.page, filter.sortBy, filter.keyword ?? null] as const,
   popular: () => [...fontQueryKeys.explores(), 'popular'] as const,
+
+  // 다운로드
+  download: (fontId: number) => [...fontQueryKeys.all(), 'download', fontId] as const,
 } as const
 
 /** 쿼리 무효화를 위한 헬퍼 함수 */
