@@ -1,2 +1,11 @@
 @theme {
+  --color-primary: #2563eb;
+  --color-primary-point: #1d4fbb;
+
+  --color-secondary: #f1f5f9;
+  --color-secondary-point: #e2e8f0;
+
+  --color-disabled: #cbd5e1;
+
+  --color-accent: #0f172a;
 }
