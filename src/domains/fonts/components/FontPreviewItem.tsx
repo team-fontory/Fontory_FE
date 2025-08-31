@@ -6,10 +6,7 @@ import { BookmarkButton } from '../containers/BookmarkButton'
 import { DownloadButton } from '../containers/DownloadButton'
 import type { FontDetails } from '../types/font.type'
 
-type Props = FontDetails & {
-  onToggleBookmark?: (fontId: number, isBookmarked: boolean) => void
-  onDownload?: (fontId: number) => void
-}
+type Props = FontDetails
 
 /** 폰트 미리보기 아이템 컴포넌트 */
 export const FontPreviewItem = ({
