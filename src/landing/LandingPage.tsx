@@ -1,7 +1,8 @@
 import { Footer } from '@/shared/components/Footer'
 
+import { Gnb } from '../shared/components/Gnb'
+
 import { FinalCTASection } from './FinalCTASection'
-import { Gnb } from './Gnb'
 import { HeroSection } from './HeroSection'
 import { ServiceValueSection } from './ServiceValueSection'
 import { TestimonialsSection } from './TestimonialsSection'
