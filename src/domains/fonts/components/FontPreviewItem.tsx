@@ -54,7 +54,7 @@ export const FontPreviewItem = ({
 
         <div className='flex flex-shrink-0 gap-2' onClick={(e) => e.stopPropagation()}>
           <BookmarkButton fontId={fontId} fontName={fontName} isBookmarked={isBookmarked} />
-          <DownloadButton fontId={fontId} fontName={fontName} fontAddr={fontAddr} />
+          <DownloadButton fontId={fontId} fontName={fontName} />
         </div>
       </div>
     </article>
