@@ -1,5 +1,8 @@
 import { lazy } from 'react'
 import type { RouteObject } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
+
+import { Layout } from '@/shared/components/Layout'
 
 import { ROUTES } from './routes.constant'
 
@@ -9,15 +12,25 @@ const FontExplorePage = lazy(() => import('@/domains/fonts/pages/FontExplorePage
 
 /** 애플리케이션 라우트 설정 */
 export const routes: RouteObject[] = [
-  // 홈
   {
-    path: ROUTES.HOME,
-    element: <LandingPage />,
-  },
+    path: '/',
+    element: (
+      <Layout>
+        <Outlet />
+      </Layout>
+    ),
+    children: [
+      // 홈
+      {
+        path: ROUTES.HOME,
+        element: <LandingPage />,
+      },
 
-  // 폰트 둘러보기
-  {
-    path: ROUTES.FONT.EXPLORE,
-    element: <FontExplorePage />,
+      // 폰트 둘러보기
+      {
+        path: ROUTES.FONT.EXPLORE,
+        element: <FontExplorePage />,
+      },
+    ],
   },
 ]
