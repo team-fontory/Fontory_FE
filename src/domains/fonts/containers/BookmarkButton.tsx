@@ -9,7 +9,7 @@ type Props = {
 }
 
 /** 폰트 북마크 버튼 컴포넌트 */
-export const BookmarkButton = ({ isBookmarked, fontName, fontId }: Props) => {
+export const BookmarkButton = ({ isBookmarked, fontName }: Props) => {
   const [isBookmarkedState, setIsBookmarkedState] = useState(isBookmarked)
   const [isLoading, setIsLoading] = useState(false)
 
