@@ -2,7 +2,7 @@ import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 
 import { FontListViewModel, FontViewModel } from '../models/fontListViewModel'
 import { InProgressFontListViewModel } from '../models/inProgressFontViewModel'
-import type { FontOptionsType } from '../types/font.type'
+import type { FontBookmarkOptionsType, FontOptionsType } from '../types/font.type'
 
 import { fontQueryKeys } from './fontQueryKey'
 import { fontService } from './fontService'
@@ -91,7 +91,7 @@ export const useCompletedFontList = (page: number) => {
 }
 
 /** 북마크한 폰트 리스트 */
-export const useBookmarkFontList = (filter: FontOptionsType) => {
+export const useBookmarkFontList = (filter: FontBookmarkOptionsType) => {
   return useSuspenseQuery({
     queryKey: fontQueryKeys.bookmark(filter),
     queryFn: () => fontService.getBookmark(filter),

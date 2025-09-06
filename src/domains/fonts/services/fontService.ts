@@ -2,6 +2,7 @@ import { apiClient } from '@/shared/api/apiClient'
 
 import type {
   CompletedFontResponse,
+  FontBookmarkOptionsType,
   FontDetailResponse,
   FontDownloadResponse,
   FontListItem,
@@ -54,9 +55,9 @@ class FontService {
   }
 
   /** 북마크한 폰트 목록 */
-  getBookmark({ page, sortBy, keyword }: FontOptionsType) {
+  getBookmark({ page, keyword }: FontBookmarkOptionsType) {
     return apiClient.get<FontListResponse>('/bookmarks', {
-      params: { page: page - 1, size: 8, keyword, sortBy },
+      params: { page: page - 1, size: 8, keyword },
     })
   }
 }
