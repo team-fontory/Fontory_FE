@@ -1,8 +1,4 @@
-const POLICY_LINKS = [
-  { label: '서비스 이용약관', envKey: 'VITE_PUBLIC_SERVICE_TERM' },
-  { label: '개인정보 처리방침', envKey: 'VITE_PUBLIC_FONT_TERM' },
-  { label: '폰트 공유약관', envKey: 'VITE_PUBLIC_PRIVACY_TERM' },
-] as const
+import { POLICY_LINKS } from '../constants/policy'
 
 export const LoginPolicy = () => {
   return (

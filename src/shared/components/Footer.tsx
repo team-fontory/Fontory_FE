@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router/routes.constant'
+import { POLICY_LINKS } from '@/domains/auth/constants/policy'
 
 import { Icon } from './Icon/Icon'
 
@@ -15,12 +16,6 @@ const NAVIGATION_LINKS = [
   { label: '둘러보기', path: ROUTES.FONT.EXPLORE },
   { label: '폰트제작', path: ROUTES.FONT.CREATE },
   { label: '폰트합성', path: ROUTES.FONT.SYNTHESIZE },
-] as const
-
-const POLICY_LINKS = [
-  { label: '서비스 이용약관', envKey: 'VITE_PUBLIC_SERVICE_TERM' },
-  { label: '개인정보 처리방침', envKey: 'VITE_PUBLIC_FONT_TERM' },
-  { label: '폰트 공유약관', envKey: 'VITE_PUBLIC_PRIVACY_TERM' },
 ] as const
 
 export const Footer = () => {
