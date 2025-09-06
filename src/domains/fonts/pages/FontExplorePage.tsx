@@ -39,7 +39,7 @@ const FontExplorePage = () => {
 
   return (
     <>
-      <main className='mx-auto my-10 max-w-7xl px-4'>
+      <main className='mx-auto my-10 max-w-5xl px-4'>
         <h1 className='font-jalnan p-4 text-3xl leading-9 font-bold'>폰트 둘러보기</h1>
         <PopularFontSection />
 
