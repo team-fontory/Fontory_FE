@@ -1,3 +1,6 @@
+import type z from 'zod'
+
+import type { createFontSchema } from '../constants/createFontConfig'
 import type { FONT_FILTER_OPTIONS } from '../constants/fontFilterOptions'
 
 /** 클라이언트에서 사용되는 폰트 필터 "all" | "most-bookmarked" | "most-downloaded" */
@@ -65,3 +68,5 @@ export type FontDownloadResponse = Pick<FontInfo, 'id' | 'name'> & {
 
 /** 폰트 상세보기 API 응답 */
 export type FontDetailResponse = FontInfo & FontStats
+
+export type CreateFontFormType = z.input<typeof createFontSchema>
