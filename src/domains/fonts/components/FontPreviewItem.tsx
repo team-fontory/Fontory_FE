@@ -6,6 +6,8 @@ import { BookmarkButton } from '../containers/BookmarkButton'
 import { DownloadButton } from '../containers/DownloadButton'
 import type { FontDetail } from '../types/font.type'
 
+import { DynamicFontText } from './DynamicFontText'
+
 type Props = FontDetail
 
 /** 폰트 미리보기 아이템 컴포넌트 */
@@ -20,7 +22,7 @@ export const FontPreviewItem = ({
   fontAddr,
 }: Props) => {
   return (
-    <article className='group border-b border-gray-100 px-4 py-6 transition-colors hover:bg-gray-50'>
+    <article className='group rounded-lg border-b border-gray-100 bg-white px-4 py-6 transition-colors hover:bg-gray-50'>
       <div className='flex-between-center gap-6'>
         <Link
           to={createRoute.fontDetail(fontId)}
@@ -28,13 +30,14 @@ export const FontPreviewItem = ({
           aria-label={`${fontName} 폰트 상세보기`}
         >
           <div className='flex-column gap-2'>
-            <p
-              className='text-accent line-clamp-2 text-xl leading-relaxed font-medium'
-              style={{ fontFamily: fontName }}
-              lang='ko'
+            <DynamicFontText
+              fontName={fontName}
+              fontUrl={fontAddr}
+              className='text-accent line-clamp-2 text-2xl leading-relaxed font-medium'
+              skeletonClassName='bg-secondary h-6 w-full animate-pulse rounded'
             >
               {example}
-            </p>
+            </DynamicFontText>
             <div className='flex-align-center gap-2 text-sm'>
               <span className='text-accent font-semibold'>{fontName}</span>
               <span className='text-description'>by {writerName}</span>
