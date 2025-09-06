@@ -10,6 +10,7 @@ import { ROUTES } from './routes.constant'
 const LandingPage = lazy(() => import('@/landing/LandingPage'))
 const FontExplorePage = lazy(() => import('@/domains/fonts/pages/FontExplorePage'))
 const FontDetailPage = lazy(() => import('@/domains/fonts/pages/FontDetailPage'))
+const CreateFontPage = lazy(() => import('@/domains/fonts/pages/CreateFontPage'))
 
 /** 애플리케이션 라우트 설정 */
 export const routes: RouteObject[] = [
@@ -32,6 +33,10 @@ export const routes: RouteObject[] = [
       {
         path: ROUTES.FONT.DETAIL,
         element: <FontDetailPage />,
+      },
+      {
+        path: ROUTES.FONT.CREATE,
+        element: <CreateFontPage />,
       },
     ],
   },
