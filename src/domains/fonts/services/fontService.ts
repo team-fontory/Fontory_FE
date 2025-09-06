@@ -1,11 +1,13 @@
 import { apiClient } from '@/shared/api/apiClient'
 
 import type {
+  CompletedFontResponse,
   FontDetailResponse,
   FontDownloadResponse,
   FontExploreFilter,
   FontExploreResponse,
   FontListItem,
+  InProgressFontResponse,
 } from '../types/font.type'
 
 class FontService {
@@ -39,6 +41,16 @@ class FontService {
   /** 제작자의 다른 폰트 */
   getRecommend(fontId: number) {
     return apiClient.get<FontDetailResponse[]>(`/fonts/${fontId}/others`)
+  }
+
+  /** 제작 중인 폰트 목록 */
+  getInProgress() {
+    return apiClient.get<InProgressFontResponse[]>('/fonts/progress')
+  }
+
+  /** 제작 완료된 폰트 목록 */
+  getCompleted(page: number) {
+    return apiClient.get<CompletedFontResponse>('/fonts/members', { params: { page: page - 1 } })
   }
 }
 

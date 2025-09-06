@@ -70,3 +70,14 @@ export type FontDownloadResponse = Pick<FontInfo, 'id' | 'name'> & {
 export type FontDetailResponse = FontInfo & FontStats
 
 export type CreateFontFormType = z.input<typeof createFontSchema>
+
+export type InProgressFontResponse = Pick<FontInfo, 'id' | 'name'> & {
+  createdAt: string
+  status: string
+}
+
+export type CompletedFontResponse = {
+  content: FontDetailResponse[]
+  number: number
+  totalPages: number
+}

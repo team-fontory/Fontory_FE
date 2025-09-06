@@ -1,6 +1,7 @@
 import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 
 import { FontListViewModel, FontViewModel } from '../models/fontListViewModel'
+import { InProgressFontListViewModel } from '../models/inProgressFontViewModel'
 import type { FontExploreFilter } from '../types/font.type'
 
 import { fontQueryKeys } from './fontQueryKey'
@@ -56,12 +57,35 @@ export const useRecommendFontList = (fontId: number) => {
   return useSuspenseQuery({
     queryKey: fontQueryKeys.recommend(fontId),
     queryFn: () => fontService.getRecommend(fontId),
-    select: (response) => new FontListViewModel({
-      content: response,
-      number: 0,
-      totalPages: 1,
-    }),
+    select: (response) =>
+      new FontListViewModel({
+        content: response,
+        number: 0,
+        totalPages: 1,
+      }),
     staleTime: 10 * 60 * 1000,
     gcTime: 20 * 60 * 1000,
+  })
+}
+
+/** 제작 중인 폰트 목록 */
+export const useProgressFontList = () => {
+  return useSuspenseQuery({
+    queryKey: fontQueryKeys.inProgress(),
+    queryFn: () => fontService.getInProgress(),
+    select: (response) => new InProgressFontListViewModel(response),
+    staleTime: 60000,
+    gcTime: 60000 * 5,
+  })
+}
+
+/** 제작 완료된 폰트 목록 */
+export const useCompletedFontList = (page: number) => {
+  return useSuspenseQuery({
+    queryKey: fontQueryKeys.complete(page),
+    queryFn: () => fontService.getCompleted(page),
+    select: (response) => new FontListViewModel(response),
+    staleTime: 60000,
+    gcTime: 60000 * 5,
   })
 }

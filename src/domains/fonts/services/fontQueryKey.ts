@@ -19,6 +19,11 @@ export const fontQueryKeys = {
   details: () => [...fontQueryKeys.all(), 'detail'] as const,
   detail: (fontId: number) => [...fontQueryKeys.details(), fontId] as const,
   recommend: (fontId: number) => [...fontQueryKeys.details(), 'recommend', fontId] as const,
+
+  // 내가 제작한 폰트
+  progressAll: () => [...fontQueryKeys.all(), 'progress'] as const,
+  inProgress: () => [...fontQueryKeys.progressAll(), 'in-progress'] as const,
+  complete: (page: number) => [...fontQueryKeys.progressAll(), 'complete', page] as const,
 } as const
 
 /** 쿼리 무효화를 위한 헬퍼 함수 */
@@ -29,6 +34,7 @@ export const fontQueryInvalidators = {
   }),
   invalidateExplores: () => ({ queryKey: fontQueryKeys.explores() }),
   invalidateDetails: () => ({ queryKey: fontQueryKeys.details() }),
+  invalidateMyFonts: () => ({ queryKey: fontQueryKeys.progressAll() }),
 } as const
 
 // 쿼리 키 타입 추론을 위한 유틸리티 타입
