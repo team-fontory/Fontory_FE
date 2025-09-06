@@ -1,7 +1,7 @@
 @layer base {
   input,
   textarea {
-    @apply border-none outline-none;
+    @apply outline-none;
   }
 
   input:focus-visible,
