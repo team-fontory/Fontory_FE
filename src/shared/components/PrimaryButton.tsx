@@ -20,7 +20,7 @@ const VARIANT_BUTTON_CLASSES = {
   primary:
     'bg-primary text-white hover:bg-primary-point hover:text-white focus:bg-secondary focus:text-accent',
   secondary:
-    'bg-secondary text-accent hover:bg-secondary-point hover:text-accent focus:bg-secondary-point focus:text-accent',
+    'bg-secondary text-accent-light hover:bg-secondary-point hover:text-accent focus:bg-secondary-point focus:text-accent',
 } as const
 
 const DISABLED_BUTTON_CLASSES = 'bg-disabled text-white cursor-not-allowed'
