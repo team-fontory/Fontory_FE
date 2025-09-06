@@ -4,16 +4,16 @@ import type {
   CompletedFontResponse,
   FontDetailResponse,
   FontDownloadResponse,
-  FontExploreFilter,
-  FontExploreResponse,
   FontListItem,
+  FontListResponse,
+  FontOptionsType,
   InProgressFontResponse,
 } from '../types/font.type'
 
 class FontService {
   /** 둘러보기 폰트 목록 */
-  getExplore({ page, sortBy, keyword }: FontExploreFilter) {
-    return apiClient.get<FontExploreResponse>('/fonts', {
+  getExplore({ page, sortBy, keyword }: FontOptionsType) {
+    return apiClient.get<FontListResponse>('/fonts', {
       params: {
         page: page - 1,
         size: 8,
@@ -51,6 +51,13 @@ class FontService {
   /** 제작 완료된 폰트 목록 */
   getCompleted(page: number) {
     return apiClient.get<CompletedFontResponse>('/fonts/members', { params: { page: page - 1 } })
+  }
+
+  /** 북마크한 폰트 목록 */
+  getBookmark({ page, sortBy, keyword }: FontOptionsType) {
+    return apiClient.get<FontListResponse>('/bookmarks', {
+      params: { page: page - 1, size: 8, keyword, sortBy },
+    })
   }
 }
 

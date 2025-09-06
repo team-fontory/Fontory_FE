@@ -2,13 +2,13 @@ import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 
 import { FontListViewModel, FontViewModel } from '../models/fontListViewModel'
 import { InProgressFontListViewModel } from '../models/inProgressFontViewModel'
-import type { FontExploreFilter } from '../types/font.type'
+import type { FontOptionsType } from '../types/font.type'
 
 import { fontQueryKeys } from './fontQueryKey'
 import { fontService } from './fontService'
 
 /** 폰트 둘러보기 목록 */
-export const useExploreFontList = (filter: FontExploreFilter) => {
+export const useExploreFontList = (filter: FontOptionsType) => {
   return useSuspenseQuery({
     queryKey: fontQueryKeys.explore(filter),
     queryFn: () => fontService.getExplore(filter),
@@ -87,5 +87,14 @@ export const useCompletedFontList = (page: number) => {
     select: (response) => new FontListViewModel(response),
     staleTime: 60000,
     gcTime: 60000 * 5,
+  })
+}
+
+/** 북마크한 폰트 리스트 */
+export const useBookmarkFontList = (filter: FontOptionsType) => {
+  return useSuspenseQuery({
+    queryKey: fontQueryKeys.bookmark(filter),
+    queryFn: () => fontService.getBookmark(filter),
+    select: (data) => new FontListViewModel(data),
   })
 }
