@@ -62,3 +62,6 @@ export type FontExploreResponse = {
 export type FontDownloadResponse = Pick<FontInfo, 'id' | 'name'> & {
   ttf: string
 }
+
+/** 폰트 상세보기 API 응답 */
+export type FontDetailResponse = FontInfo & FontStats

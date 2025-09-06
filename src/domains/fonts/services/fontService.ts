@@ -1,6 +1,7 @@
 import { apiClient } from '@/shared/api/apiClient'
 
 import type {
+  FontDetailResponse,
   FontDownloadResponse,
   FontExploreFilter,
   FontExploreResponse,
@@ -28,6 +29,16 @@ class FontService {
   /** 폰트 다운로드 URL 조회 */
   getDownloadUrl(fontId: number) {
     return apiClient.get<FontDownloadResponse>(`/fonts/${fontId}/download`)
+  }
+
+  /** 폰트 상세보기 */
+  getDetail(fontId: number) {
+    return apiClient.get<FontDetailResponse>(`/fonts/${fontId}`)
+  }
+
+  /** 제작자의 다른 폰트 */
+  getRecommend(fontId: number) {
+    return apiClient.get<FontDetailResponse[]>(`/fonts/${fontId}/others`)
   }
 }
 

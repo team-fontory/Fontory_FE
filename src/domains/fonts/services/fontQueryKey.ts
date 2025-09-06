@@ -14,6 +14,11 @@ export const fontQueryKeys = {
 
   // 다운로드
   download: (fontId: number) => [...fontQueryKeys.all(), 'download', fontId] as const,
+
+  // 상세페이지
+  details: () => [...fontQueryKeys.all(), 'detail'] as const,
+  detail: (fontId: number) => [...fontQueryKeys.details(), fontId] as const,
+  recommend: (fontId: number) => [...fontQueryKeys.details(), 'recommend', fontId] as const,
 } as const
 
 /** 쿼리 무효화를 위한 헬퍼 함수 */
@@ -23,6 +28,7 @@ export const fontQueryInvalidators = {
     predicate: (query: { queryKey: readonly unknown[] }) => query.queryKey.includes(fontId),
   }),
   invalidateExplores: () => ({ queryKey: fontQueryKeys.explores() }),
+  invalidateDetails: () => ({ queryKey: fontQueryKeys.details() }),
 } as const
 
 // 쿼리 키 타입 추론을 위한 유틸리티 타입

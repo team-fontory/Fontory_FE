@@ -1,6 +1,6 @@
 import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 
-import { FontListViewModel } from '../models/fontListViewModel'
+import { FontListViewModel, FontViewModel } from '../models/fontListViewModel'
 import type { FontExploreFilter } from '../types/font.type'
 
 import { fontQueryKeys } from './fontQueryKey'
@@ -39,5 +39,29 @@ export const useFontDownloadQuery = (fontId: number) => {
     queryKey: fontQueryKeys.download(fontId),
     queryFn: () => fontService.getDownloadUrl(fontId),
     enabled: false,
+  })
+}
+
+/** 폰트 상세보기 */
+export const useFontDetail = (fontId: number) => {
+  return useSuspenseQuery({
+    queryKey: fontQueryKeys.detail(fontId),
+    queryFn: () => fontService.getDetail(fontId),
+    select: (response) => new FontViewModel(response),
+  })
+}
+
+/** 제작자의 다른 폰트 */
+export const useRecommendFontList = (fontId: number) => {
+  return useSuspenseQuery({
+    queryKey: fontQueryKeys.recommend(fontId),
+    queryFn: () => fontService.getRecommend(fontId),
+    select: (response) => new FontListViewModel({
+      content: response,
+      number: 0,
+      totalPages: 1,
+    }),
+    staleTime: 10 * 60 * 1000,
+    gcTime: 20 * 60 * 1000,
   })
 }
