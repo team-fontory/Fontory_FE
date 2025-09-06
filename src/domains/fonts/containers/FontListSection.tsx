@@ -5,7 +5,7 @@ type Props = {
   fontList: FontListViewModel
 }
 
-export const FontExploreList = ({ fontList }: Props) => {
+export const FontListSection = ({ fontList }: Props) => {
   if (!fontList) return null
 
   return (

@@ -1,9 +1,4 @@
-import type {
-  FontDetail,
-  FontExploreResponse,
-  FontListItem,
-  FontViewData,
-} from '../types/font.type'
+import type { FontDetail, FontListResponse, FontListItem, FontViewData } from '../types/font.type'
 
 export class FontViewModel {
   private readonly _data: FontDetail
@@ -86,7 +81,7 @@ export class FontListViewModel {
   private readonly _currentPage: number
   private readonly _totalPages: number
 
-  constructor(response: FontExploreResponse) {
+  constructor(response: FontListResponse) {
     this._fontList = response.content.map((item) => new FontViewModel(item))
     this._currentPage = response.number + 1
     this._totalPages = response.totalPages

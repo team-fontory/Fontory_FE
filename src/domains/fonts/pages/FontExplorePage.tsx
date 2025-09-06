@@ -3,8 +3,8 @@ import { useState } from 'react'
 import { Pagination } from '@/shared/components/Pagination'
 
 import { FONT_FILTER_OPTIONS } from '../constants/fontFilterOptions'
-import { FontExploreList } from '../containers/FontExploreList'
 import { FontFilter } from '../containers/FontFilter'
+import { FontListSection } from '../containers/FontListSection'
 import { FontSearchBar } from '../containers/FontSearchBar'
 import { PopularFontSection } from '../containers/PopularFontSection'
 import { useExploreFontList } from '../services/useFontQuery'
@@ -54,7 +54,7 @@ const FontExplorePage = () => {
             <FontSearchBar searchQuery={searchQuery} onSearch={handleSearchChange} />
           </div>
 
-          <FontExploreList fontList={fontList} />
+          <FontListSection fontList={fontList} />
 
           {!fontList.isEmpty && (
             <div className='pb-8'>

@@ -47,15 +47,15 @@ export type FontViewData = {
   totalPages: number
 }
 
-/** 폰트 둘러보기 필터 옵션 */
-export type FontExploreFilter = {
+/** 서버에 전송할 폰트 필터 옵션 */
+export type FontOptionsType = {
   page: number
   sortBy: FontSortBy
   keyword: string | null
 }
 
 /** 폰트 둘러보기 API 응답 */
-export type FontExploreResponse = {
+export type FontListResponse = {
   content: FontListItem[]
   number: number
   totalPages: number
