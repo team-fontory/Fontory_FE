@@ -14,6 +14,7 @@ const CreateFontPage = lazy(() => import('@/domains/fonts/pages/CreateFontPage')
 const MyFontPage = lazy(() => import('@/domains/fonts/pages/MyFontPage'))
 const LoginPage = lazy(() => import('@/domains/auth/pages/LoginPage'))
 const SignupPage = lazy(() => import('@/domains/auth/pages/SignupPage'))
+const BookmarkPage = lazy(() => import('@/domains/fonts/pages/BookmarkPage'))
 
 /** 애플리케이션 라우트 설정 */
 export const routes: RouteObject[] = [
@@ -52,6 +53,10 @@ export const routes: RouteObject[] = [
       {
         path: ROUTES.AUTH.SIGN_UP,
         element: <SignupPage />,
+      },
+      {
+        path: ROUTES.MYPAGE.BOOKMARK,
+        element: <BookmarkPage />,
       },
     ],
   },
