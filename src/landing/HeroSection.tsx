@@ -22,18 +22,18 @@ export const HeroSection = () => {
 
   return (
     <section
-      className='flex-column shadow-hero relative min-h-[520px] items-center justify-center gap-6 px-4 text-white'
+      className='flex-column shadow-hero relative min-h-[520px] items-center justify-center gap-6 p-10 px-4 text-white'
       aria-labelledby='hero-title'
     >
-      <div className='absolute inset-0 -z-20 overflow-hidden rounded-xl'>
+      <div className='absolute inset-0 overflow-hidden rounded-xl'>
         <img src='/images/hero.svg' alt='' className='h-full w-full object-cover' />
       </div>
 
-      <h2 id='hero-title' className='font-jalnan text-center text-3xl'>
+      <h2 id='hero-title' className='font-jalnan z-10 text-center text-3xl'>
         {HERO_CONTENT.title}
       </h2>
 
-      <p className='text-center text-xl leading-7 font-light'>
+      <p className='z-10 text-center text-xl leading-7 font-light'>
         {HERO_CONTENT.description.line1}
         <br />
         {HERO_CONTENT.description.line2}
@@ -41,7 +41,7 @@ export const HeroSection = () => {
 
       <PrimaryButton
         size='md'
-        className='h-12 w-fit px-8'
+        className='z-10 h-12 w-fit px-8'
         onClick={handleStartCreating}
         aria-describedby='hero-title'
       >
