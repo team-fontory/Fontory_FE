@@ -54,6 +54,8 @@ export type FontOptionsType = {
   keyword: string | null
 }
 
+export type FontBookmarkOptionsType = Omit<FontOptionsType, 'sortBy'>
+
 /** 폰트 둘러보기 API 응답 */
 export type FontListResponse = {
   content: FontListItem[]

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Icon } from '@/shared/components/Icon/Icon'
 
@@ -21,6 +21,10 @@ export const FontSearchBar = ({
   isLoading = false,
 }: Props) => {
   const [inputValue, setInputValue] = useState(searchQuery || '')
+
+  useEffect(() => {
+    setInputValue(searchQuery || '')
+  }, [searchQuery])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()

@@ -48,7 +48,7 @@ const MyFontPage = () => {
   }
 
   return (
-    <div className='mx-auto my-8 max-w-7xl px-5'>
+    <div className='mx-auto my-8 max-w-5xl px-5'>
       <h2 className='text-accent text-4xl leading-10 font-bold'>내가 제작한 폰트</h2>
 
       <main className='flex-column mt-8 gap-12'>
