@@ -1,0 +1,16 @@
+@layer base {
+  input,
+  textarea {
+    @apply border-none outline-none;
+  }
+
+  input:focus-visible,
+  textarea:focus-visible {
+    @apply border-accent outline-accent outline-1;
+  }
+
+  input:focus,
+  textarea:focus {
+    @apply outline-none;
+  }
+}
