@@ -11,3 +11,11 @@ export const useCheckNickname = (nickname: string) => {
     enabled: false,
   })
 }
+
+/** 사용자 프로필 */
+export const useUserProfile = () => {
+  return useQuery({
+    queryKey: authQueryKeys.profile(),
+    queryFn: () => authService.getUserProfile(),
+  })
+}
