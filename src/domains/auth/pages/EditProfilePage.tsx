@@ -58,9 +58,9 @@ const EditProfilePage = () => {
               <Input
                 section={editProfileAttribute.birth.section}
                 label={editProfileAttribute.birth.label}
-                onInput={editProfileAttribute.birth.onInput}
+                disabled
               />
-              <GenderField />
+              <GenderField disabled />
             </div>
 
             <PrimaryButton type='submit' size='md' disabled={!isFormValid} className='w-full'>

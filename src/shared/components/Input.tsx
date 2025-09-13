@@ -9,9 +9,18 @@ type Props = {
   hint?: string
   successMessage?: string
   className?: string
+  disabled?: boolean
 } & InputHTMLAttributes<HTMLInputElement>
 
-export const Input = ({ section, label, hint, successMessage, className, ...rest }: Props) => {
+export const Input = ({
+  section,
+  label,
+  hint,
+  successMessage,
+  className,
+  disabled = false,
+  ...rest
+}: Props) => {
   const { formState, register } = useFormContext()
   const errorMessage = formState.errors[section]?.message?.toString()
   const message = errorMessage || successMessage || hint
@@ -20,6 +29,7 @@ export const Input = ({ section, label, hint, successMessage, className, ...rest
   const inputClassName = cn(
     'border-secondary-point w-full rounded-lg border bg-white p-3 text-base font-normal placeholder:text-footer-description',
     hasError && 'border-error focus:border-error',
+    disabled && '!bg-secondary',
     className,
   )
 
@@ -53,6 +63,7 @@ export const Input = ({ section, label, hint, successMessage, className, ...rest
         aria-invalid={hasError}
         aria-describedby={message ? `${section}-message` : undefined}
         aria-required={rest.required}
+        disabled={disabled}
         {...register(section)}
         {...rest}
       />
