@@ -1,8 +1,11 @@
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
+import { fontQueryInvalidators } from '@/domains/fonts/services/fontQueryKey'
 import { apiClient } from '@/shared/api/apiClient'
 
 import type { SignupRequest, UserProfile } from '../types/auth.type'
+
+import { authQueryInvalidators } from './authQueryKey'
 
 export const useSignupMutation = () => {
   return useMutation({
@@ -13,5 +16,28 @@ export const useSignupMutation = () => {
 export const useEditProfileMutation = () => {
   return useMutation({
     mutationFn: (formData: UserProfile) => apiClient.patch('/member/me', formData),
+  })
+}
+
+export const useLogoutMutation = () => {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: () => apiClient.post('/auth/logout'),
+    onSuccess: () => {
+      queryClient.invalidateQueries(authQueryInvalidators.invalidateAll())
+    },
+  })
+}
+
+export const useDeleteUser = () => {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: () => apiClient.delete('/member/me'),
+    onSuccess: () => {
+      queryClient.invalidateQueries(authQueryInvalidators.invalidateAll())
+      queryClient.invalidateQueries(fontQueryInvalidators.invalidateAll())
+    },
   })
 }
