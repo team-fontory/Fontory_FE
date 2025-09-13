@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { FormProvider } from 'react-hook-form'
 
 import { Icon } from '@/shared/components/Icon/Icon'
@@ -11,11 +10,11 @@ import { signupAttribute, signupSchema } from '../constants/userConfig'
 import { GenderField } from '../containers/GenderField'
 import { NicknameField } from '../containers/NicknameField'
 import { useSignupForm } from '../hooks/useSignupForm'
+import { useIsNickNameChecked } from '../stores/nicknameStore'
 import type { SignupFormType } from '../types/auth.type'
 
 const SignupPage = () => {
-  const [nicknameChecked, setNicknameChecked] = useState(false)
-
+  const isNicknameChecked = useIsNickNameChecked()
   const { handleSubmitForm: onSubmit, defaultValues } = useSignupForm()
 
   const methods = useCustomForm<SignupFormType>(signupSchema, {
@@ -26,7 +25,7 @@ const SignupPage = () => {
     handleSubmit,
     formState: { isValid },
   } = methods
-  const isFormValid = isValid && nicknameChecked
+  const isFormValid = isValid && isNicknameChecked
 
   return (
     <div className='flex-center h-full'>
