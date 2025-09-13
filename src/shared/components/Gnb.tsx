@@ -1,6 +1,8 @@
 import { Link, useLocation } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router/routes.constant'
+import { GnbDropdown } from '@/domains/auth/containers/GnbDropdown'
+import { useGnbState } from '@/domains/auth/services/useAuthQuery'
 import { Icon } from '@/shared/components/Icon/Icon'
 import { PrimaryButton } from '@/shared/components/PrimaryButton'
 
@@ -13,6 +15,7 @@ const NAV_ITEMS = [
 
 export const Gnb = () => {
   const location = useLocation()
+  const { data: nickname, isError } = useGnbState()
 
   return (
     <nav
@@ -40,18 +43,22 @@ export const Gnb = () => {
         ))}
       </ul>
 
-      <div className='ml-8 hidden gap-2 md:flex'>
-        <Link to={ROUTES.AUTH.LOGIN}>
-          <PrimaryButton size='sm' className='h-10'>
-            로그인
-          </PrimaryButton>
-        </Link>
-        <Link to={ROUTES.AUTH.SIGN_UP}>
-          <PrimaryButton size='sm' secondary className='h-10'>
-            회원가입
-          </PrimaryButton>
-        </Link>
-      </div>
+      {nickname && !isError ? (
+        <GnbDropdown nickname={nickname} />
+      ) : (
+        <div className='ml-8 hidden gap-2 md:flex'>
+          <Link to={ROUTES.AUTH.LOGIN}>
+            <PrimaryButton size='sm' className='h-10'>
+              로그인
+            </PrimaryButton>
+          </Link>
+          <Link to={ROUTES.AUTH.SIGN_UP}>
+            <PrimaryButton size='sm' secondary className='h-10'>
+              회원가입
+            </PrimaryButton>
+          </Link>
+        </div>
+      )}
     </nav>
   )
 }
