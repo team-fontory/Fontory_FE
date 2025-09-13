@@ -14,7 +14,6 @@ export const toApiError = (error: AxiosError): ApiError => {
 
   switch (response?.status) {
     case 401:
-      window.location.href = '/login'
       break
     case 403:
       apiError.message = '접근 권한이 없습니다.'
