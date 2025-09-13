@@ -14,8 +14,14 @@ export const useSignupMutation = () => {
 }
 
 export const useEditProfileMutation = () => {
+  const queryClient = useQueryClient()
+
   return useMutation({
     mutationFn: (formData: UserProfile) => apiClient.patch('/member/me', formData),
+    onSuccess: () => {
+      queryClient.invalidateQueries(authQueryInvalidators.invalidateAll())
+      queryClient.invalidateQueries(fontQueryInvalidators.invalidateAll())
+    },
   })
 }
 
