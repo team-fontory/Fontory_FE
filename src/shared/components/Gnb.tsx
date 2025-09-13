@@ -49,12 +49,7 @@ export const Gnb = () => {
         <div className='ml-8 hidden gap-2 md:flex'>
           <Link to={ROUTES.AUTH.LOGIN}>
             <PrimaryButton size='sm' className='h-10'>
-              로그인
-            </PrimaryButton>
-          </Link>
-          <Link to={ROUTES.AUTH.SIGN_UP}>
-            <PrimaryButton size='sm' secondary className='h-10'>
-              회원가입
+              로그인 / 회원가입
             </PrimaryButton>
           </Link>
         </div>
