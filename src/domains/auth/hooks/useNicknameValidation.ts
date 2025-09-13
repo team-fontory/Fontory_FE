@@ -5,12 +5,8 @@ import { toast } from 'react-toastify'
 import { useCheckNickname } from '../services/useAuthQuery'
 import { useNicknameStore } from '../stores/nicknameStore'
 
-type Props = {
-  onNicknameCheckChange: (checked: boolean) => void
-}
-
 /** 닉네임 유효성 검사 비즈니스 로직을 담당하는 커스텀 훅 */
-export const useNicknameValidation = ({ onNicknameCheckChange }: Props) => {
+export const useNicknameValidation = () => {
   const { control, clearErrors, setError } = useFormContext()
   const nickname = useWatch({ name: 'nickname', control })
 
@@ -22,9 +18,8 @@ export const useNicknameValidation = ({ onNicknameCheckChange }: Props) => {
   useEffect(() => {
     if (nickname && !isNicknameChecked(nickname)) {
       resetNicknameCheck()
-      onNicknameCheckChange(false)
     }
-  }, [nickname, isNicknameChecked, resetNicknameCheck, onNicknameCheckChange])
+  }, [nickname, isNicknameChecked, resetNicknameCheck])
 
   const handleNicknameCheck = async () => {
     if (!nickname || nickname.length < 2) return
@@ -37,7 +32,6 @@ export const useNicknameValidation = ({ onNicknameCheckChange }: Props) => {
         const isAvailable = !isDuplicated
 
         setNicknameCheck(nickname, isAvailable)
-        onNicknameCheckChange(isAvailable)
 
         if (isAvailable) {
           clearErrors('nickname')
@@ -49,7 +43,6 @@ export const useNicknameValidation = ({ onNicknameCheckChange }: Props) => {
       }
     } catch {
       resetNicknameCheck()
-      onNicknameCheckChange(false)
       toast.error('닉네임 중복 검사에 실패했습니다. 다시 시도해주세요.')
     }
   }

@@ -50,7 +50,7 @@ const SignupPage = () => {
             <SignupPolicy />
 
             <div className='flex-column mb-6 gap-4'>
-              <NicknameField onNicknameCheckChange={setNicknameChecked} />
+              <NicknameField />
               <Input
                 section={signupAttribute.birth.section}
                 label={signupAttribute.birth.label}

@@ -36,3 +36,5 @@ export const useNicknameStore = create<NicknameCheckState & NicknameCheckActions
     return state.checkedNickname === nickname && state.isChecked
   },
 }))
+
+export const useIsNickNameChecked = () => useNicknameStore((state) => state.isChecked)

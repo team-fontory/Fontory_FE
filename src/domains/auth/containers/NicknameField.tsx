@@ -4,14 +4,8 @@ import { PrimaryButton } from '@/shared/components/PrimaryButton'
 import { signupAttribute } from '../constants/userConfig'
 import { useNicknameValidation } from '../hooks/useNicknameValidation'
 
-type Props = {
-  onNicknameCheckChange: (checked: boolean) => void
-}
-
-export const NicknameField = ({ onNicknameCheckChange }: Props) => {
-  const { handleNicknameCheck, canCheck, showSuccessMessage } = useNicknameValidation({
-    onNicknameCheckChange,
-  })
+export const NicknameField = () => {
+  const { handleNicknameCheck, canCheck, showSuccessMessage } = useNicknameValidation()
 
   return (
     <div>

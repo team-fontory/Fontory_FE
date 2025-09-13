@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { FormProvider } from 'react-hook-form'
 
 import { Input } from '@/shared/components/Input'
@@ -9,23 +9,27 @@ import { editProfileAttribute, editProfileSchema } from '../constants/userConfig
 import { GenderField } from '../containers/GenderField'
 import { NicknameField } from '../containers/NicknameField'
 import { useUserProfile } from '../services/useAuthQuery'
+import { useIsNickNameChecked, useNicknameStore } from '../stores/nicknameStore'
 import type { EditProfileType } from '../types/auth.type'
 
 const EditProfilePage = () => {
   const { data: userProfile, isPending } = useUserProfile()
-  const [nicknameChecked, setNicknameChecked] = useState(true)
+  const isNicknameChecked = useIsNickNameChecked()
+  const { setNicknameCheck } = useNicknameStore()
 
-  const formMethods = useCustomForm<EditProfileType>(editProfileSchema)
-
-  useEffect(() => {
-    if (userProfile) formMethods.reset(userProfile)
-  }, [userProfile, formMethods])
+  const formMethods = useCustomForm<EditProfileType>(editProfileSchema, {
+    defaultValues: userProfile,
+  })
 
   const {
     handleSubmit,
-    formState: { isValid },
+    formState: { isValid, isDirty },
   } = formMethods
-  const isFormValid = isValid && nicknameChecked
+  const isFormValid = isValid && isNicknameChecked && isDirty
+
+  useEffect(() => {
+    setNicknameCheck(formMethods.getValues('nickname'), true)
+  }, [])
 
   if (isPending)
     return (
@@ -44,7 +48,7 @@ const EditProfilePage = () => {
         <FormProvider {...formMethods}>
           <form onSubmit={handleSubmit(() => {})} className='mx-auto w-full max-w-md'>
             <div className='flex-column mb-6 gap-4'>
-              <NicknameField onNicknameCheckChange={setNicknameChecked} />
+              <NicknameField />
               <Input
                 section={editProfileAttribute.birth.section}
                 label={editProfileAttribute.birth.label}
