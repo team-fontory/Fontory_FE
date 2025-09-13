@@ -7,6 +7,15 @@ import type { FontBookmarkOptionsType, FontOptionsType } from '../types/font.typ
 import { fontQueryKeys } from './fontQueryKey'
 import { fontService } from './fontService'
 
+/** 폰트 이름 중복 검사 */
+export const useCheckFontName = (fontName: string) => {
+  return useQuery({
+    queryKey: fontQueryKeys.fontNameCheck(fontName),
+    queryFn: () => fontService.checkFontNameDuplicate(fontName),
+    enabled: false,
+  })
+}
+
 /** 폰트 둘러보기 목록 */
 export const useExploreFontList = (filter: FontOptionsType) => {
   return useSuspenseQuery({

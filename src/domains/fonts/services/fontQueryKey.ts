@@ -6,6 +6,10 @@ import type { FontBookmarkOptionsType, FontOptionsType } from '../types/font.typ
 export const fontQueryKeys = {
   all: () => [...MAIN_QUERY_KEY, 'font'] as const,
 
+  // 폰트 이름 중복 검사
+  fontNameCheck: (fontName: string) =>
+    [...fontQueryKeys.all(), 'font-name-check', fontName] as const,
+
   // 둘러보기
   explores: () => [...fontQueryKeys.all(), 'explore'] as const,
   explore: (filter: FontOptionsType) =>

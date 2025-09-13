@@ -1,7 +1,7 @@
 import type { MouseEvent } from 'react'
 import { toast } from 'react-toastify'
 
-import { useAddBookmark, useRemoveBookmark } from '../services/useBookmarkMutation'
+import { useAddBookmark, useRemoveBookmark } from '../services/useFontMutation'
 
 export const useBookmark = (fontId: number, isBookmarked: boolean) => {
   const { mutate: addBookmark } = useAddBookmark()

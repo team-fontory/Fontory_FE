@@ -12,6 +12,13 @@ import type {
 } from '../types/font.type'
 
 class FontService {
+  /** 폰트 이름 중복 검사 */
+  checkFontNameDuplicate(fontName: string) {
+    return apiClient.get<boolean>(`/fonts/verify-name`, {
+      params: { fontName },
+    })
+  }
+
   /** 둘러보기 폰트 목록 */
   getExplore({ page, sortBy, keyword }: FontOptionsType) {
     return apiClient.get<FontListResponse>('/fonts', {

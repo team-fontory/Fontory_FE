@@ -21,3 +21,12 @@ export const useRemoveBookmark = () => {
     onSuccess: () => queryClient.invalidateQueries(fontQueryInvalidators.invalidateAll()),
   })
 }
+
+export const useCreateFontMutation = () => {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: (formData: FormData) => apiClient.post(`/fonts`, formData),
+    onSuccess: () => queryClient.invalidateQueries(fontQueryInvalidators.invalidateAll()),
+  })
+}
