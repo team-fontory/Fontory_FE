@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { FormProvider } from 'react-hook-form'
 
 import { Icon } from '@/shared/components/Icon/Icon'
@@ -13,18 +14,22 @@ import {
   createFontDefaultValues,
   createFontSchema,
 } from '../constants/createFontConfig'
-import type { CreateFontFormType } from '../types/font.type'
+import { useCreateFontForm } from '../hooks/useCreateFontForm'
 
 const CreateFontPage = () => {
-  const formmethod = useCustomForm(createFontSchema, { defaultValues: createFontDefaultValues })
+  const [fontNameChecked, setFontNameChecked] = useState(false)
+  const { handleSubmitForm: onSubmit } = useCreateFontForm()
+  const formmethods = useCustomForm(createFontSchema, { defaultValues: createFontDefaultValues })
 
-  const onSubmit = (formData: CreateFontFormType) => {
-    console.log('폰트 생성 데이터:', formData)
-  }
+  const {
+    handleSubmit,
+    formState: { isValid },
+  } = formmethods
+  const isFormValid = isValid && fontNameChecked
 
   return (
-    <FormProvider {...formmethod}>
-      <form className='mx-auto my-12 max-w-[960px]' onSubmit={formmethod.handleSubmit(onSubmit)}>
+    <FormProvider {...formmethods}>
+      <form className='mx-auto my-12 max-w-[960px]' onSubmit={handleSubmit(onSubmit)}>
         <header className='flex-column items-center gap-4'>
           <h2 className='font-jalnan text-accent-light text-4xl'>나만의 손글씨 폰트 제작</h2>
           <p className='text-description text-lg leading-7 font-normal'>
@@ -67,7 +72,7 @@ const CreateFontPage = () => {
             title='글꼴 정보 입력'
             description='폰트의 기본 정보를 입력해주세요.'
           >
-            <FontInfoForm />
+            <FontInfoForm onFontNameCheckChange={setFontNameChecked} />
           </CreateFontStepSection>
 
           <CreateFontStepSection
@@ -84,7 +89,7 @@ const CreateFontPage = () => {
             />
           </CreateFontStepSection>
 
-          <PrimaryButton type='submit' size='md' className='mt-12 self-end'>
+          <PrimaryButton type='submit' size='md' disabled={!isFormValid} className='mt-12 self-end'>
             폰트 생성하기
           </PrimaryButton>
         </main>
