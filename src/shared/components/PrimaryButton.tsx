@@ -18,9 +18,9 @@ const SIZE_BUTTON_CLASSES: Record<Size, string> = {
 
 const VARIANT_BUTTON_CLASSES = {
   primary:
-    'bg-primary text-white hover:bg-primary-point hover:text-white focus:bg-secondary focus:text-accent',
+    'bg-primary text-white hover:bg-primary-point hover:text-white focus-visible:bg-secondary focus-visible:text-accent',
   secondary:
-    'bg-secondary text-accent-light hover:bg-secondary-point hover:text-accent focus:bg-secondary-point focus:text-accent',
+    'bg-secondary text-accent-light hover:bg-secondary-point hover:text-accent focus-visible:bg-secondary-point focus-visible:text-accent',
 } as const
 
 const DISABLED_BUTTON_CLASSES = 'bg-disabled text-white cursor-not-allowed'
