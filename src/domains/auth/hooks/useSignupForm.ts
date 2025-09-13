@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import { ROUTES } from '@/app/router/routes.constant'
 
 import { signupDefaultValues } from '../constants/userConfig'
-import { useSignupMutation } from '../services/useSignupMutation'
+import { useSignupMutation } from '../services/useAuthMutation'
 import { useNicknameStore } from '../stores/nicknameStore'
 import type { SignupFormType } from '../types/auth.type'
 
