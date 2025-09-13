@@ -9,7 +9,7 @@ const LoginPage = () => {
     <div className='flex-center h-full'>
       <div className='flex-column border-secondary my-20 w-fit min-w-2xl items-center rounded-lg border bg-white p-8 py-16'>
         <header className='flex-column items-center'>
-          <div className='flex-align-center gap-3'>
+          <div className='flex-align-center mr-2 gap-3'>
             <Icon name='logo' size={32} className='text-primary' />
             <h3 className='font-jalnan text-accent text-3xl leading-9 font-bold'>Fontory</h3>
           </div>

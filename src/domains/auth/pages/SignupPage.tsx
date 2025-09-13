@@ -31,7 +31,7 @@ const SignupPage = () => {
   return (
     <div className='flex-center h-full'>
       <div className='flex-column border-secondary my-20 w-fit min-w-2xl rounded-lg border bg-white p-8 py-16'>
-        <header className='flex-column mb-8 items-center'>
+        <header className='flex-column mr-2 mb-8 items-center'>
           <div className='flex-align-center gap-3'>
             <Icon name='logo' size={32} className='text-primary' />
             <h3 className='font-jalnan text-accent text-3xl leading-9 font-bold'>Fontory</h3>
