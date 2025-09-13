@@ -8,14 +8,16 @@ import { useCustomForm } from '@/shared/hooks/useCustomForm'
 import { editProfileAttribute, editProfileSchema } from '../constants/userConfig'
 import { GenderField } from '../containers/GenderField'
 import { NicknameField } from '../containers/NicknameField'
+import { useEditProfileMutation } from '../services/useAuthMutation'
 import { useUserProfile } from '../services/useAuthQuery'
 import { useIsNickNameChecked, useNicknameStore } from '../stores/nicknameStore'
-import type { EditProfileType } from '../types/auth.type'
+import type { EditProfileType, UserProfile } from '../types/auth.type'
 
 const EditProfilePage = () => {
   const { data: userProfile, isPending } = useUserProfile()
   const isNicknameChecked = useIsNickNameChecked()
   const { setNicknameCheck } = useNicknameStore()
+  const { mutate: editProfile } = useEditProfileMutation()
 
   const formMethods = useCustomForm<EditProfileType>(editProfileSchema, {
     defaultValues: userProfile,
@@ -29,7 +31,11 @@ const EditProfilePage = () => {
 
   useEffect(() => {
     setNicknameCheck(formMethods.getValues('nickname'), true)
-  }, [])
+  }, [formMethods, setNicknameCheck])
+
+  const handleEditProfile = (formData: UserProfile) => {
+    editProfile(formData)
+  }
 
   if (isPending)
     return (
@@ -46,7 +52,7 @@ const EditProfilePage = () => {
         </h3>
 
         <FormProvider {...formMethods}>
-          <form onSubmit={handleSubmit(() => {})} className='mx-auto w-full max-w-md'>
+          <form onSubmit={handleSubmit(handleEditProfile)} className='mx-auto w-full max-w-md'>
             <div className='flex-column mb-6 gap-4'>
               <NicknameField />
               <Input
