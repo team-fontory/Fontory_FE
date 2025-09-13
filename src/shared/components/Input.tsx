@@ -24,9 +24,9 @@ export const Input = ({ section, label, hint, successMessage, className, ...rest
   )
 
   const getMessageStyle = () => {
-    if (errorMessage) return 'text-error text-sm'
-    if (successMessage) return 'text-success text-sm'
-    return 'text-footer-description text-sm'
+    if (errorMessage) return 'text-error'
+    if (successMessage) return 'text-success'
+    return 'text-footer-description'
   }
 
   return (
@@ -39,7 +39,7 @@ export const Input = ({ section, label, hint, successMessage, className, ...rest
         {message && (
           <p
             id={`${section}-message`}
-            className={cn('flex-align-center gap-1', getMessageStyle())}
+            className={cn('flex-align-center gap-1 text-sm', getMessageStyle())}
             role={errorMessage ? 'alert' : undefined}
             aria-live={errorMessage ? 'assertive' : 'polite'}
           >

@@ -11,7 +11,7 @@ type Props = {
 
 /** 닉네임 유효성 검사 비즈니스 로직을 담당하는 커스텀 훅 */
 export const useNicknameValidation = ({ onNicknameCheckChange }: Props) => {
-  const { control } = useFormContext()
+  const { control, clearErrors, setError } = useFormContext()
   const nickname = useWatch({ name: 'nickname', control })
 
   const { refetch, isPending } = useCheckNickname(nickname)
@@ -40,8 +40,10 @@ export const useNicknameValidation = ({ onNicknameCheckChange }: Props) => {
         onNicknameCheckChange(isAvailable)
 
         if (isAvailable) {
+          clearErrors('nickname')
           toast.success('사용 가능한 닉네임입니다.')
         } else {
+          setError('nickname', { message: '이미 사용 중인 닉네임입니다.' })
           toast.error('이미 사용 중인 닉네임입니다.')
         }
       }
