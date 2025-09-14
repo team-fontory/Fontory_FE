@@ -10,20 +10,20 @@ const FontDetailPage = () => {
   const { id } = useParams<{ id: string }>()
   const fontId = Number(id)
 
-  const { data: fontDetail } = useFontDetail(fontId)
-  const { data: recommendFonts } = useRecommendFontList(fontId)
+  const { data: fontItemView } = useFontDetail(fontId)
+  const { data: recommendFontListView } = useRecommendFontList(fontId)
 
   return (
     <div className='mx-auto my-8 flex max-w-7xl justify-center gap-12 px-5'>
       <main className='w-[837.33px]'>
-        <FontDetailHeader fontDetail={fontDetail} />
-        <FontPreviewSection fontDetail={fontDetail} />
+        <FontDetailHeader fontItemView={fontItemView} />
+        <FontPreviewSection fontItemView={fontItemView} />
         <RecommendedFontSection
-          writerName={fontDetail.writerName}
-          recommendFonts={recommendFonts}
+          writerName={fontItemView.writerName}
+          recommendFontListView={recommendFontListView}
         />
       </main>
-      <FontDetailSidebar fontDetail={fontDetail} />
+      <FontDetailSidebar fontItemView={fontItemView} />
     </div>
   )
 }

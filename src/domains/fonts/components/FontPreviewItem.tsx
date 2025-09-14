@@ -4,11 +4,11 @@ import { createRoute } from '@/app/router/routes.constant'
 
 import { BookmarkButton } from '../containers/BookmarkButton'
 import { DownloadButton } from '../containers/DownloadButton'
-import type { FontDetail } from '../types/font.type'
+import type { FontItemView } from '../types/font.type'
 
 import { DynamicFontText } from './DynamicFontText'
 
-type Props = FontDetail
+type Props = FontItemView
 
 /** 폰트 미리보기 아이템 컴포넌트 */
 export const FontPreviewItem = ({
@@ -17,8 +17,8 @@ export const FontPreviewItem = ({
   example,
   writerName,
   isBookmarked = false,
-  downloadCount = 0,
-  bookmarkCount = 0,
+  downloadCount = '0',
+  bookmarkCount = '0',
   fontAddr,
 }: Props) => {
   return (
@@ -46,11 +46,11 @@ export const FontPreviewItem = ({
           <div className='flex-align-center text-footer-description gap-4 text-xs'>
             <span className='flex-align-center gap-1'>
               <span className='bg-primary h-2 w-2 rounded-full'></span>
-              북마크 {bookmarkCount.toLocaleString()}
+              북마크 {bookmarkCount}
             </span>
             <span className='flex-align-center gap-1'>
               <span className='bg-disabled h-2 w-2 rounded-full'></span>
-              다운로드 {downloadCount.toLocaleString()}
+              다운로드 {downloadCount}
             </span>
           </div>
         </Link>

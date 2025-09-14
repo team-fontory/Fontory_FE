@@ -5,7 +5,7 @@ import { createRoute } from '@/app/router/routes.constant'
 import { usePopularFontList } from '../services/useFontQuery'
 
 export const PopularFontSection = () => {
-  const { data } = usePopularFontList()
+  const { data: popularFontListView } = usePopularFontList()
 
   return (
     <section className='mt-8' aria-labelledby='popular-fonts-title'>
@@ -14,12 +14,11 @@ export const PopularFontSection = () => {
       </h2>
 
       <div className='grid grid-cols-1 gap-8 p-4 md:grid-cols-3'>
-        {data.fontList.map((font) => (
+        {popularFontListView.list.map((font) => (
           <Link
             key={font.fontId}
             to={createRoute.fontDetail(font.fontId)}
             className='flex-column border-secondary gap-4 rounded-lg border bg-white p-6 shadow-sm transition-shadow hover:shadow-md'
-            aria-label={font.accessibilityLabel}
           >
             <div
               className='border-secondary flex-center min-h-56 grow rounded-lg border p-4 text-center text-lg leading-relaxed'
@@ -31,8 +30,8 @@ export const PopularFontSection = () => {
               <h3 className='text-accent text-base leading-7 font-bold'>{font.fontName}</h3>
               <p className='text-description text-sm leading-5'>by {font.writerName}</p>
               <div className='text-description mt-2 flex gap-3 text-xs'>
-                <span>다운로드 {font.downloadCount.toLocaleString()}</span>
-                <span>북마크 {font.bookmarkCount.toLocaleString()}</span>
+                <span>다운로드 {font.downloadCount}</span>
+                <span>북마크 {font.bookmarkCount}</span>
               </div>
             </div>
           </Link>

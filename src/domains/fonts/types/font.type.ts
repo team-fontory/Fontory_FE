@@ -83,3 +83,32 @@ export type CompletedFontResponse = {
   number: number
   totalPages: number
 }
+
+export type FontItemResponse = FontInfo & FontStats
+export type PaginationResponse = {
+  number: number
+  totalPages: number
+}
+
+export type FontItemView = {
+  fontId: number
+  fontName: string
+  writerName: string
+  example: string
+  isBookmarked: boolean
+  fontAddr: string
+  downloadCount: string
+  bookmarkCount: string
+}
+
+export type FontListView = {
+  list: FontItemView[]
+  isEmpty: boolean
+}
+
+export type PaginationView = {
+  currentPage: number
+  totalPages: number
+  isOnlyOnePage: boolean
+  pageInfo: string
+}

@@ -1,15 +1,15 @@
-import type { FontListViewModel } from '../models/fontListViewModel'
+import type { FontListView } from '../types/font.type'
 
 import { FontPreviewItem } from './FontPreviewItem'
 
 type Props = {
   writerName: string
-  recommendFonts: FontListViewModel
+  recommendFontListView: FontListView
 }
 
 /** 제작자의 다른 폰트 추천 섹션 컴포넌트 */
-export const RecommendedFontSection = ({ writerName, recommendFonts }: Props) => {
-  if (recommendFonts.isEmpty) {
+export const RecommendedFontSection = ({ writerName, recommendFontListView }: Props) => {
+  if (recommendFontListView.isEmpty) {
     return null
   }
 
@@ -19,8 +19,8 @@ export const RecommendedFontSection = ({ writerName, recommendFonts }: Props) =>
         {writerName}님이 제작한 다른 폰트
       </h4>
       <div className='flex-column py-4'>
-        {recommendFonts.fontList.slice(0, 4).map((font) => (
-          <FontPreviewItem key={font.fontId} {...font.toData()} />
+        {recommendFontListView.list.slice(0, 4).map((font) => (
+          <FontPreviewItem key={font.fontId} {...font} />
         ))}
       </div>
     </section>

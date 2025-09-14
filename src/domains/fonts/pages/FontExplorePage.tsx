@@ -16,7 +16,10 @@ const FontExplorePage = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
 
-  const { data: fontList, refetch } = useExploreFontList({
+  const {
+    data: { listView, paginationView },
+    refetch,
+  } = useExploreFontList({
     page: currentPage,
     sortBy: getFilterSortBy(activeFilter),
     keyword: searchQuery.trim() || null,
@@ -67,13 +70,13 @@ const FontExplorePage = () => {
             </button>
           </div>
 
-          <FontListSection fontList={fontList} />
+          <FontListSection listView={listView} />
 
-          {!fontList.isEmpty && (
+          {!paginationView.isOnlyOnePage && (
             <div className='pb-8'>
               <Pagination
-                currentPage={fontList.currentPage}
-                totalPages={fontList.totalPages}
+                currentPage={currentPage}
+                totalPages={paginationView.totalPages}
                 onPageChange={handlePageChange}
                 className='mt-8'
               />

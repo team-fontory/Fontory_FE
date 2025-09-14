@@ -41,7 +41,9 @@ const MyFontPage = () => {
   const tableCommonStyle = 'py-6 text-center'
   const [currentPage, setCurrentPage] = useState(1)
 
-  const { data: completedFonts } = useCompletedFontList(currentPage)
+  const {
+    data: { listView, paginationView },
+  } = useCompletedFontList(currentPage)
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page)
@@ -68,28 +70,23 @@ const MyFontPage = () => {
         </section>
 
         <section className='flex-column gap-4'>
-          <div className='flex-between-center'>
-            <h3 className='text-accent-light text-2xl leading-8 font-bold'>제작 완료된 폰트</h3>
-            <p className='text-description text-sm'>
-              총 {completedFonts.fontList.length}개의 폰트 • {completedFonts.pageInfo}
-            </p>
-          </div>
+          <h3 className='text-accent-light text-2xl leading-8 font-bold'>제작 완료된 폰트</h3>
 
-          {completedFonts.isEmpty ? (
+          {listView.isEmpty ? (
             <div className='border-secondary flex-center rounded-lg border bg-white py-20'>
               <p className='text-description text-lg'>완료된 폰트가 없습니다</p>
             </div>
           ) : (
             <>
               <div className='flex-column gap-1'>
-                {completedFonts.fontList.map((font) => (
-                  <FontPreviewItem key={font.fontId} {...font.toData()} />
+                {listView.list.map((font) => (
+                  <FontPreviewItem key={font.fontId} {...font} />
                 ))}
               </div>
 
               <Pagination
-                currentPage={completedFonts.currentPage}
-                totalPages={completedFonts.totalPages}
+                currentPage={currentPage}
+                totalPages={paginationView.totalPages}
                 onPageChange={handlePageChange}
                 showPages={5}
                 className='mt-6'
