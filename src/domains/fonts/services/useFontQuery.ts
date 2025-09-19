@@ -1,10 +1,10 @@
 import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
 
-import { InProgressFontListViewModel } from '../models/inProgressFontViewModel'
 import type { FontBookmarkOptionsType, FontOptionsType } from '../types/font.type'
 import {
   toFontItemView,
   toFontListViewModel,
+  toInProgressFontListView,
   toPaginationViewModel,
 } from '../view-model/fontViewModel'
 
@@ -79,7 +79,7 @@ export const useProgressFontList = () => {
   return useSuspenseQuery({
     queryKey: fontQueryKeys.inProgress(),
     queryFn: () => fontService.getInProgress(),
-    select: (response) => new InProgressFontListViewModel(response),
+    select: toInProgressFontListView,
     staleTime: 60000,
     gcTime: 60000 * 5,
   })

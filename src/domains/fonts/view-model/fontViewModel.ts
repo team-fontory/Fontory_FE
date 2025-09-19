@@ -1,7 +1,13 @@
+import { formatDate } from '@/shared/utils/formatDate'
+
+import { PROGRESS_STATUS } from '../constants/progressState'
 import type {
   FontItemResponse,
   FontItemView,
   FontListView,
+  InProgressFontListView,
+  InProgressFontResponse,
+  InProgressFontView,
   PaginationResponse,
   PaginationView,
 } from '../types/font.type'
@@ -33,4 +39,28 @@ export const toPaginationViewModel = (response: PaginationResponse): PaginationV
     response.totalPages === 0
       ? '결과 없음'
       : `${response.number + 1} / ${response.totalPages} 페이지`,
+})
+
+/** 제작 중 폰트 단건 응답을 뷰모델로 변환 */
+export const toInProgressFontView = (data: InProgressFontResponse): InProgressFontView => {
+  const formattedCreatedAt = formatDate(data.createdAt)
+  const statusText = PROGRESS_STATUS[data.status as keyof typeof PROGRESS_STATUS]
+
+  return {
+    id: data.id,
+    name: data.name,
+    createdAt: data.createdAt,
+    formattedCreatedAt,
+    status: data.status,
+    statusText,
+  }
+}
+
+/** 제작 중 폰트 배열을 뷰 리스트로 변환 */
+export const toInProgressFontListView = (
+  list: InProgressFontResponse[],
+): InProgressFontListView => ({
+  items: list.map(toInProgressFontView),
+  isEmpty: list.length === 0,
+  count: list.length,
 })

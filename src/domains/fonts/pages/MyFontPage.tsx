@@ -27,7 +27,7 @@ const InProgressTableBody = () => {
 
   return (
     <tbody>
-      {inProgressFonts.fontList.map((font) => (
+      {inProgressFonts.items.map((font) => (
         <tr key={font.id} className='font-progress-value'>
           <td className={tableCommonStyle}>{font.name}</td>
           <td className={tableCommonStyle}>{font.formattedCreatedAt}</td>

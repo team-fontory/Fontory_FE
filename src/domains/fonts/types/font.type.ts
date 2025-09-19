@@ -112,3 +112,18 @@ export type PaginationView = {
   isOnlyOnePage: boolean
   pageInfo: string
 }
+
+export type InProgressFontView = {
+  id: number
+  name: string
+  createdAt: string
+  formattedCreatedAt: string
+  status: string
+  statusText: string
+}
+
+export type InProgressFontListView = {
+  items: InProgressFontView[]
+  isEmpty: boolean
+  count: number
+}
