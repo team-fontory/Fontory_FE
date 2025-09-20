@@ -1,18 +1,12 @@
-import type { FontItemView, FontListView } from '../types'
+import type { FontListView } from '../types'
 
 import { SelectableFontItem } from './SelectableFontItem'
 
-type Props = {
+type SynthesizeFontListProps = {
   listView: FontListView
-  onFontSelect?: (font: FontItemView) => void
-  selectedFontIds?: number[]
 }
 
-export const SynthesizeFontListSection = ({
-  listView,
-  onFontSelect,
-  selectedFontIds = [],
-}: Props) => {
+export const SynthesizeFontList = ({ listView }: SynthesizeFontListProps) => {
   if (listView.isEmpty)
     return (
       <div id='font-list' className='flex-column py-6' role='tabpanel'>
@@ -25,13 +19,7 @@ export const SynthesizeFontListSection = ({
   return (
     <div id='font-list' className='flex-column py-6' role='tabpanel'>
       {listView.list.map((font) => (
-        <SelectableFontItem
-          key={font.fontId}
-          {...font}
-          onSelect={onFontSelect}
-          isSelected={selectedFontIds.includes(font.fontId)}
-          isSelectable={!!onFontSelect}
-        />
+        <SelectableFontItem key={font.fontId} {...font} />
       ))}
     </div>
   )

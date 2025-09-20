@@ -3,28 +3,22 @@ import { Link } from 'react-router-dom'
 import { createRoute } from '@/app/router/routes.constant'
 import { PrimaryButton } from '@/shared/components/PrimaryButton'
 
+import { useSelectedFontsActions, useSelectedFontsStore } from '../stores/useSelectedFontsStore'
 import type { FontItemView } from '../types'
 
 import { DynamicFontText } from './DynamicFontText'
 
-type Props = FontItemView & {
-  onSelect?: (font: FontItemView) => void
-  isSelected?: boolean
-  isSelectable?: boolean
-}
+export const SelectableFontItem = (fontData: FontItemView) => {
+  const { fontId, fontName, example, writerName, fontAddr } = fontData
 
-export const SelectableFontItem = ({
-  onSelect,
-  isSelected = false,
-  isSelectable = true,
-  ...rest
-}: Props) => {
-  const fontData = { ...rest }
-  const { fontId, fontName, example, writerName, fontAddr } = rest
+  const { isFontSelected, canAddFont } = useSelectedFontsStore()
+  const isSelected = isFontSelected(fontId)
+  const isSelectable = canAddFont(fontId)
+  const { addFont } = useSelectedFontsActions()
 
   const handleSelect = () => {
-    if (onSelect && isSelectable) {
-      onSelect(fontData)
+    if (isSelectable) {
+      addFont(fontData)
     }
   }
 
@@ -55,11 +49,11 @@ export const SelectableFontItem = ({
         </Link>
 
         <div className='flex flex-shrink-0 gap-2' onClick={(e) => e.stopPropagation()}>
-          {isSelectable && (
+          {(isSelectable || isSelected) && (
             <PrimaryButton
               size='sm'
               onClick={handleSelect}
-              disabled={isSelected}
+              disabled={isSelected || !isSelectable}
               secondary={!isSelected}
               className='px-3 py-1'
             >
