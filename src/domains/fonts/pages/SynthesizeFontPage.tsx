@@ -6,7 +6,7 @@ import { SynthesizeFontSection } from '../containers/SynthesizeFontSection'
 import { useSynthesizeFontPageState } from '../hooks/useSynthesizeFontPageState'
 
 const SynthesizeFontPage = () => {
-  const { currentPage, listView, paginationView } = useSynthesizeFontPageState()
+  const { listView, paginationView } = useSynthesizeFontPageState()
 
   return (
     <main className='mx-auto my-10 max-w-5xl px-4'>
@@ -24,11 +24,7 @@ const SynthesizeFontPage = () => {
         <SynthesizeFontList listView={listView} />
 
         <div className='pb-8'>
-          <Pagination
-            currentPage={currentPage}
-            totalPages={paginationView.totalPages}
-            className='mt-8'
-          />
+          <Pagination totalPages={paginationView.totalPages} className='mt-8' />
         </div>
       </section>
     </main>

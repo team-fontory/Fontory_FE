@@ -16,9 +16,5 @@ export const useSynthesizeFontPageState = () => {
     keyword: searchQuery.trim() || null,
   })
 
-  return {
-    currentPage,
-    listView,
-    paginationView,
-  }
+  return { listView, paginationView }
 }

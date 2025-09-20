@@ -18,9 +18,5 @@ export const useExplorePageState = () => {
     keyword: searchQuery.trim() || null,
   })
 
-  return {
-    currentPage,
-    listView,
-    paginationView,
-  }
+  return { listView, paginationView }
 }

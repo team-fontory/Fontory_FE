@@ -16,9 +16,5 @@ export const useBookmarkPageState = () => {
     keyword: searchQuery.trim() || null,
   })
 
-  return {
-    currentPage,
-    listView,
-    paginationView,
-  }
+  return { listView, paginationView }
 }
