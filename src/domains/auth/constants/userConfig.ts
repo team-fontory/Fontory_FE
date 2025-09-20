@@ -1,7 +1,7 @@
 import type { FormEvent } from 'react'
 import { z } from 'zod'
 
-import { formatDateInput } from '@/domains/fonts/utils/filterInput'
+import { formatDateInput } from '@/domains/fonts/utils/textInputUtils'
 
 import type { Gender } from '../types/auth.type'
 

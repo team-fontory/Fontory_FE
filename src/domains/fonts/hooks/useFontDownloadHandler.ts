@@ -3,7 +3,7 @@ import type { MouseEvent } from 'react'
 import { toast } from 'react-toastify'
 
 import { useFontDownloadQuery } from '../services/useFontQuery'
-import { downloadFontFile, executeFileDownload } from '../utils/downloadFont'
+import { downloadFontFile, executeFileDownload } from '../utils/fontDownloadUtils'
 
 /** 폰트 파일을 다운로드하고 상태를 관리 */
 export const useFontDownload = (fontId: number, fontName: string) => {

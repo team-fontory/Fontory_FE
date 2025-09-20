@@ -1,3 +1,5 @@
+import type { FormEvent } from 'react'
+
 type InputFilterType = 'english' | 'number' | 'korean' | 'alphanumeric' | 'custom'
 
 const FILTER_PATTERNS: Record<Exclude<InputFilterType, 'custom'>, RegExp> = {
@@ -58,7 +60,7 @@ export const createFilterInputHandler = (
   type?: InputFilterType,
   customPattern?: RegExp,
 ) => {
-  return (e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  return (e: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const input = e.currentTarget
     input.value = filterInput({
       input: input.value,
@@ -71,7 +73,7 @@ export const createFilterInputHandler = (
 
 /** 전화번호 포맷팅 onInput 핸들러 */
 export const createPhoneInputHandler = () => {
-  return (e: React.FormEvent<HTMLInputElement>) => {
+  return (e: FormEvent<HTMLInputElement>) => {
     const input = e.currentTarget
     input.value = formatPhoneNumberInput(input.value)
   }

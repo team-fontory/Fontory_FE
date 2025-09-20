@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import { createFilterInputHandler, createPhoneInputHandler } from '../utils/filterInput'
+import { createFilterInputHandler, createPhoneInputHandler } from '../utils/textInputUtils'
 
 export const createFontAttribute = {
   file: {
