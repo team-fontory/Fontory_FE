@@ -7,7 +7,7 @@ import { SelectedFontCard } from '../components/SelectedFontCard'
 import { SynthesizeFontListSection } from '../components/SynthesizeFontListSection'
 import { FontSearchBar } from '../containers/FontSearchBar'
 import { useBookmarkFontList } from '../services/useFontQuery'
-import type { FontItemView } from '../types/font.type'
+import type { FontItemView } from '../types'
 
 const SynthesizeFontPage = () => {
   const [searchQuery, setSearchQuery] = useState('')

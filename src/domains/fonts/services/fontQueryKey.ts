@@ -1,6 +1,6 @@
 import { MAIN_QUERY_KEY } from '@/shared/api/globalQueryKey'
 
-import type { FontBookmarkOptionsType, FontOptionsType } from '../types/font.type'
+import type { FontBookmarkOptions, FontListOptions } from '../types'
 
 /** 폰트 쿼리 키 팩토리 */
 export const fontQueryKeys = {
@@ -12,12 +12,12 @@ export const fontQueryKeys = {
 
   // 둘러보기
   explores: () => [...fontQueryKeys.all(), 'explore'] as const,
-  explore: (filter: FontOptionsType) =>
+  explore: (filter: FontListOptions) =>
     [...fontQueryKeys.explores(), filter.page, filter.sortBy, filter.keyword ?? null] as const,
   popular: () => [...fontQueryKeys.explores(), 'popular'] as const,
 
   // 북마크한 폰트
-  bookmark: (filter: FontBookmarkOptionsType) =>
+  bookmark: (filter: FontBookmarkOptions) =>
     [...fontQueryKeys.all(), 'bookmark', filter.page, filter.keyword] as const,
 
   // 다운로드

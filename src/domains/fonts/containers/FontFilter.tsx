@@ -1,5 +1,5 @@
 import { FONT_FILTER_OPTIONS } from '../constants/fontFilterOptions'
-import { type FontFilterType } from '../types/font.type'
+import { type FontFilterType } from '../types'
 
 type Props = {
   activeFilter: FontFilterType

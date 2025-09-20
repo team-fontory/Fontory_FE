@@ -5,7 +5,7 @@ import { ROUTES } from '@/app/router/routes.constant'
 
 import { useCreateFontMutation } from '../services/useFontMutation'
 import { useFontNameCheckActions } from '../stores/fontNameStore'
-import type { CreateFontFormType } from '../types/font.type'
+import type { CreateFontFormData } from '../types'
 
 const TOAST_MESSAGE = {
   success: '폰트 생성 요청에 성공했습니다.',
@@ -31,7 +31,7 @@ export const useCreateFontForm = () => {
     toast.error(TOAST_MESSAGE.error)
   }
 
-  const handleSubmitForm = (formData: CreateFontFormType) => {
+  const handleSubmitForm = (formData: CreateFontFormData) => {
     const sendForm = new FormData()
 
     const { file, phoneNumber, ...rest } = formData

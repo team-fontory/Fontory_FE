@@ -2,9 +2,9 @@ import { formatDate } from '@/shared/utils/formatDate'
 
 import { PROGRESS_STATUS } from '../constants/progressState'
 import type {
-  FontItemResponse,
   FontItemView,
   FontListView,
+  FontResponse,
   InProgressFontListView,
   InProgressFontResponse,
   InProgressFontView,
@@ -13,7 +13,7 @@ import type {
 } from '../types'
 
 /** 폰트 정보 -> 폰트 정보 뷰로 변환 */
-export const toFontItemView = (item: FontItemResponse): FontItemView => ({
+export const toFontItemView = (item: FontResponse): FontItemView => ({
   fontId: item.id,
   fontName: item.name,
   writerName: item.writerName,
@@ -25,7 +25,7 @@ export const toFontItemView = (item: FontItemResponse): FontItemView => ({
 })
 
 /** 폰트 리스트 -> 폰트 리스트 뷰로 변환 */
-export const toFontListViewModel = (fontList: FontItemResponse[]): FontListView => ({
+export const toFontListViewModel = (fontList: FontResponse[]): FontListView => ({
   list: fontList.map(toFontItemView),
   isEmpty: fontList.length === 0,
 })

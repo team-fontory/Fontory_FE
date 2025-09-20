@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { createRoute } from '@/app/router/routes.constant'
 import { PrimaryButton } from '@/shared/components/PrimaryButton'
 
-import type { FontItemView } from '../types/font.type'
+import type { FontItemView } from '../types'
 
 import { DynamicFontText } from './DynamicFontText'
 

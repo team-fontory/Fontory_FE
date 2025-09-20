@@ -1,6 +1,6 @@
 import { BookmarkButton } from '../containers/BookmarkButton'
 import { DownloadButton } from '../containers/DownloadButton'
-import type { FontItemView } from '../types/font.type'
+import type { FontItemView } from '../types'
 
 import { DynamicFontText } from './DynamicFontText'
 

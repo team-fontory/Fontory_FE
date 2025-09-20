@@ -2,14 +2,14 @@ import { apiClient } from '@/shared/api/apiClient'
 
 import type {
   CompletedFontResponse,
-  FontBookmarkOptionsType,
+  FontBookmarkOptions,
   FontDetailResponse,
   FontDownloadResponse,
-  FontListItem,
+  FontListOptions,
   FontListResponse,
-  FontOptionsType,
+  FontResponse,
   InProgressFontResponse,
-} from '../types/font.type'
+} from '../types'
 
 class FontService {
   /** 폰트 이름 중복 검사 */
@@ -20,7 +20,7 @@ class FontService {
   }
 
   /** 둘러보기 폰트 목록 */
-  getExplore({ page, sortBy, keyword }: FontOptionsType) {
+  getExplore({ page, sortBy, keyword }: FontListOptions) {
     return apiClient.get<FontListResponse>('/fonts', {
       params: {
         page: page - 1,
@@ -32,8 +32,8 @@ class FontService {
   }
 
   /** 인기 폰트 목록 */
-  getPopular(): Promise<FontListItem[]> {
-    return apiClient.get<FontListItem[]>('/fonts/popular')
+  getPopular() {
+    return apiClient.get<FontResponse[]>('/fonts/popular')
   }
 
   /** 폰트 다운로드 URL 조회 */
@@ -62,7 +62,7 @@ class FontService {
   }
 
   /** 북마크한 폰트 목록 */
-  getBookmark({ page, keyword }: FontBookmarkOptionsType) {
+  getBookmark({ page, keyword }: FontBookmarkOptions) {
     return apiClient.get<FontListResponse>('/bookmarks', {
       params: { page: page - 1, size: 8, keyword },
     })

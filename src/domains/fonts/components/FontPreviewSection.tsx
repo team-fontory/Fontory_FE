@@ -1,4 +1,4 @@
-import type { FontItemView } from '../types/font.type'
+import type { FontItemView } from '../types'
 
 import { DynamicFontTextarea } from './DynamicFontTextarea'
 

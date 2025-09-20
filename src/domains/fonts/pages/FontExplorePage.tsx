@@ -8,7 +8,7 @@ import { FontListSection } from '../containers/FontListSection'
 import { FontSearchBar } from '../containers/FontSearchBar'
 import { PopularFontSection } from '../containers/PopularFontSection'
 import { useExploreFontList } from '../services/useFontQuery'
-import type { FontFilterType } from '../types/font.type'
+import type { FontFilterType } from '../types'
 import { getFilterSortBy } from '../utils/getFilterSortBy'
 
 const FontExplorePage = () => {

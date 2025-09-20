@@ -1,4 +1,4 @@
-import type { FontListView } from '../types/font.type'
+import type { FontListView } from '../types'
 
 import { FontPreviewItem } from './FontPreviewItem'
 

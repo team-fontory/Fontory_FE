@@ -1,4 +1,4 @@
-import type { FontItemView, FontListView } from '../types/font.type'
+import type { FontItemView, FontListView } from '../types'
 
 import { SelectableFontItem } from './SelectableFontItem'
 
