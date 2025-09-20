@@ -62,7 +62,6 @@ const PageNumberButton = ({ page, isActive, disabled, onClick }: PageNumberButto
 }
 
 type PaginationProps = {
-  currentPage: number
   totalPages: number
   showPages?: number
   disabled?: boolean
@@ -71,13 +70,13 @@ type PaginationProps = {
 
 /** 공용 페이지네이션 컴포넌트 */
 export const Pagination = ({
-  currentPage,
   totalPages,
   showPages = 5,
   disabled = false,
   className = '',
 }: PaginationProps) => {
   const {
+    currentPage,
     pageRange,
     shouldShow,
     canGoPrevGroup,
@@ -86,7 +85,6 @@ export const Pagination = ({
     handlePrevGroup,
     handleNextGroup,
   } = usePagination({
-    currentPage,
     totalPages,
     showPages,
     disabled,

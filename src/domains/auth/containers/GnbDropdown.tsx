@@ -47,6 +47,20 @@ export const GnbDropdown = ({ nickname }: Props) => {
             >
               프로필 수정
             </Link>
+            <Link
+              to={ROUTES.MYPAGE.MY_FONT}
+              className='text-accent hover:bg-secondary block px-4 py-2 text-sm'
+              onClick={() => setShowDropdown(false)}
+            >
+              내가 제작한 폰트
+            </Link>
+            <Link
+              to={ROUTES.MYPAGE.BOOKMARK}
+              className='text-accent hover:bg-secondary block px-4 py-2 text-sm'
+              onClick={() => setShowDropdown(false)}
+            >
+              북마크한 폰트
+            </Link>
             <LogoutButton />
             <DeleteUserButton />
           </div>

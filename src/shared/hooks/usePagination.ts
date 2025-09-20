@@ -21,7 +21,6 @@ const updateSearchParam = (prev: URLSearchParams, page: number = 1): URLSearchPa
 }
 
 type UsePaginationProps = {
-  currentPage: number
   totalPages: number
   showPages?: number
   disabled?: boolean
@@ -29,12 +28,12 @@ type UsePaginationProps = {
 
 /** 페이지네이션 상태와 URL 동기화를 관리하는 훅 */
 export const usePagination = ({
-  currentPage,
   totalPages,
   showPages = 5,
   disabled = false,
 }: UsePaginationProps) => {
-  const [, setSearchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const currentPage = parseInt(searchParams.get('page') || '1', 10)
 
   /** 페이지 변경 핸들러 */
   const handlePageChange = (page: number) => (event: MouseEvent<HTMLButtonElement>) => {
@@ -63,6 +62,7 @@ export const usePagination = ({
   const shouldShow = totalPages > 1
 
   return {
+    currentPage,
     pageRange,
     shouldShow,
     canGoPrevGroup,
