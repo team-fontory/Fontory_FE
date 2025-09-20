@@ -1,11 +1,11 @@
 import { FontPreviewItem } from '../components/FontPreviewItem'
-import type { FontListView } from '../types/font.type'
+import type { FontListView } from '../types'
 
-type Props = {
+type FontListSectionProps = {
   listView: FontListView
 }
 
-export const FontListSection = ({ listView }: Props) => {
+export const FontListSection = ({ listView }: FontListSectionProps) => {
   if (listView.isEmpty)
     return (
       <div id='font-list' className='flex-column px-4 py-6' role='tabpanel'>

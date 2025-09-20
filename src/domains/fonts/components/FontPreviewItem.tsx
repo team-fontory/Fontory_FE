@@ -4,11 +4,54 @@ import { createRoute } from '@/app/router/routes.constant'
 
 import { BookmarkButton } from '../containers/BookmarkButton'
 import { DownloadButton } from '../containers/DownloadButton'
-import type { FontItemView } from '../types/font.type'
+import type { FontItemView } from '../types'
 
 import { DynamicFontText } from './DynamicFontText'
 
-type Props = FontItemView
+/** 폰트 정보 나타내는 컴포넌트 */
+export const FontInfoDisplay = ({
+  fontId,
+  fontName,
+  fontAddr,
+  example,
+  writerName,
+  downloadCount,
+  bookmarkCount,
+}: FontItemView) => {
+  return (
+    <Link
+      to={createRoute.fontDetail(fontId)}
+      className='flex-column group-hover:text-primary grow gap-3 transition-colors'
+      aria-label={`${fontName} 폰트 상세보기`}
+    >
+      <div className='flex-column gap-2'>
+        <DynamicFontText
+          fontName={fontName}
+          fontUrl={fontAddr}
+          className='text-accent line-clamp-2 text-2xl leading-relaxed font-medium'
+          skeletonClassName='bg-secondary h-6 w-full animate-pulse rounded'
+        >
+          {example}
+        </DynamicFontText>
+        <div className='flex-align-center gap-2 text-sm'>
+          <span className='text-accent font-semibold'>{fontName}</span>
+          <span className='text-description'>by {writerName}</span>
+        </div>
+      </div>
+
+      <div className='flex-align-center text-footer-description gap-4 text-xs'>
+        <span className='flex-align-center gap-1'>
+          <span className='bg-primary h-2 w-2 rounded-full'></span>
+          북마크 {bookmarkCount}
+        </span>
+        <span className='flex-align-center gap-1'>
+          <span className='bg-disabled h-2 w-2 rounded-full'></span>
+          다운로드 {downloadCount}
+        </span>
+      </div>
+    </Link>
+  )
+}
 
 /** 폰트 미리보기 아이템 컴포넌트 */
 export const FontPreviewItem = ({
@@ -20,40 +63,20 @@ export const FontPreviewItem = ({
   downloadCount = '0',
   bookmarkCount = '0',
   fontAddr,
-}: Props) => {
+}: FontItemView) => {
   return (
     <article className='group rounded-lg border-b border-gray-100 bg-white px-4 py-6 transition-colors hover:bg-gray-50'>
       <div className='flex-between-center gap-6'>
-        <Link
-          to={createRoute.fontDetail(fontId)}
-          className='flex-column group-hover:text-primary grow gap-3 transition-colors'
-          aria-label={`${fontName} 폰트 상세보기`}
-        >
-          <div className='flex-column gap-2'>
-            <DynamicFontText
-              fontName={fontName}
-              fontUrl={fontAddr}
-              className='text-accent line-clamp-2 text-2xl leading-relaxed font-medium'
-              skeletonClassName='bg-secondary h-6 w-full animate-pulse rounded'
-            >
-              {example}
-            </DynamicFontText>
-            <div className='flex-align-center gap-2 text-sm'>
-              <span className='text-accent font-semibold'>{fontName}</span>
-              <span className='text-description'>by {writerName}</span>
-            </div>
-          </div>
-          <div className='flex-align-center text-footer-description gap-4 text-xs'>
-            <span className='flex-align-center gap-1'>
-              <span className='bg-primary h-2 w-2 rounded-full'></span>
-              북마크 {bookmarkCount}
-            </span>
-            <span className='flex-align-center gap-1'>
-              <span className='bg-disabled h-2 w-2 rounded-full'></span>
-              다운로드 {downloadCount}
-            </span>
-          </div>
-        </Link>
+        <FontInfoDisplay
+          fontId={fontId}
+          fontName={fontName}
+          fontAddr={fontAddr}
+          example={example}
+          writerName={writerName}
+          isBookmarked={isBookmarked}
+          downloadCount={downloadCount}
+          bookmarkCount={bookmarkCount}
+        />
 
         <div className='flex flex-shrink-0 gap-2' onClick={(e) => e.stopPropagation()}>
           <BookmarkButton fontId={fontId} fontName={fontName} isBookmarked={isBookmarked} />
