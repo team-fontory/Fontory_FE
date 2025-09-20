@@ -12,7 +12,6 @@ const BookmarkPage = () => {
     <>
       <main className='mx-auto my-10 max-w-5xl px-4'>
         <h1 className='font-jalnan p-4 text-3xl leading-9 font-bold'>북마크한 폰트</h1>
-
         <section className='mt-12' aria-labelledby='all-fonts-title'>
           <div className='mx-4'>
             <FontSearchBar />
