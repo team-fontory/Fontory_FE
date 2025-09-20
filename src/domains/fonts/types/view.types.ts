@@ -20,7 +20,6 @@ export type FontListView = {
 export type PaginationView = {
   currentPage: number
   totalPages: number
-  isOnlyOnePage: boolean
   pageInfo: string
 }
 

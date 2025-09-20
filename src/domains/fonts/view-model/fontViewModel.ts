@@ -10,7 +10,7 @@ import type {
   InProgressFontView,
   PaginationResponse,
   PaginationView,
-} from '../types/font.type'
+} from '../types'
 
 /** 폰트 정보 -> 폰트 정보 뷰로 변환 */
 export const toFontItemView = (item: FontItemResponse): FontItemView => ({
@@ -34,7 +34,6 @@ export const toFontListViewModel = (fontList: FontItemResponse[]): FontListView 
 export const toPaginationViewModel = (response: PaginationResponse): PaginationView => ({
   currentPage: response.number + 1,
   totalPages: response.totalPages,
-  isOnlyOnePage: response.totalPages === 1,
   pageInfo:
     response.totalPages === 0
       ? '결과 없음'

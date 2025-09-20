@@ -47,6 +47,8 @@ export const Pagination = ({
   const isLastPage = currentPage === totalPages
   const pageRange = getPageRange(showPages, currentPage, totalPages)
 
+  if (totalPages <= 1) return null
+
   return (
     <nav
       role='navigation'
