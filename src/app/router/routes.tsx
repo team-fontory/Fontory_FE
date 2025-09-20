@@ -11,6 +11,7 @@ const LandingPage = lazy(() => import('@/landing/LandingPage'))
 const FontExplorePage = lazy(() => import('@/domains/fonts/pages/FontExplorePage'))
 const FontDetailPage = lazy(() => import('@/domains/fonts/pages/FontDetailPage'))
 const CreateFontPage = lazy(() => import('@/domains/fonts/pages/CreateFontPage'))
+const SynthesizeFontPage = lazy(() => import('@/domains/fonts/pages/SynthesizeFontPage'))
 const MyFontPage = lazy(() => import('@/domains/fonts/pages/MyFontPage'))
 const LoginPage = lazy(() => import('@/domains/auth/pages/LoginPage'))
 const SignupPage = lazy(() => import('@/domains/auth/pages/SignupPage'))
@@ -42,6 +43,10 @@ export const routes: RouteObject[] = [
       {
         path: ROUTES.FONT.CREATE,
         element: <CreateFontPage />,
+      },
+      {
+        path: ROUTES.FONT.SYNTHESIZE,
+        element: <SynthesizeFontPage />,
       },
       {
         path: ROUTES.MYPAGE.MY_FONT,

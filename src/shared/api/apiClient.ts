@@ -16,6 +16,9 @@ const client: AxiosInstance = axios.create({
   baseURL: BASE_URL,
   timeout: 10000,
   withCredentials: true,
+  headers: {
+    Authorization: import.meta.env.VITE_PUBLIC_ETC,
+  },
 })
 
 /* 요청 인터셉터 */
