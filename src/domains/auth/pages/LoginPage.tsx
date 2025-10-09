@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import { Icon } from '@/shared/components/Icon/Icon'
+import { Icon } from '@/presentation/components/shared/Icon/Icon'
 
 import { LoginPolicy } from '../components/LoginPolicy'
 
@@ -11,7 +11,9 @@ const LoginPage = () => {
         <header className='flex-column items-center'>
           <div className='flex-align-center mr-2 gap-3'>
             <Icon name='logo' size={32} className='text-primary' />
-            <h3 className='font-jalnan text-accent text-3xl leading-9 font-bold'>Fontory</h3>
+            <h3 className='font-jalnan text-accent text-3xl leading-9 font-bold'>
+              Fontory
+            </h3>
           </div>
 
           <h4 className='text-accent-light mt-4 text-xl leading-9 font-bold'>
@@ -23,10 +25,14 @@ const LoginPage = () => {
         </header>
 
         <main className='flex-align-center mt-8 gap-6'>
-          <Link to={`${import.meta.env.VITE_PUBLIC_SERVER_DOMAIN}/oauth2/authorization/naver`}>
+          <Link
+            to={`${import.meta.env.VITE_PUBLIC_SERVER_DOMAIN}/oauth2/authorization/naver`}
+          >
             <img src='/images/naver.png' className='h-16 w-16' />
           </Link>
-          <Link to={`${import.meta.env.VITE_PUBLIC_SERVER_DOMAIN}/oauth2/authorization/google`}>
+          <Link
+            to={`${import.meta.env.VITE_PUBLIC_SERVER_DOMAIN}/oauth2/authorization/google`}
+          >
             <img src='/images/google.svg' className='h-16 w-16' />
           </Link>
         </main>

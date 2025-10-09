@@ -1,4 +1,4 @@
-import { apiClient } from '@/shared/api/apiClient'
+import { apiClient } from '@/shared/apis/apiClient'
 
 import type { UserProfile } from '../types/auth.type'
 

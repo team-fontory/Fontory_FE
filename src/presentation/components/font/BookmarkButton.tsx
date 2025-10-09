@@ -1,6 +1,7 @@
 import { useToggleBookmark } from '@/service/fonts/hooks/useToggleBookmark'
-import { Icon } from '@/shared/components/Icon/Icon'
 import { cn } from '@/shared/utils/cn'
+
+import { Icon } from '../shared/Icon/Icon'
 
 type BookmarkButtonProps = {
   fontId: number

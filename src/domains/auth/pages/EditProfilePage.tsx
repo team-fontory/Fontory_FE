@@ -1,11 +1,10 @@
 import { useEffect } from 'react'
 import { FormProvider } from 'react-hook-form'
 
-import { Input } from '@/shared/components/Input'
-import { PrimaryButton } from '@/shared/components/PrimaryButton'
+import { PrimaryButton } from '@/presentation/components/shared/PrimaryButton'
 import { useCustomForm } from '@/shared/hooks/useCustomForm'
 
-import { editProfileAttribute, editProfileSchema } from '../constants/userConfig'
+import { editProfileSchema } from '../constants/userConfig'
 import { GenderField } from '../containers/GenderField'
 import { NicknameField } from '../containers/NicknameField'
 import { useEditProfileMutation } from '../services/useAuthMutation'
@@ -52,18 +51,21 @@ const EditProfilePage = () => {
         </h3>
 
         <FormProvider {...formMethods}>
-          <form onSubmit={handleSubmit(handleEditProfile)} className='mx-auto w-full max-w-md'>
+          <form
+            onSubmit={handleSubmit(handleEditProfile)}
+            className='mx-auto w-full max-w-md'
+          >
             <div className='flex-column mb-6 gap-4'>
               <NicknameField />
-              <Input
-                section={editProfileAttribute.birth.section}
-                label={editProfileAttribute.birth.label}
-                disabled
-              />
               <GenderField disabled />
             </div>
 
-            <PrimaryButton type='submit' size='md' disabled={!isFormValid} className='w-full'>
+            <PrimaryButton
+              type='submit'
+              size='md'
+              disabled={!isFormValid}
+              className='w-full'
+            >
               프로필 수정
             </PrimaryButton>
           </form>

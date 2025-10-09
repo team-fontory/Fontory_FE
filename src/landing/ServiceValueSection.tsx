@@ -1,4 +1,4 @@
-import { Icon } from '@/shared/components/Icon/Icon'
+import { Icon } from '@/presentation/components/shared/Icon/Icon'
 
 type ServiceValue = {
   title: string
@@ -9,7 +9,8 @@ type ServiceValue = {
 const SERVICE_VALUES: ServiceValue[] = [
   {
     title: 'AI 기반 빠른 속도',
-    description: 'AI 기술을 통해 짧은 시간 안에 완성되어\r\n창의성에 집중할 수 있게 해줍니다.',
+    description:
+      'AI 기술을 통해 짧은 시간 안에 완성되어\r\n창의성에 집중할 수 있게 해줍니다.',
     icon: 'thunder',
   },
   {
@@ -25,7 +26,8 @@ const SERVICE_VALUES: ServiceValue[] = [
   },
   {
     title: '자동화된 문자 생성',
-    description: '48자만 입력하면\r\nAI가 나머지 글꼴을 자동으로 생성해 드립니다.',
+    description:
+      '48자만 입력하면\r\nAI가 나머지 글꼴을 자동으로 생성해 드립니다.',
     icon: 'warehouse',
   },
 ] as const
@@ -39,7 +41,9 @@ const ServiceValueCard = ({ title, description, icon }: ServiceValue) => (
     >
       <Icon name={icon} size={24} className='text-primary' />
     </div>
-    <h3 className='text-accent text-center text-xl leading-7 font-bold'>{title}</h3>
+    <h3 className='text-accent text-center text-xl leading-7 font-bold'>
+      {title}
+    </h3>
     <p className='text-description text-center text-base leading-6 whitespace-pre-line'>
       {description}
     </p>

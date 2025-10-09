@@ -1,8 +1,8 @@
 import { FormProvider } from 'react-hook-form'
 
-import { Icon } from '@/shared/components/Icon/Icon'
-import { Input } from '@/shared/components/Input'
-import { PrimaryButton } from '@/shared/components/PrimaryButton'
+import { FormField } from '@/presentation/components/shared/FormField'
+import { Icon } from '@/presentation/components/shared/Icon/Icon'
+import { PrimaryButton } from '@/presentation/components/shared/PrimaryButton'
 import { useCustomForm } from '@/shared/hooks/useCustomForm'
 
 import { SignupPolicy } from '../components/SignupPolicy'
@@ -33,7 +33,9 @@ const SignupPage = () => {
         <header className='flex-column mr-2 mb-8 items-center'>
           <div className='flex-align-center gap-3'>
             <Icon name='logo' size={32} className='text-primary' />
-            <h3 className='font-jalnan text-accent text-3xl leading-9 font-bold'>Fontory</h3>
+            <h3 className='font-jalnan text-accent text-3xl leading-9 font-bold'>
+              Fontory
+            </h3>
           </div>
 
           <h4 className='text-accent-light mt-4 text-xl leading-9 font-bold'>
@@ -45,20 +47,27 @@ const SignupPage = () => {
         </header>
 
         <FormProvider {...methods}>
-          <form onSubmit={handleSubmit(onSubmit)} className='mx-auto w-full max-w-md'>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className='mx-auto w-full max-w-md'
+          >
             <SignupPolicy />
 
             <div className='flex-column mb-6 gap-4'>
               <NicknameField />
-              <Input
-                section={signupAttribute.birth.section}
+              <FormField
+                name={signupAttribute.birth.section}
                 label={signupAttribute.birth.label}
-                onInput={signupAttribute.birth.onInput}
               />
               <GenderField />
             </div>
 
-            <PrimaryButton type='submit' size='md' disabled={!isFormValid} className='w-full'>
+            <PrimaryButton
+              type='submit'
+              size='md'
+              disabled={!isFormValid}
+              className='w-full'
+            >
               가입하기
             </PrimaryButton>
           </form>

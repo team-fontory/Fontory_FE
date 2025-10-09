@@ -1,22 +1,14 @@
-import { Input } from '@/shared/components/Input'
-import { PrimaryButton } from '@/shared/components/PrimaryButton'
+import { PrimaryButton } from '@/presentation/components/shared/PrimaryButton'
 
-import { signupAttribute } from '../constants/userConfig'
 import { useNicknameValidation } from '../hooks/useNicknameValidation'
 
 export const NicknameField = () => {
-  const { handleNicknameCheck, canCheck, showSuccessMessage } = useNicknameValidation()
+  const { handleNicknameCheck, canCheck, showSuccessMessage } =
+    useNicknameValidation()
 
   return (
     <div>
       <div className='flex items-end gap-2'>
-        <Input
-          section={signupAttribute.nickname.section}
-          label={signupAttribute.nickname.label}
-          placeholder={signupAttribute.nickname.placeholder}
-          className='flex-1'
-          successMessage={showSuccessMessage ? '사용 가능한 닉네임입니다.' : undefined}
-        />
         <PrimaryButton
           type='button'
           size='md'

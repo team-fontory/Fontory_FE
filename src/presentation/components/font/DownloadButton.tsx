@@ -1,5 +1,6 @@
 import { useFontFileDownloader } from '@/service/fonts/hooks/useFontFileDownloader'
-import { Icon } from '@/shared/components/Icon/Icon'
+
+import { Icon } from '../shared/Icon/Icon'
 
 type DownloadButtonProps = {
   fontName: string
