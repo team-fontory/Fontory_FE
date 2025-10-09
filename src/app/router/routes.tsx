@@ -7,7 +7,7 @@ import { Layout } from '@/presentation/components/shared/Layout'
 import { ROUTES } from './routes.constant'
 
 // 페이지 컴포넌트 Lazy Loading
-const LandingPage = lazy(() => import('@/landing/LandingPage'))
+const LandingPage = lazy(() => import('@/presentation/landing/LandingPage'))
 const FontExplorePage = lazy(
   () => import('@/presentation/font-explore/FontExplorePage'),
 )
@@ -23,7 +23,7 @@ const SynthesizeFontPage = lazy(
 const FontProgressPage = lazy(
   () => import('@/presentation/font-progress/FontProgressPage'),
 )
-const LoginPage = lazy(() => import('@/domains/auth/pages/LoginPage'))
+const LoginPage = lazy(() => import('@/presentation/auth-login/LoginPage'))
 const SignupPage = lazy(() => import('@/domains/auth/pages/SignupPage'))
 const BookmarkPage = lazy(
   () => import('@/presentation/font-bookmark/BookmarkPage'),

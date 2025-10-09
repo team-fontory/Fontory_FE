@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 
-import { Icon } from '@/presentation/components/shared/Icon/Icon'
+import { Icon } from '../components/shared/Icon/Icon'
 
-import { LoginPolicy } from '../components/LoginPolicy'
+import { LoginPolicySection } from './components/LoginPolicySection'
 
 const LoginPage = () => {
   return (
@@ -37,7 +37,7 @@ const LoginPage = () => {
           </Link>
         </main>
 
-        <LoginPolicy />
+        <LoginPolicySection />
       </div>
     </div>
   )
