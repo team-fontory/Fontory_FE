@@ -29,7 +29,7 @@ const BookmarkPage = lazy(
   () => import('@/presentation/font-bookmark/BookmarkPage'),
 )
 const EditProfilePage = lazy(
-  () => import('@/domains/auth/pages/EditProfilePage'),
+  () => import('@/presentation/auth-edit/EditProfilePage'),
 )
 
 /** 애플리케이션 라우트 설정 */
