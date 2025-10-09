@@ -1,7 +1,7 @@
 import type {
   EditProfileRequest,
   SignupRequest,
-} from '@/service/auth/configs/user.config'
+} from '@/service/auth/user.config'
 import { apiClient } from '@/shared/apis/apiClient'
 
 import type {

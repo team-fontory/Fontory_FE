@@ -5,7 +5,7 @@ import { ROUTES } from '@/app/router/routes.constant'
 import { TOAST_MESSAGES } from '@/shared/constants/toast.constant'
 import { useEditProfileMutation } from '@/store/queries/auth.mutation'
 
-import { type EditProfileFormData } from '../configs/user.config'
+import type { EditProfileFormData } from '../user.config'
 
 /** 프로필 수정 커스텀 훅 */
 export const useEditProfile = () => {

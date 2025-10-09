@@ -4,14 +4,14 @@ import { FormProvider, useFormContext } from 'react-hook-form'
 import { FormField } from '@/presentation/components/shared/FormField'
 import { FormRadioGroup } from '@/presentation/components/shared/FormRadioGroup'
 import { PrimaryButton } from '@/presentation/components/shared/PrimaryButton'
+import { useEditProfile } from '@/service/auth/hooks/useEditProfile'
+import { useNicknameValidation } from '@/service/auth/hooks/useNicknameValidation'
 import {
   editProfileDefaultValues,
   type EditProfileFormData,
   EditProfileFormSchema,
   USER_FIELDS,
-} from '@/service/auth/configs/user.config'
-import { useEditProfile } from '@/service/auth/hooks/useEditProfile'
-import { useNicknameValidation } from '@/service/auth/hooks/useNicknameValidation'
+} from '@/service/auth/user.config'
 import { useCustomForm } from '@/shared/hooks/useCustomForm'
 import { formatDateInput } from '@/shared/utils/inputHelper'
 import { useUserProfile } from '@/store/queries/auth.query'

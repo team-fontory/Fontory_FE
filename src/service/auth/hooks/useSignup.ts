@@ -5,7 +5,7 @@ import { ROUTES } from '@/app/router/routes.constant'
 import { TOAST_MESSAGES } from '@/shared/constants/toast.constant'
 import { useSignupMutation } from '@/store/queries/auth.mutation'
 
-import { type SignupFormData } from '../configs/user.config'
+import type { SignupFormData } from '../user.config'
 
 /** 회원가입 폼 제출 커스텀 훅 */
 export const useSignup = () => {

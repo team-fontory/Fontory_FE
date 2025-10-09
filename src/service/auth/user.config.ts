@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import type { GenderModel } from '../types/authModel.type'
+import type { GenderModel } from './authModel.type'
 
 /**  폼 필드 설정 */
 export const USER_FIELDS = {
