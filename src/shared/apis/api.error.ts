@@ -83,3 +83,23 @@ export class ServerError extends ApiError {
     Object.setPrototypeOf(this, ServerError.prototype)
   }
 }
+
+export const isNetworkError = (error: unknown): error is NetworkError =>
+  error instanceof NetworkError
+
+export const isBadRequestError = (error: unknown): error is BadRequestError =>
+  error instanceof BadRequestError
+
+export const isAuthenticationError = (
+  error: unknown,
+): error is AuthenticationError => error instanceof AuthenticationError
+
+export const isAuthorizationError = (
+  error: unknown,
+): error is AuthorizationError => error instanceof AuthorizationError
+
+export const isNotFoundError = (error: unknown): error is NotFoundError =>
+  error instanceof NotFoundError
+
+export const isServerError = (error: unknown): error is ServerError =>
+  error instanceof ServerError
