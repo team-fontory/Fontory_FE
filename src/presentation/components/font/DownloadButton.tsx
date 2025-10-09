@@ -1,15 +1,17 @@
+import { useFontFileDownloader } from '@/service/fonts/hooks/useFontFileDownloader'
 import { Icon } from '@/shared/components/Icon/Icon'
 
-import { useFontDownload } from '../hooks/useFontDownloadHandler'
-
-type Props = {
+type DownloadButtonProps = {
   fontName: string
   fontId: number
 }
 
 /** 폰트 다운로드 버튼 컴포넌트 */
-export const DownloadButton = ({ fontName, fontId }: Props) => {
-  const { isDownloading, handleDownload } = useFontDownload(fontId, fontName)
+export const DownloadButton = ({ fontName, fontId }: DownloadButtonProps) => {
+  const { isDownloading, handleDownload } = useFontFileDownloader(
+    fontId,
+    fontName,
+  )
 
   return (
     <button
