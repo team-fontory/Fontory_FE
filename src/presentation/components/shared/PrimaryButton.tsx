@@ -1,6 +1,6 @@
 import { type ButtonHTMLAttributes, type ReactNode } from 'react'
 
-import { cn } from '../utils/cn'
+import { cn } from '../../../shared/utils/cn'
 
 type Size = 'sm' | 'md'
 
