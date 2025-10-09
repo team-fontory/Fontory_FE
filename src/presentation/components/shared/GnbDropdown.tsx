@@ -3,9 +3,9 @@ import { Link, useNavigate } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router/routes.constant'
 import {
-  useDeleteUser,
+  useDeleteUserMutation,
   useLogoutMutation,
-} from '@/domains/auth/services/useAuthMutation'
+} from '@/store/queries/auth.mutation'
 
 import { PrimaryButton } from '../shared/PrimaryButton'
 
@@ -49,7 +49,7 @@ export const GnbDropdown = ({ nickname }: GnbDropdownProps) => {
   const [showDropdown, setShowDropdown] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
-  const { mutate: deleteUser } = useDeleteUser()
+  const { mutate: deleteUser } = useDeleteUserMutation()
   const { mutate: logout } = useLogoutMutation()
   const navigate = useNavigate()
 

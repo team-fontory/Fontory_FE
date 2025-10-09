@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router/routes.constant'
-import { useGnbState } from '@/domains/auth/services/useAuthQuery'
+import { useGnbStateQuery } from '@/store/queries/auth.query'
 
 import { Icon } from './Icon/Icon'
 import { GnbDropdown } from './GnbDropdown'
@@ -15,9 +15,9 @@ const NAV_ITEMS = [
 ] as const
 
 const ActionButtonGroup = () => {
-  const { data: gnbData, isError } = useGnbState()
+  const { data: gnbData, isError } = useGnbStateQuery()
 
-  if (gnbData && !isError) return <GnbDropdown nickname={gnbData} />
+  if (gnbData && !isError) return <GnbDropdown nickname={gnbData.nickname} />
 
   return (
     <div className='ml-8 hidden gap-2 md:flex'>
