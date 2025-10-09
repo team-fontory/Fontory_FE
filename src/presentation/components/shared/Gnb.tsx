@@ -1,10 +1,11 @@
 import { Link, useLocation } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router/routes.constant'
-import { GnbDropdown } from '@/domains/auth/containers/GnbDropdown'
 import { useGnbState } from '@/domains/auth/services/useAuthQuery'
-import { Icon } from '@/shared/components/Icon/Icon'
-import { PrimaryButton } from '@/shared/components/PrimaryButton'
+
+import { Icon } from './Icon/Icon'
+import { GnbDropdown } from './GnbDropdown'
+import { PrimaryButton } from './PrimaryButton'
 
 const NAV_ITEMS = [
   { label: '홈', path: ROUTES.HOME },
@@ -13,9 +14,24 @@ const NAV_ITEMS = [
   { label: '폰트합성', path: ROUTES.FONT.SYNTHESIZE },
 ] as const
 
+const ActionButtonGroup = () => {
+  const { data: gnbData, isError } = useGnbState()
+
+  if (gnbData && !isError) return <GnbDropdown nickname={gnbData} />
+
+  return (
+    <div className='ml-8 hidden gap-2 md:flex'>
+      <Link to={ROUTES.AUTH.LOGIN}>
+        <PrimaryButton size='sm' className='h-10'>
+          로그인 / 회원가입
+        </PrimaryButton>
+      </Link>
+    </div>
+  )
+}
+
 export const Gnb = () => {
   const location = useLocation()
-  const { data: nickname, isError } = useGnbState()
 
   return (
     <nav
@@ -42,18 +58,7 @@ export const Gnb = () => {
           </li>
         ))}
       </ul>
-
-      {nickname && !isError ? (
-        <GnbDropdown nickname={nickname} />
-      ) : (
-        <div className='ml-8 hidden gap-2 md:flex'>
-          <Link to={ROUTES.AUTH.LOGIN}>
-            <PrimaryButton size='sm' className='h-10'>
-              로그인 / 회원가입
-            </PrimaryButton>
-          </Link>
-        </div>
-      )}
+      <ActionButtonGroup />
     </nav>
   )
 }
