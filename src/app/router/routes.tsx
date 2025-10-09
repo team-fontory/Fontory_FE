@@ -15,12 +15,14 @@ const FontDetailPage = lazy(
   () => import('@/presentation/font-detail/FontDetailPage'),
 )
 const CreateFontPage = lazy(
-  () => import('@/domains/fonts/pages/CreateFontPage'),
+  () => import('@/presentation/font-create/CreateFontPage'),
 )
 const SynthesizeFontPage = lazy(
   () => import('@/presentation/font-synthesize/SynthesizeFontPage'),
 )
-const MyFontPage = lazy(() => import('@/domains/fonts/pages/MyFontPage'))
+const FontProgressPage = lazy(
+  () => import('@/presentation/font-progress/FontProgressPage'),
+)
 const LoginPage = lazy(() => import('@/domains/auth/pages/LoginPage'))
 const SignupPage = lazy(() => import('@/domains/auth/pages/SignupPage'))
 const BookmarkPage = lazy(
@@ -62,7 +64,7 @@ export const routes: RouteObject[] = [
       },
       {
         path: ROUTES.MYPAGE.MY_FONT,
-        element: <MyFontPage />,
+        element: <FontProgressPage />,
       },
       {
         path: ROUTES.AUTH.LOGIN,
