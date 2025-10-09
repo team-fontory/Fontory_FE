@@ -1,8 +1,8 @@
 import { isNetworkError, NetworkError } from '@/shared/apis/api.error'
 import { useFontDetailQuery } from '@/store/queries/font.query'
 
-import { FontNotFoundError } from '../font.error'
 import { convertFontItemViewModel } from '../convertToFontViewModel'
+import { FontNotFoundError } from '../font.error'
 import type { FontItemModel } from '../fontModel.type'
 
 /**

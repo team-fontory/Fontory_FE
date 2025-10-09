@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom'
 
 import { FontListSection } from '@/presentation/components/font/FontListSection'
-import { useRecommendListViewModel } from '@/service/fonts/hooks/useRecommendListViewModel'
 import type { FontItemModel } from '@/service/fonts/fontModel.type'
+import { useRecommendListViewModel } from '@/service/fonts/hooks/useRecommendListViewModel'
 
 type RecommendFontSectionProps = Pick<FontItemModel, 'writerName'>
 
