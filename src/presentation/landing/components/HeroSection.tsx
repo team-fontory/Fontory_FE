@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '@/app/router/routes.constant'
 import { PrimaryButton } from '@/presentation/components/shared/PrimaryButton'
 
+/** 히어로 섹션에 사용될 고정 컨텐츠 */
 const HERO_CONTENT = {
   title: '나만의 손글씨 폰트',
   description: {
@@ -14,6 +15,7 @@ const HERO_CONTENT = {
   buttonText: '제작 시작하기',
 } as const
 
+/** 히어로 섹션 컴포넌트 */
 export const HeroSection = () => {
   const navigate = useNavigate()
 

@@ -6,6 +6,7 @@ type Testimonial = {
   description: string
 }
 
+/** 사용자 후기 데이터 목록 */
 const TESTIMONIALS: Testimonial[] = [
   {
     name: '고로켕',
@@ -27,6 +28,7 @@ const TESTIMONIALS: Testimonial[] = [
   },
 ] as const
 
+/** 사용자 이름과 평점을 받아 5점 만점 중 별점을 시각적으로 표현 */
 const StarRating = ({
   rating,
   userName,
@@ -48,6 +50,7 @@ const StarRating = ({
   </div>
 )
 
+/** 사용자 이름, 평점, 후기 내용을 카드 형태로 표시하는 컴포넌트 */
 const TestimonialCard = ({ name, rate, description }: Testimonial) => (
   <article className='flex-column border-secondary-point gap-4 rounded-lg border p-6'>
     <div className='flex-align-center text-accent gap-4 font-semibold'>
@@ -67,6 +70,7 @@ const TestimonialCard = ({ name, rate, description }: Testimonial) => (
   </article>
 )
 
+/** 실제 사용자 후기 섹션 컴포넌트 */
 export const TestimonialsSection = () => {
   return (
     <section className='py-16' aria-labelledby='testimonials-title'>

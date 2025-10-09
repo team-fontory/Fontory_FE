@@ -6,6 +6,7 @@ type ServiceValue = {
   icon: 'thunder' | 'chat' | 'clap' | 'warehouse'
 }
 
+/** 서비스 핵심 가치 데이터 배열 */
 const SERVICE_VALUES: ServiceValue[] = [
   {
     title: 'AI 기반 빠른 속도',
@@ -32,6 +33,7 @@ const SERVICE_VALUES: ServiceValue[] = [
   },
 ] as const
 
+/** 서비스 핵심 가치 카드 컴포넌트 */
 const ServiceValueCard = ({ title, description, icon }: ServiceValue) => (
   <article className='bg-secondary flex-column items-center gap-4 rounded-lg p-8'>
     <div
@@ -50,6 +52,7 @@ const ServiceValueCard = ({ title, description, icon }: ServiceValue) => (
   </article>
 )
 
+/** 서비스 핵심 가치 섹션 컴포넌트 */
 export const ServiceValueSection = () => {
   return (
     <section className='py-16' aria-labelledby='service-values-title'>
