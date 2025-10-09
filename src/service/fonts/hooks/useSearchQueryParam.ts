@@ -3,7 +3,10 @@ import { useForm } from 'react-hook-form'
 import { useSearchParams } from 'react-router-dom'
 
 /** 새로 만든 파라미터 객체를 반환 */
-const updateSearchParam = (prev: URLSearchParams, searchValue: string = ''): URLSearchParams => {
+const updateSearchParam = (
+  prev: URLSearchParams,
+  searchValue: string = '',
+): URLSearchParams => {
   const newParams = new URLSearchParams(prev)
   const trimmed = searchValue.trim()
 
@@ -19,7 +22,7 @@ type SearchFormData = {
 }
 
 /** 검색 쿼리 상태와 URL 동기화를 관리하는 훅 */
-export const useSearchQuery = () => {
+export const useSearchQueryParam = () => {
   const [searchParams, setSearchParams] = useSearchParams()
   const currentSearchQuery = searchParams.get('search') || ''
 

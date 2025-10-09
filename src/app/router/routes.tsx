@@ -23,7 +23,9 @@ const SynthesizeFontPage = lazy(
 const MyFontPage = lazy(() => import('@/domains/fonts/pages/MyFontPage'))
 const LoginPage = lazy(() => import('@/domains/auth/pages/LoginPage'))
 const SignupPage = lazy(() => import('@/domains/auth/pages/SignupPage'))
-const BookmarkPage = lazy(() => import('@/domains/fonts/pages/BookmarkPage'))
+const BookmarkPage = lazy(
+  () => import('@/presentation/font-bookmark/BookmarkPage'),
+)
 const EditProfilePage = lazy(
   () => import('@/domains/auth/pages/EditProfilePage'),
 )
