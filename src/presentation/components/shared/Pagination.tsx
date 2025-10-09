@@ -1,7 +1,7 @@
 import type { MouseEvent } from 'react'
 
-import { usePagination } from '../hooks/usePagination'
-import { cn } from '../utils/cn'
+import { usePagination } from '@/shared/hooks/usePagination'
+import { cn } from '@/shared/utils/cn'
 
 type NavigationDirection = 'prev' | 'next'
 
@@ -17,7 +17,11 @@ const navigationConfig = {
 } as const
 
 /** 이전/다음 버튼 컴포넌트 */
-const NavigationButton = ({ direction, onClick, disabled }: NavigationButtonProps) => {
+const NavigationButton = ({
+  direction,
+  onClick,
+  disabled,
+}: NavigationButtonProps) => {
   const config = navigationConfig[direction]
 
   return (
@@ -41,7 +45,12 @@ type PageNumberButtonProps = {
 }
 
 /** 페이지 번호 버튼 컴포넌트 */
-const PageNumberButton = ({ page, isActive, disabled, onClick }: PageNumberButtonProps) => {
+const PageNumberButton = ({
+  page,
+  isActive,
+  disabled,
+  onClick,
+}: PageNumberButtonProps) => {
   return (
     <button
       type='button'
@@ -117,11 +126,6 @@ export const Pagination = ({
         onClick={handleNextGroup}
         disabled={disabled || !canGoNextGroup}
       />
-
-      {/* 페이지 정보 (스크린 리더용) */}
-      <span className='sr-only'>
-        {totalPages}페이지 중 {currentPage}페이지
-      </span>
     </nav>
   )
 }
