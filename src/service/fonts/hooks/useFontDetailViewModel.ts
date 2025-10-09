@@ -1,9 +1,9 @@
 import { isNetworkError, NetworkError } from '@/shared/apis/api.error'
 import { useFontDetailQuery } from '@/store/queries/font.query'
 
-import { FontNotFoundError } from '../errors/font.error'
-import { convertFontItemViewModel } from '../transformers/convertToViewModel'
-import type { FontItemModel } from '../types/fontModel.type'
+import { FontNotFoundError } from '../font.error'
+import { convertFontItemViewModel } from '../convertToFontViewModel'
+import type { FontItemModel } from '../fontModel.type'
 
 /**
  * API 에러를 도메인 에러로 변환하여 throw

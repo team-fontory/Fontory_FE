@@ -3,7 +3,7 @@ import { useFormContext } from 'react-hook-form'
 
 import { Icon } from '@/presentation/components/shared/Icon/Icon'
 import { PrimaryButton } from '@/presentation/components/shared/PrimaryButton'
-import { FONT_FIELDS } from '@/service/fonts/configs/font.config'
+import { FONT_FIELDS } from '@/service/fonts/font.config'
 import { cn } from '@/shared/utils/cn'
 
 const FileUploadHintMessage = () => {

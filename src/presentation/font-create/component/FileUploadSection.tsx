@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 import { useFormContext } from 'react-hook-form'
 
-import { FONT_FIELDS } from '@/service/fonts/configs/font.config'
+import { FONT_FIELDS } from '@/service/fonts/font.config'
 import { useDragAndDropUpload } from '@/service/fonts/hooks/useDragAndDropUpload'
 
 import { CreateFontStepSection } from './CreateFontStepSection'

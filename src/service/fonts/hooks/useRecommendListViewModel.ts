@@ -5,9 +5,9 @@ import {
 } from '@/shared/apis/api.error'
 import { useRecommendListQuery } from '@/store/queries/font.query'
 
-import { FontListLoadError, FontNotFoundError } from '../errors/font.error'
-import { convertFontListViewModel } from '../transformers/convertToViewModel'
-import type { FontListModel } from '../types/fontModel.type'
+import { FontListLoadError, FontNotFoundError } from '../font.error'
+import { convertFontListViewModel } from '../convertToFontViewModel'
+import type { FontListModel } from '../fontModel.type'
 
 /** fontId가 유효하지 않은지 검사 */
 const isInvalidFontId = (fontId: number) => {

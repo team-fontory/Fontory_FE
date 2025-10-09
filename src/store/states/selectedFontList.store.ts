@@ -3,7 +3,7 @@ import { create } from 'zustand'
 import type {
   FontItemModel,
   FontListModel,
-} from '@/service/fonts/types/fontModel.type'
+} from '@/service/fonts/fontModel.type'
 
 type SelectedFontsActionList = {
   addFont: (font: FontItemModel) => void

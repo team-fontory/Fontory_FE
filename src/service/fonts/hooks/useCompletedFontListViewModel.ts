@@ -7,9 +7,9 @@ import {
 } from '@/shared/apis/api.error'
 import { useCompletedFontListQuery } from '@/store/queries/font.query'
 
-import { FontListLoadError, FontNotFoundError } from '../errors/font.error'
-import { convertFontListViewModel } from '../transformers/convertToViewModel'
-import type { FontListModel } from '../types/fontModel.type'
+import { FontListLoadError, FontNotFoundError } from '../font.error'
+import { convertFontListViewModel } from '../convertToFontViewModel'
+import type { FontListModel } from '../fontModel.type'
 
 /**
  * API 에러를 도메인 에러로 변환하여 throw

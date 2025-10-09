@@ -1,6 +1,6 @@
 import { FontItem } from '@/presentation/components/font/FontItem'
 import { PrimaryButton } from '@/presentation/components/shared/PrimaryButton'
-import type { FontItemModel } from '@/service/fonts/types/fontModel.type'
+import type { FontItemModel } from '@/service/fonts/fontModel.type'
 import {
   useCanAddFont,
   useIsFontSelected,

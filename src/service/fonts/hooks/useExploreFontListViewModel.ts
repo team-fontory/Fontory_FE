@@ -9,9 +9,9 @@ import { FONT_FILTER_OPTIONS } from '@/shared/constants/filter.constant'
 import { useExploreFontListQuery } from '@/store/queries/font.query'
 import type { ExploreFontListRequest } from '@/store/queries/fontApi.type'
 
-import { FontListLoadError, FontNotFoundError } from '../errors/font.error'
-import { convertFontListViewModel } from '../transformers/convertToViewModel'
-import type { FontListModel } from '../types/fontModel.type'
+import { FontListLoadError, FontNotFoundError } from '../font.error'
+import { convertFontListViewModel } from '../convertToFontViewModel'
+import type { FontListModel } from '../fontModel.type'
 
 const findSelectedFilter = (filter: string) => {
   return FONT_FILTER_OPTIONS.find((option) => option.key === filter)

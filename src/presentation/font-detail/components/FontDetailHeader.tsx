@@ -1,7 +1,7 @@
 import { BookmarkButton } from '@/presentation/components/font/BookmarkButton'
 import { DownloadButton } from '@/presentation/components/font/DownloadButton'
 import { DynamicFont } from '@/presentation/components/font/DynamicFont'
-import type { FontItemModel } from '@/service/fonts/types/fontModel.type'
+import type { FontItemModel } from '@/service/fonts/fontModel.type'
 
 type FontDetailHeaderProps = FontItemModel
 

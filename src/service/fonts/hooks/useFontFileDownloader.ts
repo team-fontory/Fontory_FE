@@ -5,7 +5,7 @@ import { toast } from 'react-toastify'
 import { TOAST_MESSAGES } from '@/shared/constants/toast.constant'
 import { useFontDownloadQuery } from '@/store/queries/font.query'
 
-import { FontDownloadError } from '../errors/font.error'
+import { FontDownloadError } from '../font.error'
 
 /** 폰트 파일 다운로드 */
 const fetchFontBlobFromUrl = async (url: string) => {

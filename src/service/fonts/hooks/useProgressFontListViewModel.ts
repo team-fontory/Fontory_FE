@@ -5,12 +5,12 @@ import {
 } from '@/shared/apis/api.error'
 import { useProgressFontListQuery } from '@/store/queries/font.query'
 
-import { FontListLoadError, FontNotFoundError } from '../errors/font.error'
-import { convertInProgressListViewModel } from '../transformers/convertInProgressViewModel'
+import { convertInProgressListViewModel } from '../convertToFontViewModel'
+import { FontListLoadError, FontNotFoundError } from '../font.error'
 import type {
   InProgressFontListModel,
   InProgressFontModel,
-} from '../types/fontModel.type'
+} from '../fontModel.type'
 
 /**
  * API 에러를 도메인 에러로 변환하여 throw

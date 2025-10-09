@@ -2,7 +2,7 @@ import type { PropsWithChildren } from 'react'
 import { Link } from 'react-router-dom'
 
 import { createRoute } from '@/app/router/routes.constant'
-import type { FontItemModel } from '@/service/fonts/types/fontModel.type'
+import type { FontItemModel } from '@/service/fonts/fontModel.type'
 import { cn } from '@/shared/utils/cn'
 
 import { DynamicFont } from './DynamicFont'

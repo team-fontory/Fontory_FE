@@ -2,7 +2,7 @@ import { EmptyFontListMessage } from '@/presentation/components/font/EmptyFontLi
 import { FontSearchBar } from '@/presentation/components/font/FontSearchBar'
 import { Pagination } from '@/presentation/components/shared/Pagination'
 import { useBookmarkFontListViewModel } from '@/service/fonts/hooks/useBookmarkFontListViewModel'
-import type { FontListModel } from '@/service/fonts/types/fontModel.type'
+import type { FontListModel } from '@/service/fonts/fontModel.type'
 
 import { SelectableFontItem } from './SelectableFontItem'
 

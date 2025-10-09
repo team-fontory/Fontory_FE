@@ -1,7 +1,7 @@
 import type {
   FontItemModel,
   FontListModel,
-} from '@/service/fonts/types/fontModel.type'
+} from '@/service/fonts/fontModel.type'
 
 import { BookmarkButton } from './BookmarkButton'
 import { DownloadButton } from './DownloadButton'

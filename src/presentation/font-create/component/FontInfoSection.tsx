@@ -1,7 +1,7 @@
 import { FormField } from '@/presentation/components/shared/FormField'
 import { FormTextarea } from '@/presentation/components/shared/FormTextarea'
 import { PrimaryButton } from '@/presentation/components/shared/PrimaryButton'
-import { FONT_FIELDS } from '@/service/fonts/configs/font.config'
+import { FONT_FIELDS } from '@/service/fonts/font.config'
 
 import { CreateFontStepSection } from './CreateFontStepSection'
 

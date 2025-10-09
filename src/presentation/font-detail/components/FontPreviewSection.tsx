@@ -1,5 +1,5 @@
 import { DynamicFont } from '@/presentation/components/font/DynamicFont'
-import type { FontItemModel } from '@/service/fonts/types/fontModel.type'
+import type { FontItemModel } from '@/service/fonts/fontModel.type'
 
 type FontPreviewSectionProps = Pick<
   FontItemModel,

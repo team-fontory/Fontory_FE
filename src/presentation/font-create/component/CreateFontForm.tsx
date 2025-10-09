@@ -5,7 +5,7 @@ import {
   createFontDefaultValues,
   type CreateFontFormData,
   CreateFontSchema,
-} from '@/service/fonts/configs/font.config'
+} from '@/service/fonts/font.config'
 import { useCreateFont } from '@/service/fonts/hooks/useCreateFont'
 import { useFontNameValidation } from '@/service/fonts/hooks/useFontNameValidation'
 import { useCustomForm } from '@/shared/hooks/useCustomForm'

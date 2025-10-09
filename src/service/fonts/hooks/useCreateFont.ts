@@ -5,7 +5,7 @@ import { ROUTES } from '@/app/router/routes.constant'
 import { TOAST_MESSAGES } from '@/shared/constants/toast.constant'
 import { useCreateFontMutation } from '@/store/queries/font.mutation'
 
-import type { CreateFontFormData } from '../configs/font.config'
+import type { CreateFontFormData } from '../font.config'
 
 export const useCreateFont = () => {
   const navigate = useNavigate()

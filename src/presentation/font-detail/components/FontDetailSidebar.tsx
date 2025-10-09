@@ -1,4 +1,4 @@
-import type { FontItemModel } from '@/service/fonts/types/fontModel.type'
+import type { FontItemModel } from '@/service/fonts/fontModel.type'
 
 type FontDetailSidebarProps = Pick<
   FontItemModel,
