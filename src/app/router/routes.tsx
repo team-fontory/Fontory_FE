@@ -9,16 +9,16 @@ import { ROUTES } from './routes.constant'
 // 페이지 컴포넌트 Lazy Loading
 const LandingPage = lazy(() => import('@/landing/LandingPage'))
 const FontExplorePage = lazy(
-  () => import('@/domains/fonts/pages/FontExplorePage'),
+  () => import('@/presentation/font-explore/FontExplorePage'),
 )
 const FontDetailPage = lazy(
-  () => import('@/domains/fonts/pages/FontDetailPage'),
+  () => import('@/presentation/font-detail/FontDetailPage'),
 )
 const CreateFontPage = lazy(
   () => import('@/domains/fonts/pages/CreateFontPage'),
 )
 const SynthesizeFontPage = lazy(
-  () => import('@/domains/fonts/pages/SynthesizeFontPage'),
+  () => import('@/presentation/font-synthesize/SynthesizeFontPage'),
 )
 const MyFontPage = lazy(() => import('@/domains/fonts/pages/MyFontPage'))
 const LoginPage = lazy(() => import('@/domains/auth/pages/LoginPage'))
