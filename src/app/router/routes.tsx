@@ -24,7 +24,7 @@ const FontProgressPage = lazy(
   () => import('@/presentation/font-progress/FontProgressPage'),
 )
 const LoginPage = lazy(() => import('@/presentation/auth-login/LoginPage'))
-const SignupPage = lazy(() => import('@/domains/auth/pages/SignupPage'))
+const SignupPage = lazy(() => import('@/presentation/auth-signup/SignupPage'))
 const BookmarkPage = lazy(
   () => import('@/presentation/font-bookmark/BookmarkPage'),
 )
