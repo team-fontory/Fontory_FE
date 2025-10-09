@@ -1,21 +1,23 @@
-import { MAIN_QUERY_KEY } from '@/shared/api/globalQueryKey'
+import type { NicknameDuplicateRequest } from './authApi.type'
 
 /** 인증 관련 쿼리 키 팩토리 */
 export const authQueryKeys = {
-  all: () => [...MAIN_QUERY_KEY, 'auth'] as const,
+  all: () => ['auth'] as const,
 
   // 닉네임 중복 검사
-  nicknameCheck: (nickname: string) =>
-    [...authQueryKeys.all(), 'nickname-check', nickname] as const,
+  nicknameCheck: (params: NicknameDuplicateRequest) =>
+    [...authQueryKeys.all(), 'nickname-check', params.nickname] as const,
 
   // 프로필 정보
   profile: () => [...authQueryKeys.all(), 'profile'] as const,
 } as const
 
 /** 쿼리 무효화를 위한 헬퍼 함수 */
-export const authQueryInvalidators = {
+export const authQueryInvalidator = {
   invalidateAll: () => ({ queryKey: authQueryKeys.all() }),
-  invalidateNicknameCheck: () => ({ queryKey: [...authQueryKeys.all(), 'nickname-check'] }),
+  invalidateNicknameCheck: () => ({
+    queryKey: [...authQueryKeys.all(), 'nickname-check'],
+  }),
   invalidateProfile: () => ({ queryKey: [...authQueryKeys.all(), 'profile'] }),
 } as const
 
