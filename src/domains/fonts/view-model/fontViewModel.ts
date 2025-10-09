@@ -1,6 +1,6 @@
+import { PROGRESS_STATUS } from '@/shared/constants/progress.constant'
 import { formatDate } from '@/shared/utils/formatDate'
 
-import { PROGRESS_STATUS } from '../constants/progressState'
 import type {
   FontItemView,
   FontListView,

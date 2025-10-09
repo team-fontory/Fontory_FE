@@ -22,12 +22,7 @@ export type {
 } from './view.types'
 
 // 필터/옵션 타입들
-export type {
-  FontBookmarkOptions,
-  FontFilterType,
-  FontListOptions,
-  FontSortBy,
-} from './filter.types'
+export type { FontBookmarkOptions, FontListOptions } from './filter.types'
 
 // 폼 관련 타입들
 export type { CreateFontFormData } from './form.types'

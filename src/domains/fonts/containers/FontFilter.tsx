@@ -1,11 +1,11 @@
 import { useSearchParams } from 'react-router-dom'
 
-import { FONT_FILTER_OPTIONS } from '../constants/fontFilterOptions'
-import { type FontFilterType } from '../types'
+import { FONT_FILTER_OPTIONS, type FontFilterKeyType } from '@/shared/constants/filter.constant'
+
 import { getValidFontFilterKey } from '../utils/fontFilterUtils.ts'
 
 /** 새로 만든 파라미터 객체를 반환 */
-const updateFilterParam = (prev: URLSearchParams, filter: FontFilterType): URLSearchParams => {
+const updateFilterParam = (prev: URLSearchParams, filter: FontFilterKeyType): URLSearchParams => {
   const newParams = new URLSearchParams(prev)
   if (filter === FONT_FILTER_OPTIONS[0].key) newParams.delete('filter')
   else newParams.set('filter', filter)
@@ -16,7 +16,7 @@ const updateFilterParam = (prev: URLSearchParams, filter: FontFilterType): URLSe
 
 type FilterButtonProps = {
   isActive: boolean
-  key: FontFilterType
+  key: FontFilterKeyType
   description: string
   label: (typeof FONT_FILTER_OPTIONS)[number]['label']
   onClick: () => void
@@ -47,7 +47,7 @@ export const FontFilter = () => {
   const [searchParams, setSearchParams] = useSearchParams()
   const activeFilter = getValidFontFilterKey(searchParams.get('filter'))
 
-  const handleFilterChange = (filter: FontFilterType) => {
+  const handleFilterChange = (filter: FontFilterKeyType) => {
     setSearchParams((prev) => updateFilterParam(prev, filter))
   }
 
