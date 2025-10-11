@@ -1,6 +1,7 @@
 import { useSearchParams } from 'react-router-dom'
 
 import { FontListSection } from '@/presentation/components/font/FontListSection'
+import { FontSearchBar } from '@/presentation/components/font/FontSearchBar'
 import { Pagination } from '@/presentation/components/shared/Pagination'
 import {
   FONT_FILTER_OPTIONS,
@@ -74,11 +75,12 @@ export const ExploreFontSection = () => {
         전체 폰트
       </h2>
       <nav
-        className='border-b-secondary-point overflow-x-auto border-b px-4'
+        className='flex-column gap-4 overflow-x-auto px-4'
         role='tablist'
         aria-label='폰트 필터 옵션'
       >
         <FontFilterList />
+        <FontSearchBar />
       </nav>
       <FontListSection
         fontList={fontList}

@@ -1,41 +1,16 @@
-import {
-  isNetworkError,
-  isNotFoundError,
-  NetworkError,
-} from '@/shared/apis/api.error'
+import { handleApiErrorWithToast } from '@/shared/apis/api.error'
 import { usePopularFontListQuery } from '@/store/queries/font.query'
 
 import { convertFontListViewModel } from '../convertToFontViewModel'
-import { FontListLoadError, FontNotFoundError } from '../font.error'
 import type { FontListModel } from '../fontModel.type'
 
-/**
- * API 에러를 도메인 에러로 변환하여 throw
- * @param error - React Query에서 발생한 에러
- * @throws {FontNotFoundError} 404 에러인 경우
- * @throws {NetworkError} 네트워크 에러인 경우
- * @throws {FontListLoadError} 기타 서버 에러인 경우
- */
-const handleErrorAndThrow = (error: Error | null) => {
-  if (isNotFoundError(error)) {
-    throw new FontNotFoundError()
-  }
-  if (isNetworkError(error)) {
-    throw new NetworkError()
-  }
-  throw new FontListLoadError()
-}
-
-/**
- * 인기 폰트 목록을 조회하고 뷰모델로 변환하는 훅
- * @returns {FontListModel} 변환된 폰트 목록
- * @throws {FontNotFoundError | NetworkError | FontListLoadError} API 에러 시
- */
+/** 인기 폰트 목록을 조회하고 뷰모델로 변환 */
 export const usePopularFontListViewModel = () => {
   const { data: popularFontData, isError, error } = usePopularFontListQuery()
 
   if (isError) {
-    handleErrorAndThrow(error)
+    handleApiErrorWithToast(error, { onUnknown: () => {} })
+    return [] as FontListModel
   }
 
   if (!popularFontData?.length) {
