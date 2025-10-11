@@ -17,6 +17,7 @@ export const TOAST_MESSAGES = {
   signup: {
     success: '회원가입에 성공했습니다.',
     error: '회원가입에 실패하였습니다.',
+    nicknameLength: '닉네임을 두글자 이상 입력해주세요.',
   },
   downloadFont: {
     success: '폰트가 다운로드되었습니다.',
@@ -33,5 +34,13 @@ export const TOAST_MESSAGES = {
   createFont: {
     success: '폰트 생성 요청에 성공했습니다.',
     error: '폰트 생성 요청에 실패하였습니다.',
+  },
+  error: {
+    network: '네트워크 연결을 확인해주세요.',
+    badRequest: '요청 형식이 잘못되었습니다.',
+    authentication: '로그인이 필요합니다.',
+    authorization: '접근 권한이 없습니다.',
+    server: '서버에 오류가 발생했습니다.',
+    default: '알 수 없는 오류가 발생했습니다.',
   },
 } as const
