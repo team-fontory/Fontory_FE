@@ -15,7 +15,7 @@ export const ROUTES = {
     EXPLORE: '/explore',
     CREATE: '/create-font',
     SYNTHESIZE: '/font-synthesize',
-    DETAIL: '/fonts/:id',
+    DETAIL: '/fonts/:fontId',
     EDIT: '/fonts/:id/edit',
   },
 
