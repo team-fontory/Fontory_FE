@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 
-import { useFontDetailViewModel } from '@/service/fonts/hooks/useFontDetailViewModel'
+import { useFontDetailViewModel } from '@/service/fonts/view-models/useFontDetailViewModel'
 
 import { FontDetailHeader } from './components/FontDetailHeader'
 import { FontDetailSidebar } from './components/FontDetailSidebar'

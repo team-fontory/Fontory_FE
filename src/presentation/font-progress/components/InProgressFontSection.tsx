@@ -1,5 +1,5 @@
 import { EmptyFontListMessage } from '@/presentation/components/font/EmptyFontListMessage'
-import { useProgressFontListViewModel } from '@/service/fonts/hooks/useProgressFontListViewModel'
+import { useProgressFontListViewModel } from '@/service/fonts/view-models/useProgressFontListViewModel'
 
 export const InProgressFontTable = () => {
   const { fontList } = useProgressFontListViewModel()

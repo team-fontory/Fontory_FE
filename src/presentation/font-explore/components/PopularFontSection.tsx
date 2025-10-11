@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import { createRoute } from '@/app/router/routes.constant'
-import { usePopularFontListViewModel } from '@/service/fonts/hooks/usePopularFontListViewModel'
+import { usePopularFontListViewModel } from '@/service/fonts/view-models/usePopularFontListViewModel'
 
 /** 인기 폰트 섹션 */
 export const PopularFontSection = () => {

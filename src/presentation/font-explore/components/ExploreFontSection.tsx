@@ -2,7 +2,7 @@ import { useSearchParams } from 'react-router-dom'
 
 import { FontListSection } from '@/presentation/components/font/FontListSection'
 import { Pagination } from '@/presentation/components/shared/Pagination'
-import { useExploreFontListViewModel } from '@/service/fonts/hooks/useExploreFontListViewModel'
+import { useExploreFontListViewModel } from '@/service/fonts/view-models/useExploreFontListViewModel'
 import {
   FONT_FILTER_OPTIONS,
   type FontFilterKeyType,

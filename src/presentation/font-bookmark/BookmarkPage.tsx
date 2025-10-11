@@ -1,4 +1,4 @@
-import { useBookmarkFontListViewModel } from '@/service/fonts/hooks/useBookmarkFontListViewModel'
+import { useBookmarkFontListViewModel } from '@/service/fonts/view-models/useBookmarkFontListViewModel'
 
 import { FontListSection } from '../components/font/FontListSection'
 import { FontSearchBar } from '../components/font/FontSearchBar'

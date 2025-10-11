@@ -1,6 +1,6 @@
 import { FontListSection } from '@/presentation/components/font/FontListSection'
 import { Pagination } from '@/presentation/components/shared/Pagination'
-import { useCompletedFontListViewModel } from '@/service/fonts/hooks/useCompletedFontListViewModel'
+import { useCompletedFontListViewModel } from '@/service/fonts/view-models/useCompletedFontListViewModel'
 
 export const CompletedFontSection = () => {
   const { fontList, totalPages } = useCompletedFontListViewModel()
