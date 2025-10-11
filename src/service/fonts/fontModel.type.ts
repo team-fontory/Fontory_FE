@@ -1,4 +1,4 @@
-import type { ProgressStatusValueType } from '@/shared/constants/progress.constant'
+import type { ProgressStatusValueType } from '@/service/fonts/constants/progress.constant'
 
 /** 폰트 단일 항목 모델 */
 export type FontItemModel = {

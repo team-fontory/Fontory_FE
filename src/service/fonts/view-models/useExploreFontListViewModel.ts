@@ -5,10 +5,10 @@ import {
   isNotFoundError,
   NetworkError,
 } from '@/shared/apis/api.error'
-import { FONT_FILTER_OPTIONS } from '@/shared/constants/filter.constant'
 import { useExploreFontListQuery } from '@/store/queries/font.query'
 import type { ExploreFontListRequest } from '@/store/queries/fontApi.type'
 
+import { FONT_FILTER_OPTIONS } from '../constants/filter.constant'
 import { convertFontListViewModel } from '../convertToFontViewModel'
 import { FontListLoadError, FontNotFoundError } from '../font.error'
 import type { FontListModel } from '../fontModel.type'

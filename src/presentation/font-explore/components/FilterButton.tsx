@@ -1,7 +1,7 @@
 import type {
   FONT_FILTER_OPTIONS,
   FontFilterKeyType,
-} from '@/shared/constants/filter.constant'
+} from '@/service/fonts/constants/filter.constant'
 
 type FilterButtonProps = {
   isActive: boolean

@@ -1,7 +1,7 @@
 import {
   PROGRESS_STATUS,
   type ProgressStatusKeyType,
-} from '@/shared/constants/progress.constant'
+} from '@/service/fonts/constants/progress.constant'
 import type {
   FontCardInfoResponse,
   InProgressFontListResponse,
