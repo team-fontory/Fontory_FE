@@ -47,7 +47,7 @@ export const getFontDownloadUrl = (params: FontDownloadUrlRequest) => {
 
 /** 폰트 상세 정보 조회 */
 export const getFontDetail = (params: FontDetailRequest) => {
-  return apiClient.get<FontDetailResponse>(`/fonts`, { params })
+  return apiClient.get<FontDetailResponse>(`/fonts/${params.fontId}`)
 }
 
 /** 제작자의 다른 폰트 목록 조회 */
@@ -72,12 +72,12 @@ export const getBookmarkFontList = (params: BookmarkFontListRequest) => {
 
 /** 북마크 추가 */
 export const addBookmark = (params: AddBookmarkRequest) => {
-  return apiClient.post(`/bookmarks`, { params })
+  return apiClient.post(`/bookmarks/${params.fontId}`)
 }
 
 /** 북마크 제거 */
 export const removeBookmark = (params: RemoveBookmarkRequest) => {
-  return apiClient.delete(`/bookmarks`, { params })
+  return apiClient.delete(`/bookmarks/${params.fontId}`)
 }
 
 /** 폰트 생성 요청 */
