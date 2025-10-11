@@ -39,7 +39,7 @@ export const useNicknameValidation = () => {
       setValue('nicknameVerified', false)
       toast.error(TOAST_MESSAGES.validateNickname.error)
     } finally {
-      await trigger()
+      await trigger('nickname')
     }
   }
 
