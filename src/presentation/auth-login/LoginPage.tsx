@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom'
 
+import GoogleImage from '@/assets/images/google.svg'
+import NaverImage from '@/assets/images/naver.png'
+
 import { Icon } from '../components/shared/Icon/Icon'
 
 import { LoginPolicySection } from './components/LoginPolicySection'
@@ -28,12 +31,12 @@ const LoginPage = () => {
           <Link
             to={`${import.meta.env.VITE_PUBLIC_SERVER_DOMAIN}/oauth2/authorization/naver`}
           >
-            <img src='/images/naver.png' className='h-16 w-16' />
+            <img src={NaverImage} className='h-16 w-16' />
           </Link>
           <Link
             to={`${import.meta.env.VITE_PUBLIC_SERVER_DOMAIN}/oauth2/authorization/google`}
           >
-            <img src='/images/google.svg' className='h-16 w-16' />
+            <img src={GoogleImage} className='h-16 w-16' />
           </Link>
         </main>
 
