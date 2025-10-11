@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import { handleApiErrorWithToast } from '@/shared/apis/api.error'
@@ -6,8 +7,8 @@ import type { ExploreFontListRequest } from '@/store/queries/fontApi.type'
 
 import { FONT_FILTER_OPTIONS } from '../constants/filter.constant'
 import { convertFontListViewModel } from '../convertToFontViewModel'
-import type { FontListModel } from '../fontModel.type'
 
+/** 필터 키에 해당하는 필터 옵션을 찾아 반환 */
 const findSelectedFilter = (filter: string) => {
   return FONT_FILTER_OPTIONS.find((option) => option.key === filter)
 }
@@ -22,14 +23,14 @@ export const useExploreFontListViewModel = () => {
   const selectedSortBy = selectedFilter?.sortBy ?? 'createdAt'
 
   const params = {
-    page: currentPage,
+    page: currentPage - 1,
     sortBy: selectedSortBy,
     size: 8,
     keyword: searchQuery.trim() || null,
   } as ExploreFontListRequest
 
   const { data: exploreData, isError, error } = useExploreFontListQuery(params)
-  const emptyList = { fontList: [] as FontListModel, totalPages: 0 }
+  const emptyList = useMemo(() => ({ fontList: [], totalPages: 0 }), [])
 
   if (isError) {
     handleApiErrorWithToast(error)
