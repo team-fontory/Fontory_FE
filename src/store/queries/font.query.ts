@@ -1,4 +1,4 @@
-import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import {
   checkFontNameDuplicate,
@@ -59,7 +59,7 @@ export const useBookmarkFontListQuery = (params: BookmarkFontListRequest) => {
 
 /** 둘러보기용 폰트 목록 조회 */
 export const useExploreFontListQuery = (params: ExploreFontListRequest) => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: fontQueryKeys.explore(params),
     queryFn: () => getExploreFontList(params),
     staleTime: 5 * 60 * 1000,

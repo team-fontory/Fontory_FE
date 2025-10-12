@@ -2,6 +2,7 @@ import { useSearchParams } from 'react-router-dom'
 
 import { FontListSection } from '@/presentation/components/font/FontListSection'
 import { FontSearchBar } from '@/presentation/components/font/FontSearchBar'
+import { PageLoader } from '@/presentation/components/shared/PageLoader'
 import { Pagination } from '@/presentation/components/shared/Pagination'
 import {
   FONT_FILTER_OPTIONS,
@@ -67,7 +68,8 @@ const FontFilterList = () => {
 
 /** 전체 폰트 목록과 필터링, 페이지네이션을 포함한 섹션 컴포넌트 */
 export const ExploreFontSection = () => {
-  const { fontList, totalPages } = useExploreFontListViewModel()
+  const { isLoading, fontList, totalPages } = useExploreFontListViewModel()
+  if (isLoading) return <PageLoader />
 
   return (
     <section className='mt-12' aria-labelledby='all-fonts-title'>
