@@ -8,7 +8,7 @@ export const FontSearchBar = () => {
     useSearchQueryParam()
 
   return (
-    <>
+    <div className='flex-column gap-4'>
       <form
         onSubmit={handleSubmit}
         className='border-disabled flex-align-center focus-within:border-primary gap-2 rounded-md border px-4 py-3 transition-colors'
@@ -41,6 +41,6 @@ export const FontSearchBar = () => {
       >
         <span className='text-sm'>검색어 초기화</span>
       </button>
-    </>
+    </div>
   )
 }
