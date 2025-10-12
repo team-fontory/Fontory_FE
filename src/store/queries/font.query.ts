@@ -69,7 +69,7 @@ export const useExploreFontListQuery = (params: ExploreFontListRequest) => {
 
 /** 인기 폰트 목록 조회 */
 export const usePopularFontListQuery = () => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: fontQueryKeys.popular(),
     queryFn: getPopularFontList,
     staleTime: 30 * 60 * 1000,
