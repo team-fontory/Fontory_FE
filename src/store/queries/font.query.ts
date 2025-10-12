@@ -24,7 +24,7 @@ import type {
 
 /** 폰트 상세 정보 조회 */
 export const useFontDetailQuery = (params: FontDetailRequest) => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: fontQueryKeys.detail(params),
     queryFn: () => getFontDetail(params),
   })
