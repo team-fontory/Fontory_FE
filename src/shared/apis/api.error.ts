@@ -1,7 +1,3 @@
-import { toast } from 'react-toastify'
-
-import { TOAST_MESSAGES } from '../constants/toast.constant'
-
 import { HTTP_STATUS, type HttpStatus } from './api.constant'
 
 /* API 에러 타입 */
@@ -100,7 +96,6 @@ export class UnknownError extends ApiError {
   }
 }
 
-// TODO: 삭제 예정
 export const isNetworkError = (error: unknown): error is NetworkError =>
   error instanceof NetworkError
 
@@ -120,83 +115,3 @@ export const isNotFoundError = (error: unknown): error is NotFoundError =>
 
 export const isServerError = (error: unknown): error is ServerError =>
   error instanceof ServerError
-
-/** 커스텀 에러 핸들러 타입 */
-export type CustomErrorHandler = (error: unknown) => void
-
-/** 에러 타입별 핸들러 설정 */
-export type ErrorHandlers = {
-  onBadRequest?: CustomErrorHandler
-  onAuthentication?: CustomErrorHandler
-  onAuthorization?: CustomErrorHandler
-  onNetwork?: CustomErrorHandler
-  onNotFound?: CustomErrorHandler
-  onServer?: CustomErrorHandler
-  onUnknown?: CustomErrorHandler
-}
-
-/** 에러 처리 헬퍼 함수 */
-const handleErrorType = (
-  error: unknown,
-  defaultMessage: string,
-  customHandler?: CustomErrorHandler,
-) => {
-  if (customHandler) {
-    customHandler(error)
-  } else {
-    toast.error(defaultMessage)
-  }
-}
-
-/** 에러 타입별 처리 매핑 */
-const errorTypeHandlers = [
-  {
-    check: isBadRequestError,
-    getHandler: (handlers?: ErrorHandlers) => handlers?.onBadRequest,
-    defaultMessage: TOAST_MESSAGES.error.badRequest,
-  },
-  {
-    check: isAuthenticationError,
-    getHandler: (handlers?: ErrorHandlers) => handlers?.onAuthentication,
-    defaultMessage: TOAST_MESSAGES.error.authentication,
-  },
-  {
-    check: isAuthorizationError,
-    getHandler: (handlers?: ErrorHandlers) => handlers?.onAuthorization,
-    defaultMessage: TOAST_MESSAGES.error.authorization,
-  },
-  {
-    check: isNotFoundError,
-    getHandler: (handlers?: ErrorHandlers) => handlers?.onAuthorization,
-    defaultMessage: TOAST_MESSAGES.error.authorization,
-  },
-  {
-    check: isNetworkError,
-    getHandler: (handlers?: ErrorHandlers) => handlers?.onNetwork,
-    defaultMessage: TOAST_MESSAGES.error.network,
-  },
-  {
-    check: isServerError,
-    getHandler: (handlers?: ErrorHandlers) => handlers?.onServer,
-    defaultMessage: TOAST_MESSAGES.error.server,
-  },
-]
-
-/** API 에러 핸들러 (Toast 기본 + 커스텀 핸들러 선택적) */
-export const handleApiErrorWithToast = (
-  error: unknown,
-  customHandlers?: ErrorHandlers,
-) => {
-  const errorHandler = errorTypeHandlers.find((handler) => handler.check(error))
-
-  if (errorHandler) {
-    const customHandler = errorHandler.getHandler(customHandlers)
-    handleErrorType(error, errorHandler.defaultMessage, customHandler)
-  } else {
-    handleErrorType(
-      error,
-      TOAST_MESSAGES.error.default,
-      customHandlers?.onUnknown,
-    )
-  }
-}
