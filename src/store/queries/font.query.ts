@@ -51,7 +51,7 @@ export const useFontDownloadQuery = (params: FontDownloadUrlRequest) => {
 
 /** 북마크된 폰트 목록 조회 */
 export const useBookmarkFontListQuery = (params: BookmarkFontListRequest) => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: fontQueryKeys.bookmark(params),
     queryFn: () => getBookmarkFontList(params),
   })

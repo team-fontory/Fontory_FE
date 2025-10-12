@@ -11,20 +11,10 @@ import { convertFontListViewModel } from '../convertToFontViewModel'
 import { FontListLoadError, FontNotFoundError } from '../font.error'
 import type { FontListModel } from '../fontModel.type'
 
-/**
- * API 에러를 도메인 에러로 변환하여 throw
- * @param error - React Query에서 발생한 에러
- * @throws {FontNotFoundError} 404 에러인 경우
- * @throws {NetworkError} 네트워크 에러인 경우
- * @throws {FontListLoadError} 기타 서버 에러인 경우
- */
-const handleErrorAndThrow = (error: Error | null) => {
-  if (isNotFoundError(error)) {
-    throw new FontNotFoundError()
-  }
-  if (isNetworkError(error)) {
-    throw new NetworkError()
-  }
+/** 에러 타입에 따라 적절한 커스텀 에러를 throw하는 함수 */
+const handleError = (error: unknown) => {
+  if (isNotFoundError(error)) throw new FontNotFoundError()
+  if (isNetworkError(error)) throw new NetworkError()
   throw new FontListLoadError()
 }
 
@@ -42,21 +32,20 @@ export const useBookmarkFontListViewModel = () => {
 
   const {
     data: bookmarkFontData,
+    isLoading,
     isError,
     error,
   } = useBookmarkFontListQuery(params)
+  const emptyList = [] as FontListModel
 
-  if (isError) {
-    handleErrorAndThrow(error)
-  }
-
-  const isEmptyList = !bookmarkFontData?.content?.length
-
-  if (isEmptyList) {
-    return { fontList: [] as FontListModel, totalPages: 0 }
+  if (isLoading) return { isLoading, fontList: emptyList, totalPages: 0 }
+  if (isError) handleError(error)
+  if (!bookmarkFontData?.content?.length) {
+    return { isLoading, fontList: emptyList, totalPages: 0 }
   }
 
   return {
+    isLoading: false,
     fontList: convertFontListViewModel(bookmarkFontData.content),
     totalPages: bookmarkFontData.totalPages,
   }
