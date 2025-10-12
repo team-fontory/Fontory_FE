@@ -1,14 +1,19 @@
+import { ErrorBoundary } from 'react-error-boundary'
 import { useParams } from 'react-router-dom'
 
 import { FontListSection } from '@/presentation/components/font/FontListSection'
+import { PageLoader } from '@/presentation/components/shared/PageLoader'
 import { useRecommendListViewModel } from '@/service/fonts/view-models/useRecommendListViewModel'
 import { useFontItem } from '@/store/states/fontItem.store'
 
 /** 제작자의 다른 폰트 추천 섹션 컴포넌트 */
-export const RecommendFontSection = () => {
+export const RecommendFontContainer = () => {
   const fontItem = useFontItem()
   const { fontId } = useParams<{ fontId: string }>()
-  const recommendList = useRecommendListViewModel(Number(fontId))
+  const { isLoading, recommendList } = useRecommendListViewModel(Number(fontId))
+
+  if (isLoading) return <PageLoader />
+  if (!recommendList.length) return null
 
   return (
     <section className='mt-20'>
@@ -21,5 +26,13 @@ export const RecommendFontSection = () => {
         emptyMessage='제작자의 생성한 다른 폰트가 존재하지 않습니다.'
       />
     </section>
+  )
+}
+
+export const RecommendFontSection = () => {
+  return (
+    <ErrorBoundary fallback={null}>
+      <RecommendFontContainer />
+    </ErrorBoundary>
   )
 }
