@@ -1,4 +1,6 @@
-import { HTTP_STATUS, type HttpStatus } from './api.constant'
+import type { AxiosError } from 'axios'
+
+import { ERROR_MESSAGE_MAP, HTTP_STATUS, type HttpStatus } from './api.constant'
 
 /* API 에러 타입 */
 export type ApiErrorData = {
@@ -96,6 +98,15 @@ export class UnknownError extends ApiError {
   }
 }
 
+/* HTTP 상태 코드별 에러 생성자 맵 */
+export const ERROR_CONSTRUCTOR_MAP = {
+  [HTTP_STATUS.BAD_REQUEST]: BadRequestError,
+  [HTTP_STATUS.UNAUTHORIZED]: AuthenticationError,
+  [HTTP_STATUS.FORBIDDEN]: AuthorizationError,
+  [HTTP_STATUS.NOT_FOUND]: NotFoundError,
+  [HTTP_STATUS.INTERNAL_SERVER_ERROR]: ServerError,
+} as const
+
 export const isNetworkError = (error: unknown): error is NetworkError =>
   error instanceof NetworkError
 
@@ -115,3 +126,41 @@ export const isNotFoundError = (error: unknown): error is NotFoundError =>
 
 export const isServerError = (error: unknown): error is ServerError =>
   error instanceof ServerError
+
+/* 응답 데이터에서 메시지 추출 */
+const extractMessageFromData = (data: unknown) => {
+  const message = (data as { message?: unknown })?.message
+  return typeof message === 'string' ? message : null
+}
+
+/* HTTP 상태 코드로 에러 메시지 조회 */
+const getMessageByStatus = (status?: HttpStatus): string => {
+  if (status) return ERROR_MESSAGE_MAP[status]
+  return '알 수 없는 오류가 발생했습니다.'
+}
+
+/* 에러 메시지 생성 */
+export const getErrorMessage = (status?: HttpStatus, data?: unknown) => {
+  return extractMessageFromData(data) ?? getMessageByStatus(status)
+}
+
+/* Axios 에러를 API 에러로 변환 */
+export const toApiError = (error: AxiosError) => {
+  if (!error.response) {
+    const details = { originalError: error.message, code: error.code }
+
+    return new NetworkError(getErrorMessage(undefined, error.message), {
+      details,
+    })
+  }
+
+  const { status, data } = error.response as {
+    status: HttpStatus
+    data: unknown
+  }
+  const message = getErrorMessage(status, data)
+  const errorData: ApiErrorData = { status, code: error.code, details: data }
+  const ErrorConstructor = ERROR_CONSTRUCTOR_MAP[status] || ApiError
+
+  return new ErrorConstructor(message, errorData)
+}
