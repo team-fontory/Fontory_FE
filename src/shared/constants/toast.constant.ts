@@ -7,17 +7,18 @@ export const TOAST_MESSAGES = {
   validateNickname: {
     success: '사용 가능한 닉네임입니다.',
     duplicated: '이미 사용 중인 닉네임입니다.',
+    length: '닉네임을 두글자 이상 입력해주세요.',
     error: '닉네임 중복 검사에 실패했습니다. 다시 시도해주세요.',
   },
   validateFontName: {
     success: '사용 가능한 폰트 이름입니다.',
     duplicated: '이미 사용 중인 폰트 이름입니다.',
+    length: '폰트 이름을 입력해주세요.',
     error: '폰트 이름 중복 검사에 실패했습니다. 다시 시도해주세요.',
   },
   signup: {
     success: '회원가입에 성공했습니다.',
     error: '회원가입에 실패하였습니다.',
-    nicknameLength: '닉네임을 두글자 이상 입력해주세요.',
   },
   downloadFont: {
     success: '폰트가 다운로드되었습니다.',

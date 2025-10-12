@@ -5,7 +5,13 @@ import { toast } from 'react-toastify'
 import { TOAST_MESSAGES } from '@/shared/constants/toast.constant'
 import { useCheckFontNameQuery } from '@/store/queries/font.query'
 
-/** 폰트 이름 유효성 검사 및 중복 확인 처리하는 훅 */
+/** 폰트 이름 최소 입력 길이 확인 */
+const isValidFontNameLength = (nickname: string) => {
+  const isValid = !!nickname && nickname.length >= 1
+  return isValid
+}
+
+/** 폰트 이름 유효성 검사 및 중복 확인 */
 export const useFontNameValidation = () => {
   const { control, setValue, clearErrors, setError, trigger } = useFormContext()
   const fontName = useWatch({ name: 'name', control })
@@ -17,37 +23,46 @@ export const useFontNameValidation = () => {
     setValue('fontNameVerified', false)
   }, [fontName, setValue])
 
+  /** 폰트 이름 중복 처리 */
+  const handleFontNameDuplicated = () => {
+    const message = TOAST_MESSAGES.validateFontName.duplicated
+    setValue('fontNameVerified', false)
+    setError('name', { message })
+    toast.error(message)
+  }
+
+  /** 폰트 이름 사용 가능 처리 */
+  const handleFontNameAvailable = () => {
+    setValue('fontNameVerified', true)
+    clearErrors('name')
+    toast.success(TOAST_MESSAGES.validateFontName.success)
+  }
+
+  /** 폰트 이름 중복 확인 */
   const handleFontNameCheck = async () => {
-    if (!fontName || fontName.length < 2) return
+    if (!isValidFontNameLength(fontName)) {
+      toast.error(TOAST_MESSAGES.validateFontName.length)
+      return
+    }
 
     try {
-      const { data: isDuplicated, isError } = await refetch()
-      if (isError || isDuplicated === undefined) throw new Error()
-
+      const { data: isDuplicated } = await refetch()
       if (isDuplicated) {
-        setError('name', {
-          message: TOAST_MESSAGES.validateFontName.duplicated,
-        })
-        setValue('fontNameVerified', false)
-        toast.error(TOAST_MESSAGES.validateFontName.duplicated)
+        handleFontNameDuplicated()
       } else {
-        clearErrors('name')
-        setValue('fontNameVerified', true)
-        toast.success(TOAST_MESSAGES.validateFontName.success)
+        handleFontNameAvailable()
       }
     } catch {
       setValue('fontNameVerified', false)
       toast.error(TOAST_MESSAGES.validateFontName.error)
     } finally {
-      await trigger()
+      await trigger('name')
     }
   }
 
-  const canCheck = fontName && fontName.length >= 2
-
   return {
     handleFontNameCheck,
-    canCheck,
+    canCheck: isValidFontNameLength(fontName),
     isVerified: fontNameVerified,
   }
 }

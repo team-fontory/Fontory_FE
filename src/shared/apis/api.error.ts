@@ -1,8 +1,6 @@
-import { toast } from 'react-toastify'
+import type { AxiosError } from 'axios'
 
-import { TOAST_MESSAGES } from '../constants/toast.constant'
-
-import { HTTP_STATUS, type HttpStatus } from './api.constant'
+import { ERROR_MESSAGE_MAP, HTTP_STATUS, type HttpStatus } from './api.constant'
 
 /* API 에러 타입 */
 export type ApiErrorData = {
@@ -100,7 +98,15 @@ export class UnknownError extends ApiError {
   }
 }
 
-// TODO: 삭제 예정
+/* HTTP 상태 코드별 에러 생성자 맵 */
+export const ERROR_CONSTRUCTOR_MAP = {
+  [HTTP_STATUS.BAD_REQUEST]: BadRequestError,
+  [HTTP_STATUS.UNAUTHORIZED]: AuthenticationError,
+  [HTTP_STATUS.FORBIDDEN]: AuthorizationError,
+  [HTTP_STATUS.NOT_FOUND]: NotFoundError,
+  [HTTP_STATUS.INTERNAL_SERVER_ERROR]: ServerError,
+} as const
+
 export const isNetworkError = (error: unknown): error is NetworkError =>
   error instanceof NetworkError
 
@@ -121,82 +127,40 @@ export const isNotFoundError = (error: unknown): error is NotFoundError =>
 export const isServerError = (error: unknown): error is ServerError =>
   error instanceof ServerError
 
-/** 커스텀 에러 핸들러 타입 */
-export type CustomErrorHandler = (error: unknown) => void
-
-/** 에러 타입별 핸들러 설정 */
-export type ErrorHandlers = {
-  onBadRequest?: CustomErrorHandler
-  onAuthentication?: CustomErrorHandler
-  onAuthorization?: CustomErrorHandler
-  onNetwork?: CustomErrorHandler
-  onNotFound?: CustomErrorHandler
-  onServer?: CustomErrorHandler
-  onUnknown?: CustomErrorHandler
+/* 응답 데이터에서 메시지 추출 */
+const extractMessageFromData = (data: unknown) => {
+  const message = (data as { message?: unknown })?.message
+  return typeof message === 'string' ? message : null
 }
 
-/** 에러 처리 헬퍼 함수 */
-const handleErrorType = (
-  error: unknown,
-  defaultMessage: string,
-  customHandler?: CustomErrorHandler,
-) => {
-  if (customHandler) {
-    customHandler(error)
-  } else {
-    toast.error(defaultMessage)
-  }
+/* HTTP 상태 코드로 에러 메시지 조회 */
+const getMessageByStatus = (status?: HttpStatus): string => {
+  if (status) return ERROR_MESSAGE_MAP[status]
+  return '알 수 없는 오류가 발생했습니다.'
 }
 
-/** 에러 타입별 처리 매핑 */
-const errorTypeHandlers = [
-  {
-    check: isBadRequestError,
-    getHandler: (handlers?: ErrorHandlers) => handlers?.onBadRequest,
-    defaultMessage: TOAST_MESSAGES.error.badRequest,
-  },
-  {
-    check: isAuthenticationError,
-    getHandler: (handlers?: ErrorHandlers) => handlers?.onAuthentication,
-    defaultMessage: TOAST_MESSAGES.error.authentication,
-  },
-  {
-    check: isAuthorizationError,
-    getHandler: (handlers?: ErrorHandlers) => handlers?.onAuthorization,
-    defaultMessage: TOAST_MESSAGES.error.authorization,
-  },
-  {
-    check: isNotFoundError,
-    getHandler: (handlers?: ErrorHandlers) => handlers?.onAuthorization,
-    defaultMessage: TOAST_MESSAGES.error.authorization,
-  },
-  {
-    check: isNetworkError,
-    getHandler: (handlers?: ErrorHandlers) => handlers?.onNetwork,
-    defaultMessage: TOAST_MESSAGES.error.network,
-  },
-  {
-    check: isServerError,
-    getHandler: (handlers?: ErrorHandlers) => handlers?.onServer,
-    defaultMessage: TOAST_MESSAGES.error.server,
-  },
-]
+/* 에러 메시지 생성 */
+export const getErrorMessage = (status?: HttpStatus, data?: unknown) => {
+  return extractMessageFromData(data) ?? getMessageByStatus(status)
+}
 
-/** API 에러 핸들러 (Toast 기본 + 커스텀 핸들러 선택적) */
-export const handleApiErrorWithToast = (
-  error: unknown,
-  customHandlers?: ErrorHandlers,
-) => {
-  const errorHandler = errorTypeHandlers.find((handler) => handler.check(error))
+/* Axios 에러를 API 에러로 변환 */
+export const toApiError = (error: AxiosError) => {
+  if (!error.response) {
+    const details = { originalError: error.message, code: error.code }
 
-  if (errorHandler) {
-    const customHandler = errorHandler.getHandler(customHandlers)
-    handleErrorType(error, errorHandler.defaultMessage, customHandler)
-  } else {
-    handleErrorType(
-      error,
-      TOAST_MESSAGES.error.default,
-      customHandlers?.onUnknown,
-    )
+    return new NetworkError(getErrorMessage(undefined, error.message), {
+      details,
+    })
   }
+
+  const { status, data } = error.response as {
+    status: HttpStatus
+    data: unknown
+  }
+  const message = getErrorMessage(status, data)
+  const errorData: ApiErrorData = { status, code: error.code, details: data }
+  const ErrorConstructor = ERROR_CONSTRUCTOR_MAP[status] || ApiError
+
+  return new ErrorConstructor(message, errorData)
 }

@@ -1,12 +1,17 @@
+import { ErrorBoundary } from 'react-error-boundary'
+
 import { useBookmarkFontListViewModel } from '@/service/fonts/view-models/useBookmarkFontListViewModel'
 
 import { FontListSection } from '../components/font/FontListSection'
 import { FontSearchBar } from '../components/font/FontSearchBar'
+import { PageErrorFallback } from '../components/shared/PageErrorFallback'
+import { PageLoader } from '../components/shared/PageLoader'
 import { Pagination } from '../components/shared/Pagination'
 
 /** 북마크 페이지 컴포넌트 */
-const BookmarkPage = () => {
-  const { fontList, totalPages } = useBookmarkFontListViewModel()
+const BookmarkContainer = () => {
+  const { isLoading, fontList, totalPages } = useBookmarkFontListViewModel()
+  if (isLoading) return <PageLoader />
 
   return (
     <main className='mx-auto my-10 max-w-5xl px-4'>
@@ -22,6 +27,14 @@ const BookmarkPage = () => {
         <Pagination totalPages={totalPages} className='my-8' />
       </section>
     </main>
+  )
+}
+
+const BookmarkPage = () => {
+  return (
+    <ErrorBoundary FallbackComponent={PageErrorFallback}>
+      <BookmarkContainer />
+    </ErrorBoundary>
   )
 }
 

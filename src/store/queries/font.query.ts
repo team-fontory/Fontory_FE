@@ -1,4 +1,4 @@
-import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import {
   checkFontNameDuplicate,
@@ -51,7 +51,7 @@ export const useFontDownloadQuery = (params: FontDownloadUrlRequest) => {
 
 /** 북마크된 폰트 목록 조회 */
 export const useBookmarkFontListQuery = (params: BookmarkFontListRequest) => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: fontQueryKeys.bookmark(params),
     queryFn: () => getBookmarkFontList(params),
   })
@@ -59,7 +59,7 @@ export const useBookmarkFontListQuery = (params: BookmarkFontListRequest) => {
 
 /** 둘러보기용 폰트 목록 조회 */
 export const useExploreFontListQuery = (params: ExploreFontListRequest) => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: fontQueryKeys.explore(params),
     queryFn: () => getExploreFontList(params),
     staleTime: 5 * 60 * 1000,
@@ -69,7 +69,7 @@ export const useExploreFontListQuery = (params: ExploreFontListRequest) => {
 
 /** 인기 폰트 목록 조회 */
 export const usePopularFontListQuery = () => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: fontQueryKeys.popular(),
     queryFn: getPopularFontList,
     staleTime: 30 * 60 * 1000,
@@ -79,7 +79,7 @@ export const usePopularFontListQuery = () => {
 
 /** 제작 중인 폰트 목록 조회 */
 export const useProgressFontListQuery = () => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: fontQueryKeys.inProgress(),
     queryFn: getInProgressFontList,
     staleTime: 60000,
@@ -89,7 +89,7 @@ export const useProgressFontListQuery = () => {
 
 /** 제작 완료된 폰트 목록 조회 */
 export const useCompletedFontListQuery = (params: CompletedFontListRequest) => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: fontQueryKeys.complete(params),
     queryFn: () => getCompletedFontList(params),
     staleTime: 60000,
