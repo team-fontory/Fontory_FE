@@ -32,7 +32,7 @@ export const useFontDetailQuery = (params: FontDetailRequest) => {
 
 /** 제작자의 다른 폰트 목록 조회 */
 export const useRecommendListQuery = (params: RecommendListRequest) => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: fontQueryKeys.recommend(params),
     queryFn: () => getRecommendFontList(params),
     staleTime: 10 * 60 * 1000,
