@@ -13,7 +13,7 @@ export const USER_FIELDS = {
   },
   birth: {
     name: 'birth',
-    label: '생년v월일',
+    label: '생년월일',
     placeholder: 'YYYY-MM-DD',
   },
   gender: {
