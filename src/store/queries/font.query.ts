@@ -79,7 +79,7 @@ export const usePopularFontListQuery = () => {
 
 /** 제작 중인 폰트 목록 조회 */
 export const useProgressFontListQuery = () => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: fontQueryKeys.inProgress(),
     queryFn: getInProgressFontList,
     staleTime: 60000,
@@ -89,7 +89,7 @@ export const useProgressFontListQuery = () => {
 
 /** 제작 완료된 폰트 목록 조회 */
 export const useCompletedFontListQuery = (params: CompletedFontListRequest) => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: fontQueryKeys.complete(params),
     queryFn: () => getCompletedFontList(params),
     staleTime: 60000,

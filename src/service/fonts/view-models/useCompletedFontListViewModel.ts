@@ -11,21 +11,11 @@ import { convertFontListViewModel } from '../convertToFontViewModel'
 import { FontListLoadError, FontNotFoundError } from '../font.error'
 import type { FontListModel } from '../fontModel.type'
 
-/**
- * API 에러를 도메인 에러로 변환하여 throw
- * @param error - React Query에서 발생한 에러
- * @throws {FontNotFoundError} 404 에러인 경우
- * @throws {NetworkError} 네트워크 에러인 경우
- * @throws {FontListLoadError} 기타 서버 에러인 경우
- */
-const handleErrorAndThrow = (error: Error | null) => {
-  if (isNotFoundError(error)) {
-    throw new FontNotFoundError()
-  }
-  if (isNetworkError(error)) {
-    throw new NetworkError()
-  }
-  throw new FontListLoadError()
+/** 에러 타입에 따라 적절한 커스텀 에러를 throw하는 함수 */
+const handleError = (error: unknown) => {
+  if (isNotFoundError(error)) throw new FontNotFoundError()
+  if (isNetworkError(error)) throw new NetworkError()
+  throw new FontListLoadError('제작 완료된 목록을 불러오지 못했습니다.')
 }
 
 /** 제작 완료된 폰트를 조회하고 뷰모델로 변환 */
@@ -36,22 +26,20 @@ export const useCompletedFontListViewModel = () => {
 
   const {
     data: completedFontData,
+    isLoading,
     isError,
     error,
   } = useCompletedFontListQuery(params)
+  const emptyList = [] as FontListModel
 
-  if (isError) {
-    handleErrorAndThrow(error)
-  }
-
+  if (isLoading) return { isLoading: true, fontList: emptyList, totalPages: 0 }
+  if (isError) handleError(error)
   if (!completedFontData?.content?.length) {
-    return {
-      fontList: [] as FontListModel,
-      totalPages: completedFontData.totalPages,
-    }
+    return { isLoading, fontList: emptyList, totalPages: 0 }
   }
 
   return {
+    isLoading: false,
     fontList: convertFontListViewModel(completedFontData.content),
     totalPages: completedFontData.totalPages,
   }
