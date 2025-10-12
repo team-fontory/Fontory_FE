@@ -14,7 +14,7 @@ export const useEditProfile = () => {
 
   const onSuccess = () => {
     toast.success(TOAST_MESSAGES.editProfile.success)
-    navigate(ROUTES.AUTH.LOGIN)
+    navigate(ROUTES.HOME)
   }
 
   const onError = () => {
