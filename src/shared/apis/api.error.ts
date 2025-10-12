@@ -88,6 +88,18 @@ export class ServerError extends ApiError {
   }
 }
 
+/* 알 수 없는 에러 클래스 */
+export class UnknownError extends ApiError {
+  constructor(
+    message = '알 수 없는 오류가 발생했습니다.',
+    data?: ApiErrorData,
+  ) {
+    super(message, { ...data, status: undefined })
+    this.name = 'UnknownError'
+    Object.setPrototypeOf(this, UnknownError.prototype)
+  }
+}
+
 // TODO: 삭제 예정
 export const isNetworkError = (error: unknown): error is NetworkError =>
   error instanceof NetworkError
@@ -118,6 +130,7 @@ export type ErrorHandlers = {
   onAuthentication?: CustomErrorHandler
   onAuthorization?: CustomErrorHandler
   onNetwork?: CustomErrorHandler
+  onNotFound?: CustomErrorHandler
   onServer?: CustomErrorHandler
   onUnknown?: CustomErrorHandler
 }
@@ -149,6 +162,11 @@ const errorTypeHandlers = [
   },
   {
     check: isAuthorizationError,
+    getHandler: (handlers?: ErrorHandlers) => handlers?.onAuthorization,
+    defaultMessage: TOAST_MESSAGES.error.authorization,
+  },
+  {
+    check: isNotFoundError,
     getHandler: (handlers?: ErrorHandlers) => handlers?.onAuthorization,
     defaultMessage: TOAST_MESSAGES.error.authorization,
   },
