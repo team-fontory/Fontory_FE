@@ -13,6 +13,7 @@ import { FontDetailSidebar } from './components/FontDetailSidebar'
 import { FontPreviewSection } from './components/FontPreviewSection'
 import { RecommendFontSection } from './components/RecommendFontSection'
 
+/** 에러 바운더리 내 에러 발생 시 호출되는 대체 UI 컴포넌트 */
 const FontDetailErrorBoundary = ({ error }: FallbackProps) => {
   toast.error(error.message)
 
@@ -31,6 +32,7 @@ const FontDetailErrorBoundary = ({ error }: FallbackProps) => {
   )
 }
 
+/** 데이터 로딩 상태에 따른 로딩 화면 표시 및 자식 컴포넌트를 렌더링 */
 const FontDetailFetcher = ({ children }: PropsWithChildren) => {
   const { fontId } = useParams<{ fontId: string }>()
   const { isLoading } = useFontDetailViewModel(Number(fontId))
@@ -56,6 +58,7 @@ const FontDetailContainer = () => {
   )
 }
 
+/** 폰트 상세 페이지 최상위 컴포넌트, 에러 바운더리 및 로딩 처리 포함 */
 const FontDetailPage = () => {
   return (
     <ErrorBoundary FallbackComponent={FontDetailErrorBoundary}>
