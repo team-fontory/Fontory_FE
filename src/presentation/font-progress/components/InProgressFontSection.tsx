@@ -1,12 +1,22 @@
+import { ErrorBoundary, type FallbackProps } from 'react-error-boundary'
+import { toast } from 'react-toastify'
+
 import { EmptyFontListMessage } from '@/presentation/components/font/EmptyFontListMessage'
+import { PageLoader } from '@/presentation/components/shared/PageLoader'
 import { useProgressFontListViewModel } from '@/service/fonts/view-models/useProgressFontListViewModel'
 
-export const InProgressFontTable = () => {
-  const { fontList } = useProgressFontListViewModel()
+/** 에러 바운더리 내 에러 발생 시 호출되는 대체 UI 컴포넌트 */
+const InProgressFontErrorBoundary = ({ error }: FallbackProps) => {
+  toast.error(error.message)
+  return null
+}
 
-  if (!fontList.length) {
+export const InProgressFontTable = () => {
+  const { isLoading, fontList } = useProgressFontListViewModel()
+
+  if (isLoading) return <PageLoader />
+  if (!fontList.length)
     return <EmptyFontListMessage message='제작한 폰트가 없습니다' />
-  }
 
   return (
     <div className='border-secondary rounded-lg border bg-white'>
@@ -31,7 +41,7 @@ export const InProgressFontTable = () => {
   )
 }
 
-export const InProgressFontSection = () => {
+export const InProgressFontContainer = () => {
   return (
     <section className='flex-column gap-4'>
       <h3 className='text-accent-light text-2xl leading-8 font-bold'>
@@ -39,5 +49,13 @@ export const InProgressFontSection = () => {
       </h3>
       <InProgressFontTable />
     </section>
+  )
+}
+
+export const InProgressFontSection = () => {
+  return (
+    <ErrorBoundary FallbackComponent={InProgressFontErrorBoundary}>
+      <InProgressFontContainer />
+    </ErrorBoundary>
   )
 }

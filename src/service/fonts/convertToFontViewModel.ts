@@ -63,8 +63,5 @@ export const convertInProgressViewModel = (font: InProgressFontResponse) => {
 export const convertInProgressListViewModel = (
   fontList: InProgressFontListResponse,
 ): InProgressFontListModel => {
-  return {
-    fontList: fontList.map(convertInProgressViewModel),
-    count: fontList.length,
-  }
+  return fontList.map(convertInProgressViewModel)
 }

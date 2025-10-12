@@ -7,39 +7,33 @@ import { useProgressFontListQuery } from '@/store/queries/font.query'
 
 import { convertInProgressListViewModel } from '../convertToFontViewModel'
 import { FontListLoadError, FontNotFoundError } from '../font.error'
-import type {
-  InProgressFontListModel,
-  InProgressFontModel,
-} from '../fontModel.type'
+import type { InProgressFontListModel } from '../fontModel.type'
 
-/**
- * API 에러를 도메인 에러로 변환하여 throw
- * @param error - React Query에서 발생한 에러
- * @throws {FontNotFoundError} 404 에러인 경우
- * @throws {NetworkError} 네트워크 에러인 경우
- * @throws {FontListLoadError} 기타 서버 에러인 경우
- */
-const handleErrorAndThrow = (error: Error | null) => {
-  if (isNotFoundError(error)) {
-    throw new FontNotFoundError()
-  }
-  if (isNetworkError(error)) {
-    throw new NetworkError()
-  }
-  throw new FontListLoadError()
+/** 에러 타입에 따라 적절한 커스텀 에러를 throw하는 함수 */
+const handleError = (error: unknown) => {
+  if (isNotFoundError(error)) throw new FontNotFoundError()
+  if (isNetworkError(error)) throw new NetworkError()
+  throw new FontListLoadError('제작 중인 폰트 목록을 불러오지 못했습니다.')
 }
 
 /** 제작 중인 폰트를 조회하고 뷰모델로 변환 */
-export const useProgressFontListViewModel = (): InProgressFontListModel => {
-  const { data: progressFontData, isError, error } = useProgressFontListQuery()
+export const useProgressFontListViewModel = () => {
+  const {
+    data: progressFontData,
+    isLoading,
+    isError,
+    error,
+  } = useProgressFontListQuery()
+  const emptyList = [] as InProgressFontListModel
 
-  if (isError) {
-    handleErrorAndThrow(error)
-  }
-
+  if (isLoading) return { isLoading, fontList: emptyList }
+  if (isError) handleError(error)
   if (!progressFontData?.length) {
-    return { fontList: [] as InProgressFontModel[], count: 0 }
+    return { isLoading, fontList: emptyList }
   }
 
-  return convertInProgressListViewModel(progressFontData)
+  return {
+    isLoading: false,
+    fontList: convertInProgressListViewModel(progressFontData),
+  }
 }

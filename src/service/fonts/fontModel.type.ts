@@ -26,7 +26,4 @@ export type InProgressFontModel = {
 }
 
 /** 제작 중인 폰트 목록 모델 */
-export type InProgressFontListModel = {
-  fontList: InProgressFontModel[]
-  count: number
-}
+export type InProgressFontListModel = InProgressFontModel[]
