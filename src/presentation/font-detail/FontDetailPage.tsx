@@ -1,4 +1,3 @@
-import type { PropsWithChildren } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { useParams } from 'react-router-dom'
 
@@ -13,18 +12,13 @@ import { FontDetailSidebar } from './components/FontDetailSidebar'
 import { FontPreviewSection } from './components/FontPreviewSection'
 import { RecommendFontSection } from './components/RecommendFontSection'
 
-/** 데이터 로딩 상태에 따른 로딩 화면 표시 및 자식 컴포넌트를 렌더링 */
-const FontDetailFetcher = ({ children }: PropsWithChildren) => {
+/** 폰트 상세 페이지 컴포넌트 */
+const FontDetailContainer = () => {
+  const fontItem = useFontItem()
   const { fontId } = useParams<{ fontId: string }>()
   const { isLoading } = useFontDetailViewModel(Number(fontId))
 
   if (isLoading) return <PageLoader />
-  return children
-}
-
-/** 폰트 상세 페이지 컴포넌트 */
-const FontDetailContainer = () => {
-  const fontItem = useFontItem()
   if (!fontItem) return null
 
   return (
@@ -43,9 +37,7 @@ const FontDetailContainer = () => {
 const FontDetailPage = () => {
   return (
     <ErrorBoundary FallbackComponent={PageErrorFallback}>
-      <FontDetailFetcher>
-        <FontDetailContainer />
-      </FontDetailFetcher>
+      <FontDetailContainer />
     </ErrorBoundary>
   )
 }
