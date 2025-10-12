@@ -3,13 +3,13 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import { routes } from './app/router/routes'
-import { PageError } from './presentation/components/shared/PageError'
+import { PageErrorFallback } from './presentation/components/shared/PageErrorFallback'
 import { PageLoader } from './presentation/components/shared/PageLoader'
 
 function App() {
   return (
     <ErrorBoundary
-      FallbackComponent={PageError}
+      FallbackComponent={PageErrorFallback}
       onReset={() => window.location.reload()}
     >
       <Suspense fallback={<PageLoader />}>
