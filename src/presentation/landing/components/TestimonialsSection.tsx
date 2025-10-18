@@ -1,57 +1,35 @@
 import { Icon } from '@/presentation/components/shared/Icon/Icon'
+import {
+  TESTIMONIALS,
+  type TestimonialType,
+} from '@/shared/constants/landing.constant'
 
-type Testimonial = {
-  name: string
-  rate: number
-  description: string
-}
-
-/** 사용자 후기 데이터 목록 */
-const TESTIMONIALS: Testimonial[] = [
-  {
-    name: '고로켕',
-    rate: 5,
-    description:
-      '"Great platform for font creation. The interface is user-friendly, but I wish there were more advanced customization options."',
-  },
-  {
-    name: '고로냐',
-    rate: 3,
-    description:
-      '"I\'ve always wanted to create my own font, and this platform made it incredibly easy. The tools are intuitive, and the results are stunning!"',
-  },
-  {
-    name: '구렇다',
-    rate: 4,
-    description:
-      '"Absolutely love this font creation tool! It\'s perfect for both beginners and experienced designers. Highly recommend!"',
-  },
-] as const
-
-/** 사용자 이름과 평점을 받아 5점 만점 중 별점을 시각적으로 표현 */
-const StarRating = ({
-  rating,
-  userName,
-}: {
+type StarRatingProps = {
   rating: number
   userName: string
-}) => (
-  <div
-    className='flex-align-center gap-0.5'
-    role='img'
-    aria-label={`${userName}님의 평점: 5점 만점에 ${rating}점`}
-  >
-    {Array.from({ length: rating }).map((_, index) => (
-      <Icon key={`filled-${index}`} name='full-star' size={16} />
-    ))}
-    {Array.from({ length: 5 - rating }).map((_, index) => (
-      <Icon key={`empty-${index}`} name='unfilled-star' size={16} />
-    ))}
-  </div>
-)
+}
+
+/** 사용자 이름과 평점을 받아 5점 만점 중 별점을 시각적으로 표현 */
+const StarRating = ({ rating, userName }: StarRatingProps) => {
+  return (
+    <div
+      className='flex-align-center gap-0.5'
+      role='img'
+      aria-label={`${userName}님의 평점: 5점 만점에 ${rating}점`}
+    >
+      {Array.from({ length: 5 }).map((_, index) => (
+        <Icon
+          key={index}
+          name={index < rating ? 'full-star' : 'unfilled-star'}
+          size={16}
+        />
+      ))}
+    </div>
+  )
+}
 
 /** 사용자 이름, 평점, 후기 내용을 카드 형태로 표시하는 컴포넌트 */
-const TestimonialCard = ({ name, rate, description }: Testimonial) => (
+const TestimonialCard = ({ name, rate, description }: TestimonialType) => (
   <article className='flex-column border-secondary-point gap-4 rounded-lg border p-6'>
     <div className='flex-align-center text-accent gap-4 font-semibold'>
       <div
