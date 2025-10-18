@@ -1,4 +1,5 @@
 import { BookmarkFontListSection } from './components/BookmarkFontListSection'
+import { FontSynthesizeSection } from './components/FontSynthesizeSection'
 import { SelectedFontListSection } from './components/SelectedFontListSection'
 
 const SynthesizeFontPage = () => {
@@ -12,6 +13,7 @@ const SynthesizeFontPage = () => {
       </header>
 
       <SelectedFontListSection />
+      <FontSynthesizeSection />
       <BookmarkFontListSection />
     </main>
   )
