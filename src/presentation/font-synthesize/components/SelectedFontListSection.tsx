@@ -1,5 +1,4 @@
 import { EmptyFontListMessage } from '@/presentation/components/font/EmptyFontListMessage'
-import { PrimaryButton } from '@/presentation/components/shared/PrimaryButton'
 import { cn } from '@/shared/utils/cn'
 import {
   useSelectedFontList,
@@ -38,25 +37,12 @@ const SelectedFontList = () => {
 export const SelectedFontListSection = () => {
   const selectedFontList = useSelectedFontList()
 
-  const handleSynthesize = async () => {
-    if (selectedFontList.length !== 2) return
-    // TODO: 실제 합성 API 호출
-  }
-
   return (
     <section className='mb-8'>
       <h2 className='text-accent mb-4 text-2xl font-bold'>
         선택된 폰트 ({selectedFontList.length}/2)
       </h2>
       <SelectedFontList />
-      <PrimaryButton
-        onClick={handleSynthesize}
-        size='md'
-        className='mt-4 ml-auto'
-        disabled={selectedFontList.length !== 2}
-      >
-        폰트 합성하기
-      </PrimaryButton>
     </section>
   )
 }
