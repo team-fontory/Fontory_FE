@@ -7,20 +7,18 @@ import { PrimaryButton } from '@/presentation/components/shared/PrimaryButton'
 import { useEditProfile } from '@/service/auth/hooks/useEditProfile'
 import { useNicknameValidation } from '@/service/auth/hooks/useNicknameValidation'
 import {
-  editProfileDefaultValues,
   type EditProfileFormData,
   EditProfileFormSchema,
   USER_FIELDS,
 } from '@/service/auth/user.config'
 import { useCustomForm } from '@/shared/hooks/useCustomForm'
-import { formatDateInput } from '@/shared/utils/inputHelper'
 import { useUserProfile } from '@/store/queries/auth.query'
 
 const EditProfileFormContent = () => {
   const { handleSubmitForm } = useEditProfile()
-  const { handleNicknameCheck, canCheck } = useNicknameValidation()
+  const { handleNicknameCheck, canCheck, isVerified } = useNicknameValidation()
   const { handleSubmit, formState } = useFormContext<EditProfileFormData>()
-  const isFormValid = formState.isValid && formState.isDirty
+  const isFormValid = formState.isValid && isVerified
 
   return (
     <form
@@ -56,10 +54,7 @@ const EditProfileFormContent = () => {
           name={USER_FIELDS.birth.name}
           label={USER_FIELDS.birth.label}
           placeholder={USER_FIELDS.birth.placeholder}
-          onInput={(e) => {
-            const input = e.currentTarget
-            input.value = formatDateInput(input.value)
-          }}
+          disabled
         />
 
         {/* 성별 라디오 */}
@@ -67,6 +62,7 @@ const EditProfileFormContent = () => {
           name={USER_FIELDS.gender.name}
           label={USER_FIELDS.gender.label}
           options={USER_FIELDS.gender.options}
+          disabled
         />
       </div>
 
@@ -85,7 +81,7 @@ const EditProfileFormContent = () => {
 export const EditProfileForm = () => {
   const { data: userProfile } = useUserProfile()
   const defaultValues = {
-    ...editProfileDefaultValues,
+    nicknameVerified: true,
     ...userProfile,
   } as EditProfileFormData
   const formMethods = useCustomForm<EditProfileFormData>(

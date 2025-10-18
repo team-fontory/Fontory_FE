@@ -41,7 +41,7 @@ export const FormField = ({
       <input
         id={name}
         className={cn(
-          'placeholder:text-footer-description w-full rounded-lg border bg-white p-3 text-base font-normal',
+          'placeholder:text-footer-description disabled:bg-secondary w-full rounded-lg border bg-white p-3 text-base font-normal',
           error ? 'border-error focus:border-error' : 'border-secondary-point',
           className,
         )}
