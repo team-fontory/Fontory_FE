@@ -1,4 +1,4 @@
-import { Icon } from '@/presentation/components/shared/Icon/Icon'
+import { Icon } from '@/presentation/_components/shared/Icon/Icon'
 import {
   TESTIMONIALS,
   type TestimonialType,

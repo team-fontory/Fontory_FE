@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom'
 import { useFontDetailViewModel } from '@/service/fonts/view-models/useFontDetailViewModel'
 import { useFontItem } from '@/store/states/fontItem.store'
 
-import { PageErrorFallback } from '../components/shared/PageErrorFallback'
-import { PageLoader } from '../components/shared/PageLoader'
+import { PageErrorFallback } from '../_components/shared/PageErrorFallback'
+import { PageLoader } from '../_components/shared/PageLoader'
 
 import { FontDetailHeader } from './components/FontDetailHeader'
 import { FontDetailSidebar } from './components/FontDetailSidebar'

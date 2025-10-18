@@ -2,11 +2,11 @@ import { ErrorBoundary } from 'react-error-boundary'
 
 import { useBookmarkFontListViewModel } from '@/service/fonts/view-models/useBookmarkFontListViewModel'
 
-import { FontListSection } from '../components/font/FontListSection'
-import { FontSearchBar } from '../components/font/FontSearchBar'
-import { PageErrorFallback } from '../components/shared/PageErrorFallback'
-import { PageLoader } from '../components/shared/PageLoader'
-import { Pagination } from '../components/shared/Pagination'
+import { FontListSection } from '../_components/font/FontListSection'
+import { FontSearchBar } from '../_components/font/FontSearchBar'
+import { PageErrorFallback } from '../_components/shared/PageErrorFallback'
+import { PageLoader } from '../_components/shared/PageLoader'
+import { Pagination } from '../_components/shared/Pagination'
 
 /** 북마크 페이지 컴포넌트 */
 const BookmarkContainer = () => {

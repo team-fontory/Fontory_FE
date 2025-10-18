@@ -1,8 +1,8 @@
 import { ErrorBoundary, type FallbackProps } from 'react-error-boundary'
 import { toast } from 'react-toastify'
 
-import { EmptyFontListMessage } from '@/presentation/components/font/EmptyFontListMessage'
-import { PageLoader } from '@/presentation/components/shared/PageLoader'
+import { EmptyFontListMessage } from '@/presentation/_components/font/EmptyFontListMessage'
+import { PageLoader } from '@/presentation/_components/shared/PageLoader'
 import { useProgressFontListViewModel } from '@/service/fonts/view-models/useProgressFontListViewModel'
 
 /** 에러 바운더리 내 에러 발생 시 호출되는 대체 UI 컴포넌트 */

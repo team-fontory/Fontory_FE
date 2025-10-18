@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router/routes.constant'
-import { PrimaryButton } from '@/presentation/components/shared/PrimaryButton'
+import { PrimaryButton } from '@/presentation/_components/shared/PrimaryButton'
 import { CTA_CONTENT } from '@/shared/constants/landing.constant'
 
 /** 최종 CTA 섹션 컴포넌트 */

@@ -1,4 +1,4 @@
-import { Icon } from '@/presentation/components/shared/Icon/Icon'
+import { Icon } from '@/presentation/_components/shared/Icon/Icon'
 import {
   SERVICE_VALUES,
   type ServiceValueType,

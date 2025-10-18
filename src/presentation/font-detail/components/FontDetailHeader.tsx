@@ -1,6 +1,6 @@
-import { BookmarkButton } from '@/presentation/components/font/BookmarkButton'
-import { DownloadButton } from '@/presentation/components/font/DownloadButton'
-import { DynamicFont } from '@/presentation/components/font/DynamicFont'
+import { BookmarkButton } from '@/presentation/_components/font/BookmarkButton'
+import { DownloadButton } from '@/presentation/_components/font/DownloadButton'
+import { DynamicFont } from '@/presentation/_components/font/DynamicFont'
 import { useFontItem } from '@/store/states/fontItem.store'
 
 /** 폰트 상세 페이지 헤더 컴포넌트 */

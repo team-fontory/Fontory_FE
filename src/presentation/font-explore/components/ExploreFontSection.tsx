@@ -1,9 +1,9 @@
 import { useSearchParams } from 'react-router-dom'
 
-import { FontListSection } from '@/presentation/components/font/FontListSection'
-import { FontSearchBar } from '@/presentation/components/font/FontSearchBar'
-import { PageLoader } from '@/presentation/components/shared/PageLoader'
-import { Pagination } from '@/presentation/components/shared/Pagination'
+import { FontListSection } from '@/presentation/_components/font/FontListSection'
+import { FontSearchBar } from '@/presentation/_components/font/FontSearchBar'
+import { PageLoader } from '@/presentation/_components/shared/PageLoader'
+import { Pagination } from '@/presentation/_components/shared/Pagination'
 import {
   FONT_FILTER_OPTIONS,
   type FontFilterKeyType,

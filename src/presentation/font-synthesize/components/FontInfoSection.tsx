@@ -1,6 +1,6 @@
-import { FormField } from '@/presentation/components/shared/FormField'
-import { FormTextarea } from '@/presentation/components/shared/FormTextarea'
-import { PrimaryButton } from '@/presentation/components/shared/PrimaryButton'
+import { FormField } from '@/presentation/_components/shared/FormField'
+import { FormTextarea } from '@/presentation/_components/shared/FormTextarea'
+import { PrimaryButton } from '@/presentation/_components/shared/PrimaryButton'
 import { CreateFontStepSection } from '@/presentation/font-create/component/CreateFontStepSection'
 import { FONT_FIELDS } from '@/service/fonts/font.config'
 

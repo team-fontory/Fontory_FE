@@ -1,4 +1,4 @@
-import { DynamicFont } from '@/presentation/components/font/DynamicFont'
+import { DynamicFont } from '@/presentation/_components/font/DynamicFont'
 import type { FontItemModel } from '@/service/fonts/fontModel.type'
 
 type SelectedFontCardProps = {

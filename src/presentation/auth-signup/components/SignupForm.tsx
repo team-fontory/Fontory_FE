@@ -1,8 +1,8 @@
 import { FormProvider, useFormContext } from 'react-hook-form'
 
-import { FormField } from '@/presentation/components/shared/FormField'
-import { FormRadioGroup } from '@/presentation/components/shared/FormRadioGroup'
-import { PrimaryButton } from '@/presentation/components/shared/PrimaryButton'
+import { FormField } from '@/presentation/_components/shared/FormField'
+import { FormRadioGroup } from '@/presentation/_components/shared/FormRadioGroup'
+import { PrimaryButton } from '@/presentation/_components/shared/PrimaryButton'
 import { useNicknameValidation } from '@/service/auth/hooks/useNicknameValidation'
 import { useSignup } from '@/service/auth/hooks/useSignup'
 import {

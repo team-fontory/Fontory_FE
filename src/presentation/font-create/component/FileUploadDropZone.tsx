@@ -1,8 +1,8 @@
 import type { DragEvent } from 'react'
 import { useFormContext } from 'react-hook-form'
 
-import { Icon } from '@/presentation/components/shared/Icon/Icon'
-import { PrimaryButton } from '@/presentation/components/shared/PrimaryButton'
+import { Icon } from '@/presentation/_components/shared/Icon/Icon'
+import { PrimaryButton } from '@/presentation/_components/shared/PrimaryButton'
 import { FONT_FIELDS } from '@/service/fonts/font.config'
 import { cn } from '@/shared/utils/cn'
 

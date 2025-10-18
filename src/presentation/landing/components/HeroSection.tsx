@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router/routes.constant'
-import { PrimaryButton } from '@/presentation/components/shared/PrimaryButton'
+import { PrimaryButton } from '@/presentation/_components/shared/PrimaryButton'
 import { HERO_CONTENT } from '@/shared/constants/landing.constant'
 
 /** 히어로 섹션 컴포넌트 */
