@@ -1,6 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary'
 
-import { PageErrorFallback } from '../components/shared/PageErrorFallback'
+import { PageErrorFallback } from '../_components/shared/PageErrorFallback'
 
 import { ExploreFontSection } from './components/ExploreFontSection'
 import { PopularFontSection } from './components/PopularFontSection'

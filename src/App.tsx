@@ -3,8 +3,8 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import { routes } from './app/router/routes'
-import { PageErrorFallback } from './presentation/components/shared/PageErrorFallback'
-import { PageLoader } from './presentation/components/shared/PageLoader'
+import { PageErrorFallback } from './presentation/_components/shared/PageErrorFallback'
+import { PageLoader } from './presentation/_components/shared/PageLoader'
 
 function App() {
   return (

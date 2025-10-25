@@ -1,13 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router/routes.constant'
-import { PrimaryButton } from '@/presentation/components/shared/PrimaryButton'
-
-/** 최종 CTA 섹션에 사용될 고정 컨텐츠 */
-const CTA_CONTENT = {
-  title: '나만의 폰트를 만들어볼 준비 되셨나요?',
-  buttonText: '지금 바로 제작하기',
-} as const
+import { PrimaryButton } from '@/presentation/_components/shared/PrimaryButton'
+import { CTA_CONTENT } from '@/shared/constants/landing.constant'
 
 /** 최종 CTA 섹션 컴포넌트 */
 export const FinalCTASection = () => {

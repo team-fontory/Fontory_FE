@@ -1,9 +1,9 @@
 import { ErrorBoundary, type FallbackProps } from 'react-error-boundary'
 import { toast } from 'react-toastify'
 
-import { FontListSection } from '@/presentation/components/font/FontListSection'
-import { PageLoader } from '@/presentation/components/shared/PageLoader'
-import { Pagination } from '@/presentation/components/shared/Pagination'
+import { FontListSection } from '@/presentation/_components/font/FontListSection'
+import { PageLoader } from '@/presentation/_components/shared/PageLoader'
+import { Pagination } from '@/presentation/_components/shared/Pagination'
 import { useCompletedFontListViewModel } from '@/service/fonts/view-models/useCompletedFontListViewModel'
 
 /** 에러 바운더리 내 에러 발생 시 호출되는 대체 UI 컴포넌트 */

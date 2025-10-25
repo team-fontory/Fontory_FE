@@ -1,5 +1,5 @@
-import { Icon } from '@/presentation/components/shared/Icon/Icon'
-import { PrimaryButton } from '@/presentation/components/shared/PrimaryButton'
+import { Icon } from '@/presentation/_components/shared/Icon/Icon'
+import { PrimaryButton } from '@/presentation/_components/shared/PrimaryButton'
 
 import { CreateFontStepSection } from './CreateFontStepSection'
 

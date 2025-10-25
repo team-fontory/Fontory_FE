@@ -1,6 +1,6 @@
-import { EmptyFontListMessage } from '@/presentation/components/font/EmptyFontListMessage'
-import { FontSearchBar } from '@/presentation/components/font/FontSearchBar'
-import { Pagination } from '@/presentation/components/shared/Pagination'
+import { EmptyFontListMessage } from '@/presentation/_components/font/EmptyFontListMessage'
+import { FontSearchBar } from '@/presentation/_components/font/FontSearchBar'
+import { Pagination } from '@/presentation/_components/shared/Pagination'
 import type { FontListModel } from '@/service/fonts/fontModel.type'
 import { useBookmarkFontListViewModel } from '@/service/fonts/view-models/useBookmarkFontListViewModel'
 

@@ -1,8 +1,8 @@
 import { ErrorBoundary } from 'react-error-boundary'
 import { useParams } from 'react-router-dom'
 
-import { FontListSection } from '@/presentation/components/font/FontListSection'
-import { PageLoader } from '@/presentation/components/shared/PageLoader'
+import { FontListSection } from '@/presentation/_components/font/FontListSection'
+import { PageLoader } from '@/presentation/_components/shared/PageLoader'
 import { useRecommendListViewModel } from '@/service/fonts/view-models/useRecommendListViewModel'
 import { useFontItem } from '@/store/states/fontItem.store'
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import GoogleImage from '@/assets/images/google.svg'
 import NaverImage from '@/assets/images/naver.png'
 
-import { Icon } from '../components/shared/Icon/Icon'
+import { Icon } from '../_components/shared/Icon/Icon'
 
 import { LoginPolicySection } from './components/LoginPolicySection'
 

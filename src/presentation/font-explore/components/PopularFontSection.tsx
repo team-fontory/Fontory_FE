@@ -2,8 +2,8 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { Link } from 'react-router-dom'
 
 import { createRoute } from '@/app/router/routes.constant'
-import { DynamicFont } from '@/presentation/components/font/DynamicFont'
-import { PageLoader } from '@/presentation/components/shared/PageLoader'
+import { DynamicFont } from '@/presentation/_components/font/DynamicFont'
+import { PageLoader } from '@/presentation/_components/shared/PageLoader'
 import type { FontItemModel } from '@/service/fonts/fontModel.type'
 import { usePopularFontListViewModel } from '@/service/fonts/view-models/usePopularFontListViewModel'
 

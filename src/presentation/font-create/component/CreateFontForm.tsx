@@ -1,6 +1,6 @@
 import { FormProvider, useFormContext } from 'react-hook-form'
 
-import { PrimaryButton } from '@/presentation/components/shared/PrimaryButton'
+import { PrimaryButton } from '@/presentation/_components/shared/PrimaryButton'
 import {
   createFontDefaultValues,
   type CreateFontFormData,

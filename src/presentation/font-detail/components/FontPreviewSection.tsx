@@ -1,4 +1,4 @@
-import { DynamicFont } from '@/presentation/components/font/DynamicFont'
+import { DynamicFont } from '@/presentation/_components/font/DynamicFont'
 import { useFontItem } from '@/store/states/fontItem.store'
 
 /** 폰트 미리보기 섹션 컴포넌트 */

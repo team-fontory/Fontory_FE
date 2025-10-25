@@ -1,6 +1,6 @@
 import type { FormEvent } from 'react'
 
-import { FormField } from '@/presentation/components/shared/FormField'
+import { FormField } from '@/presentation/_components/shared/FormField'
 import { FONT_FIELDS } from '@/service/fonts/font.config'
 
 import { CreateFontStepSection } from './CreateFontStepSection'

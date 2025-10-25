@@ -1,19 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router/routes.constant'
-import { PrimaryButton } from '@/presentation/components/shared/PrimaryButton'
-
-/** 히어로 섹션에 사용될 고정 컨텐츠 */
-const HERO_CONTENT = {
-  title: '나만의 손글씨 폰트',
-  description: {
-    line1:
-      '자신만의 개성과 감성을 담은 개인 맞춤형 손글씨 폰트를 디자인해보세요.',
-    line2:
-      '디자이너부터 취미로 즐기는 분들까지, 누구에게나 완벽한 맞춤형 글씨체 경험을 제공합니다.',
-  },
-  buttonText: '제작 시작하기',
-} as const
+import { PrimaryButton } from '@/presentation/_components/shared/PrimaryButton'
+import { HERO_CONTENT } from '@/shared/constants/landing.constant'
 
 /** 히어로 섹션 컴포넌트 */
 export const HeroSection = () => {

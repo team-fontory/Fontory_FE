@@ -2,7 +2,7 @@ import { lazy } from 'react'
 import type { RouteObject } from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
 
-import { Layout } from '@/presentation/components/shared/Layout'
+import { Layout } from '@/presentation/_components/shared/Layout'
 
 import { ROUTES } from './routes.constant'
 

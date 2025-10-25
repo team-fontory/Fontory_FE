@@ -1,4 +1,4 @@
-import { Icon } from '../components/shared/Icon/Icon'
+import { Icon } from '../_components/shared/Icon/Icon'
 
 import { SignupForm } from './components/SignupForm'
 
