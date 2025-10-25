@@ -34,13 +34,14 @@ const triggerFileDownload = (blob: Blob, fileName: string) => {
 }
 
 /** 다운로드 URL 값 얻는 훅 */
-const useFontDownloadUrl = (fontId: number, fontName: string) => {
+const useFontDownloadUrl = (fontId: number) => {
   const params = { fontId }
   const { refetch } = useFontDownloadQuery(params)
 
   const fetchDownloadUrl = async () => {
-    const { data, isError } = await refetch()
-    if (isError || !data?.ttf) throw new FontDownloadError(fontName)
+    const { data, isError, error } = await refetch()
+    if (isError) throw error
+    if (!data?.ttf) throw new FontDownloadError()
 
     return data.ttf
   }
@@ -51,7 +52,7 @@ const useFontDownloadUrl = (fontId: number, fontName: string) => {
 /** 폰트 파일을 다운로드하고 상태를 관리 */
 export const useFontFileDownloader = (fontId: number, fontName: string) => {
   const [isDownloading, setIsDownloading] = useState(false)
-  const { fetchDownloadUrl } = useFontDownloadUrl(fontId, fontName)
+  const { fetchDownloadUrl } = useFontDownloadUrl(fontId)
 
   const handleDownload = async (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation()
@@ -64,7 +65,9 @@ export const useFontFileDownloader = (fontId: number, fontName: string) => {
       .then(fetchFontBlobFromUrl)
       .then((blob) => triggerFileDownload(blob, fontName))
       .then(() => toast.success(TOAST_MESSAGES.downloadFont.success))
-      .catch(() => toast.error(TOAST_MESSAGES.downloadFont.error))
+      .catch((error) =>
+        toast.error(error.message || TOAST_MESSAGES.downloadFont.error),
+      )
       .finally(() => setIsDownloading(false))
   }
 
