@@ -5,6 +5,7 @@ import {
 } from '@/shared/apis/api.error'
 import { useProgressFontListQuery } from '@/store/queries/font.query'
 
+import { PROGRESS_STATUS_KEYS } from '../constants/progress.constant'
 import { convertInProgressListViewModel } from '../convertToFontViewModel'
 import { FontListLoadError, FontNotFoundError } from '../font.error'
 import type { InProgressFontListModel } from '../fontModel.type'
@@ -32,8 +33,12 @@ export const useProgressFontListViewModel = () => {
     return { isLoading, fontList: emptyList }
   }
 
+  const progressFontList = progressFontData.filter(
+    (font) => font.status === PROGRESS_STATUS_KEYS.progress,
+  )
+
   return {
     isLoading: false,
-    fontList: convertInProgressListViewModel(progressFontData),
+    fontList: convertInProgressListViewModel(progressFontList),
   }
 }
