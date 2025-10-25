@@ -21,12 +21,14 @@ export const useToggleBookmark = (fontId: number, isBookmarked: boolean) => {
     if (isBookmarked) {
       removeBookmark(params, {
         onSuccess: () => toast.success(TOAST_MESSAGES.removeBookmark.success),
-        onError: () => toast.error(TOAST_MESSAGES.removeBookmark.error),
+        onError: (error) =>
+          toast.error(error.message || TOAST_MESSAGES.removeBookmark.error),
       })
     } else {
       addBookmark(params, {
         onSuccess: () => toast.success(TOAST_MESSAGES.addBookmark.success),
-        onError: () => toast.error(TOAST_MESSAGES.addBookmark.error),
+        onError: (error) =>
+          toast.error(error.message || TOAST_MESSAGES.addBookmark.error),
       })
     }
   }
