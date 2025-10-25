@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom'
 
 import { Layout } from '@/presentation/_components/shared/Layout'
 
+import { ProtectedRoute } from './ProtectedRoute'
 import { ROUTES } from './routes.constant'
 
 // 페이지 컴포넌트 Lazy Loading
@@ -56,15 +57,27 @@ export const routes: RouteObject[] = [
       },
       {
         path: ROUTES.FONT.CREATE,
-        element: <CreateFontPage />,
+        element: (
+          <ProtectedRoute>
+            <CreateFontPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: ROUTES.FONT.SYNTHESIZE,
-        element: <SynthesizeFontPage />,
+        element: (
+          <ProtectedRoute>
+            <SynthesizeFontPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: ROUTES.MYPAGE.MY_FONT,
-        element: <FontProgressPage />,
+        element: (
+          <ProtectedRoute>
+            <FontProgressPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: ROUTES.AUTH.LOGIN,
@@ -76,11 +89,19 @@ export const routes: RouteObject[] = [
       },
       {
         path: ROUTES.MYPAGE.ACCOUNT,
-        element: <EditProfilePage />,
+        element: (
+          <ProtectedRoute>
+            <EditProfilePage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: ROUTES.MYPAGE.BOOKMARK,
-        element: <BookmarkPage />,
+        element: (
+          <ProtectedRoute>
+            <BookmarkPage />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
