@@ -49,6 +49,7 @@ export const FontSynthesizeForm = () => {
 export const FontSynthesizeSection = () => {
   const formMethods = useCustomForm(CreateFontSchema, {
     defaultValues: createFontDefaultValues,
+    mode: 'onChange',
   })
 
   useEffect(() => {
