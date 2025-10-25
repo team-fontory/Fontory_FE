@@ -16,7 +16,7 @@ export const InProgressFontTable = () => {
 
   if (isLoading) return <PageLoader />
   if (!fontList.length)
-    return <EmptyFontListMessage message='제작한 폰트가 없습니다' />
+    return <EmptyFontListMessage message='제작 중인 폰트가 없습니다' />
 
   return (
     <div className='border-secondary rounded-lg border bg-white'>

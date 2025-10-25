@@ -1,5 +1,3 @@
-import type { ProgressStatusValueType } from '@/service/fonts/constants/progress.constant'
-
 /** 폰트 단일 항목 모델 */
 export type FontItemModel = {
   fontId: number
@@ -19,10 +17,7 @@ export type FontListModel = FontItemModel[]
 export type InProgressFontModel = {
   id: number
   name: string
-  createdAt: string
   formattedCreatedAt: string
-  status: string
-  statusText: ProgressStatusValueType
 }
 
 /** 제작 중인 폰트 목록 모델 */

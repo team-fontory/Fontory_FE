@@ -42,22 +42,22 @@ export type ServiceValueType = (typeof SERVICE_VALUES)[number]
 /** 사용자 후기 데이터 목록 */
 export const TESTIMONIALS = [
   {
-    name: '고로켕',
+    name: '생각하는 라이언',
     rate: 5,
     description:
-      '"Great platform for font creation. The interface is user-friendly, but I wish there were more advanced customization options."',
+      '"디자이너가 아니라도 내 손글씨 폰트를 만들 수 있다는 점이 좋았어요. 작업 시간도 짧고 결과물 퀄리티가 만족스럽네요."',
   },
   {
-    name: '고로냐',
-    rate: 3,
+    name: '애교뿜뿜 어피치',
+    rate: 5,
     description:
-      '"I\'ve always wanted to create my own font, and this platform made it incredibly easy. The tools are intuitive, and the results are stunning!"',
+      '“가족들과 함께 각자만의 폰트를 만들어봤어요. 아버지와 어머니의 폰트를 합성해보면서 즐거운 시간을 보낼 수 있었습니다.”',
   },
   {
-    name: '구렇다',
+    name: '신난 무지',
     rate: 4,
     description:
-      '"Absolutely love this font creation tool! It\'s perfect for both beginners and experienced designers. Highly recommend!"',
+      '"생각보다 잘 나와서 신기했어요. 발표 자료에서 강조하고 싶은 부분에 활용하면 좋을 것 같아요."',
   },
 ] as const
 

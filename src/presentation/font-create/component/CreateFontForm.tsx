@@ -50,6 +50,7 @@ export const CreateFontFormContent = () => {
 export const CreateFontForm = () => {
   const formMethods = useCustomForm(CreateFontSchema, {
     defaultValues: createFontDefaultValues,
+    mode: 'onChange',
   })
 
   return (

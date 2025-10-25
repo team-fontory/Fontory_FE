@@ -1,7 +1,3 @@
-import {
-  PROGRESS_STATUS,
-  type ProgressStatusKeyType,
-} from '@/service/fonts/constants/progress.constant'
 import type {
   FontCardInfoResponse,
   InProgressFontListResponse,
@@ -39,7 +35,6 @@ export const convertFontListViewModel = (
 
 /** 제작 중인 폰트 데이터 (API 응답) -> 폰트 아이템 뷰모델 변환 */
 export const convertInProgressViewModel = (font: InProgressFontResponse) => {
-  const statusText = PROGRESS_STATUS[font.status as ProgressStatusKeyType]
   const formattedCreatedAt = new Date(font.createdAt).toLocaleDateString(
     'ko-KR',
     {
@@ -52,10 +47,7 @@ export const convertInProgressViewModel = (font: InProgressFontResponse) => {
   return {
     id: font.id,
     name: font.name,
-    createdAt: font.createdAt,
     formattedCreatedAt,
-    status: font.status,
-    statusText,
   }
 }
 

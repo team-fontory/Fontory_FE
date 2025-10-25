@@ -21,7 +21,7 @@ const handleError = (error: unknown) => {
 /** 제작 완료된 폰트를 조회하고 뷰모델로 변환 */
 export const useCompletedFontListViewModel = () => {
   const [searchParams] = useSearchParams()
-  const currentPage = parseInt(searchParams.get('page') || '1', 10)
+  const currentPage = parseInt(searchParams.get('page') || '1', 10) - 1
   const params = { page: currentPage }
 
   const {
