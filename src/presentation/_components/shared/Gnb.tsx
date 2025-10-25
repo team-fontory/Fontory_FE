@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 
 import { ROUTES } from '@/app/router/routes.constant'
-import { useGnbStateQuery } from '@/store/queries/auth.query'
+import { useUserProfile } from '@/store/queries/auth.query'
 
 import { Icon } from './Icon/Icon'
 import { GnbDropdown } from './GnbDropdown'
@@ -15,7 +15,7 @@ const NAV_ITEMS = [
 ] as const
 
 const ActionButtonGroup = () => {
-  const { data: gnbData, isError } = useGnbStateQuery()
+  const { data: gnbData, isError } = useUserProfile()
 
   if (gnbData && !isError) return <GnbDropdown nickname={gnbData.nickname} />
 
