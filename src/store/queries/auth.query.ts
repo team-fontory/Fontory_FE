@@ -18,14 +18,6 @@ export const useUserProfile = () => {
   return useSuspenseQuery({
     queryKey: authQueryKeys.profile(),
     queryFn: getUserProfile,
-  })
-}
-
-/** 로그인 여부 검사 */
-export const useGnbStateQuery = () => {
-  return useQuery({
-    queryKey: authQueryKeys.profile(),
-    queryFn: getUserProfile,
     retry: false,
   })
 }
