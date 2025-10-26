@@ -39,5 +39,5 @@ export const logout = () => {
 
 /** 회원탈퇴 */
 export const deleteUser = () => {
-  return apiClient.post('/member/me')
+  return apiClient.delete('/member/me')
 }
