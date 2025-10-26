@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 import { ROUTES } from '@/app/router/routes.constant'
+import { TOAST_MESSAGES } from '@/shared/constants/toast.constant'
 import {
   useDeleteUserMutation,
   useLogoutMutation,
@@ -55,13 +57,16 @@ export const GnbDropdown = ({ nickname }: GnbDropdownProps) => {
 
   const handleLogout = () => {
     if (confirm('로그아웃하시겠습니까?')) {
+      toast.success(TOAST_MESSAGES.logout.success)
       navigate(ROUTES.HOME)
       logout()
     }
   }
 
   const handleDeleteUser = () => {
-    if (confirm('회원 탈퇴를 하시겠습니까?')) {
+    const message = `탈퇴 후 7일 이내에는 재로그인이 가능합니다.\r\n7일이 지나면 계정 정보는 삭제되지만, 생성하신 폰트는 삭제되지 않습니다.\r\n\r\n회원 탈퇴를 진행하시겠습니까?`
+    if (confirm(message)) {
+      toast.success(TOAST_MESSAGES.deleteUser.success)
       navigate(ROUTES.HOME)
       deleteUser()
     }

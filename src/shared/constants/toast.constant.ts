@@ -20,6 +20,14 @@ export const TOAST_MESSAGES = {
     success: '회원가입에 성공했습니다.',
     error: '회원가입에 실패하였습니다.',
   },
+  logout: {
+    success: '로그아웃에 성공했습니다.',
+    error: '로그아웃에 실패하였습니다.',
+  },
+  deleteUser: {
+    success: '회원 탈퇴에 성공했습니다.',
+    error: '회원 탈퇴에 실패하였습니다.',
+  },
   downloadFont: {
     success: '폰트가 다운로드되었습니다.',
     error: '폰트 다운로드에 실패했습니다.',
