@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom'
 import { Layout } from '@/presentation/_components/shared/Layout'
 
 import { ProtectedRoute } from './ProtectedRoute'
+import { PublicOnlyRoute } from './PublicOnlyRoute'
 import { ROUTES } from './routes.constant'
 
 // 페이지 컴포넌트 Lazy Loading
@@ -81,11 +82,19 @@ export const routes: RouteObject[] = [
       },
       {
         path: ROUTES.AUTH.LOGIN,
-        element: <LoginPage />,
+        element: (
+          <PublicOnlyRoute>
+            <LoginPage />
+          </PublicOnlyRoute>
+        ),
       },
       {
         path: ROUTES.AUTH.SIGN_UP,
-        element: <SignupPage />,
+        element: (
+          <PublicOnlyRoute>
+            <SignupPage />
+          </PublicOnlyRoute>
+        ),
       },
       {
         path: ROUTES.MYPAGE.ACCOUNT,
