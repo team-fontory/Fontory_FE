@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
-import { addBookmark, createFont, removeBookmark } from './font.api'
+import { authQueryInvalidator } from './auth.key'
+import { addBookmark, createFont, removeBookmark, removeFont } from './font.api'
 import { fontQueryInvalidator } from './font.key'
 
 /** 북마크 추가 */
@@ -33,5 +34,18 @@ export const useCreateFontMutation = () => {
     mutationFn: createFont,
     onSuccess: () =>
       queryClient.invalidateQueries(fontQueryInvalidator.invalidateAll()),
+  })
+}
+
+/** 폰트 제거 */
+export const useRemoveFontMutation = () => {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: removeFont,
+    onSuccess: () => {
+      queryClient.invalidateQueries(fontQueryInvalidator.invalidateAll())
+      queryClient.invalidateQueries(authQueryInvalidator.invalidateAll())
+    },
   })
 }

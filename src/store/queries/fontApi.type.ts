@@ -52,6 +52,11 @@ export type FontDownloadUrlResponse = {
   ttf: string
 }
 
+/** 폰트 삭제 요청 */
+export type RemoveFontRequest = {
+  fontId: number
+}
+
 /** 폰트 상세보기 요청 */
 export type FontDetailRequest = {
   fontId: number
