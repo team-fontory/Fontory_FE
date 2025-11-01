@@ -6,6 +6,7 @@ import type {
   FontDownloadUrlRequest,
   FontNameDuplicateRequest,
   RecommendListRequest,
+  RemoveFontRequest,
 } from './fontApi.type'
 
 /** 폰트 쿼리 키 팩토리 */
@@ -34,6 +35,10 @@ export const fontQueryKeys = {
   // 다운로드
   download: (params: FontDownloadUrlRequest) =>
     [...fontQueryKeys.all(), 'download', params.fontId] as const,
+
+  // 폰트 제거
+  removeFont: (params: RemoveFontRequest) =>
+    [...fontQueryKeys.all(), 'delete', params.fontId] as const,
 
   // 상세페이지
   details: () => [...fontQueryKeys.all(), 'detail'] as const,

@@ -6,6 +6,7 @@ import type {
   BookmarkFontListResponse,
   CompletedFontListRequest,
   CompletedFontListResponse,
+  RemoveFontRequest,
   ExploreFontListRequest,
   ExploreFontListResponse,
   FontDetailRequest,
@@ -78,6 +79,11 @@ export const addBookmark = (params: AddBookmarkRequest) => {
 /** 북마크 제거 */
 export const removeBookmark = (params: RemoveBookmarkRequest) => {
   return apiClient.delete(`/bookmarks/${params.fontId}`)
+}
+
+/** 폰트 제거 */
+export const removeFont = (params: RemoveFontRequest) => {
+  return apiClient.delete(`/fonts/members/${params.fontId}`)
 }
 
 /** 폰트 생성 요청 */

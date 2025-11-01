@@ -44,6 +44,10 @@ export const TOAST_MESSAGES = {
     success: '폰트 생성 요청에 성공했습니다.',
     error: '폰트 생성 요청에 실패하였습니다.',
   },
+  removeFont: {
+    success: '폰트가 삭제되었습니다.',
+    error: '폰트 삭제에 실패했습니다.',
+  },
   error: {
     network: '네트워크 연결을 확인해주세요.',
     badRequest: '요청 형식이 잘못되었습니다.',

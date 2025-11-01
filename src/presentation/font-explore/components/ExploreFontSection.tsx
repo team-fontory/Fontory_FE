@@ -77,7 +77,7 @@ export const ExploreFontSection = () => {
         전체 폰트
       </h2>
       <nav
-        className='flex-column gap-4 overflow-x-auto px-4'
+        className='flex-column gap-4 overflow-x-auto'
         role='tablist'
         aria-label='폰트 필터 옵션'
       >

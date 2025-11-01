@@ -8,6 +8,7 @@ import iconsHeart from '@/assets/icons/heart.svg?react'
 import iconsLogo from '@/assets/icons/logo.svg?react'
 import iconsSearch from '@/assets/icons/search.svg?react'
 import iconsThunder from '@/assets/icons/thunder.svg?react'
+import iconsTrash from '@/assets/icons/trash.svg?react'
 import iconsUnfilledStar from '@/assets/icons/unfilled-star.svg?react'
 import iconsWarehouse from '@/assets/icons/warehouse.svg?react'
 
@@ -20,6 +21,7 @@ export const iconMap = {
   search: iconsSearch,
   heart: iconsHeart,
   download: iconsDownload,
+  trash: iconsTrash,
   'full-star': iconsFullStar,
   'unfilled-star': iconsUnfilledStar,
 }
