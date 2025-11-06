@@ -2,10 +2,12 @@ import type { ComponentType, SVGProps } from 'react'
 
 import iconsChat from '@/assets/icons/chat.svg?react'
 import iconsClap from '@/assets/icons/clap.svg?react'
+import iconsClose from '@/assets/icons/close.svg?react'
 import iconsDownload from '@/assets/icons/download.svg?react'
 import iconsFullStar from '@/assets/icons/full-star.svg?react'
 import iconsHeart from '@/assets/icons/heart.svg?react'
 import iconsLogo from '@/assets/icons/logo.svg?react'
+import iconsMenu from '@/assets/icons/menu.svg?react'
 import iconsSearch from '@/assets/icons/search.svg?react'
 import iconsThunder from '@/assets/icons/thunder.svg?react'
 import iconsTrash from '@/assets/icons/trash.svg?react'
@@ -16,6 +18,8 @@ export const iconMap = {
   logo: iconsLogo,
   chat: iconsChat,
   clap: iconsClap,
+  close: iconsClose,
+  menu: iconsMenu,
   thunder: iconsThunder,
   warehouse: iconsWarehouse,
   search: iconsSearch,
