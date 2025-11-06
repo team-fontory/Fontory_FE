@@ -21,9 +21,10 @@ const fetchFontBlobFromUrl = async (url: string) => {
 const triggerFileDownload = (blob: Blob, fileName: string) => {
   const link = document.createElement('a')
   const downloadUrl = URL.createObjectURL(blob)
+  const sanitizedFileName = fileName.replace(/\s+/g, '_')
 
   link.href = downloadUrl
-  link.download = `${fileName}.ttf`
+  link.download = `${sanitizedFileName}.ttf`
   link.style.display = 'none'
 
   document.body.appendChild(link)
