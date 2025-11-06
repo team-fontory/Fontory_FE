@@ -7,7 +7,7 @@ import { useCheckFontNameQuery } from '@/store/queries/font.query'
 
 /** 폰트 이름 최소 입력 길이 확인 */
 const isValidFontNameLength = (nickname: string) => {
-  const isValid = !!nickname && nickname.length >= 1
+  const isValid = !!nickname && nickname.length >= 2
   return isValid
 }
 
