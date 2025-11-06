@@ -9,7 +9,7 @@ export const FONT_FIELDS = {
     name: 'name',
     label: '폰트 한글 이름',
     placeholder: '최대 9글자까지 입력 가능',
-    minLength: 1,
+    minLength: 2,
     maxLength: 9,
   },
   engName: {
@@ -39,7 +39,7 @@ const BaseFontSchema = z.object({
     .refine((file) => file !== null && file.size > 0, '파일을 업로드해주세요.'),
   name: z
     .string()
-    .min(1, { message: '폰트 이름을 입력해주세요.' })
+    .min(2, { message: '2글자 이상 입력해주세요.' })
     .max(9, { message: '9글자까지 입력 가능합니다.' }),
   fontNameVerified: z.boolean().refine((val) => val, '폰트 이름 중복 확인을 해주세요'),
   engName: z
