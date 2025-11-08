@@ -32,11 +32,9 @@ export const FontInfoSection = ({
                 placeholder={FONT_FIELDS.name.placeholder}
                 minLength={FONT_FIELDS.name.minLength}
                 maxLength={FONT_FIELDS.name.maxLength}
-                onKeyPress={(e) => {
-                  const char = e.key
-                  if (!/[가-힣\s]/.test(char) && char !== 'Backspace' && char !== 'Delete') {
-                    e.preventDefault()
-                  }
+                onInput={(e) => {
+                  const input = e.currentTarget
+                  input.value = input.value.replace(/[^가-힣ㄱ-ㅎㅏ-ㅣ\s]/g, '')
                 }}
                 required
               />
